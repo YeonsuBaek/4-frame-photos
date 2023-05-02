@@ -1,9 +1,13 @@
 import React from 'react';
 import Navigation from './Navigation';
 
-const Layout: React.FC<{ title: string; onSaveImage: () => void }> = (
-  props
-) => {
+type Children = React.ReactChild[] | React.ReactChild[];
+
+const Layout: React.FC<{
+  title: string;
+  onSaveImage: () => void;
+  children: Children;
+}> = (props) => {
   return (
     <>
       <Navigation title={props.title} onSaveImage={props.onSaveImage} />
