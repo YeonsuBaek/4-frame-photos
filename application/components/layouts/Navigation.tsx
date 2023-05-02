@@ -7,7 +7,7 @@ const Navigation: React.FC<{ title: string; onSaveImage: () => void }> = (
   props
 ) => {
   return (
-    <div className='fixed top-0 left-0 w-full h-[50px] flex items-center justify-between bg-black'>
+    <div className='fixed top-0 left-0 w-full h-[50px] flex items-center justify-between bg-black z-50'>
       <Link
         href='/'
         className='w-[50px] h-[50px] flex items-center justify-center'

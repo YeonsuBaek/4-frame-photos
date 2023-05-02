@@ -10,7 +10,7 @@ import { TiWeatherPartlySunny } from 'react-icons/ti';
 
 const Optionbar = () => {
   return (
-    <ul className='fixed bottom-0 left-0 flex items-center justify-start w-screen overflow-scroll text-white bg-black'>
+    <ul className='fixed bottom-0 left-0 z-50 flex items-center justify-start w-screen overflow-scroll text-white bg-black'>
       <li className='min-w-[80px] flex items-center justify-center'>
         <button className='flex flex-col items-center justify-center'>
           <TbFrame size={32} color='#fff' />
