@@ -1,4 +1,4 @@
-import Form from '@/components/Form';
+import Form from '@/components/Form/Form';
 import React, { useRef } from 'react';
 import Layout from '../../components/layouts/Layout';
 import Optionbar from '../../components/layouts/Optionbar';
