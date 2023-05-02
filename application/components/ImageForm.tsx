@@ -1,9 +1,8 @@
-import Image from 'next/image';
 import React, { useRef, useState } from 'react';
 
 const ImageForm: React.FC = () => {
   const [uploadedImage, setUploadedImage] = useState('');
-  const fileInput = useRef<HTMLInputElement>(null);
+  const fileInput = useRef<any>(null);
 
   const handleUploadImage = (e: React.ChangeEvent<HTMLInputElement>) => {
     const target = e.currentTarget;
@@ -21,24 +20,23 @@ const ImageForm: React.FC = () => {
   };
 
   return (
-    <div>
-      {uploadedImage ? (
+    <div className='relative'>
+      {uploadedImage && (
         <img
           src={uploadedImage}
           onClick={() => {
             fileInput.current.click();
           }}
-          className='w-full aspect-[3/2] bg-white object-cover'
-        />
-      ) : (
-        <input
-          accept='image/*'
-          type='file'
-          onChange={handleUploadImage}
-          ref={fileInput}
-          className='w-full aspect-[3/2] bg-white object-cover'
+          className='absolute top-0 left-0 object-cover w-full h-full bg-white'
         />
       )}
+      <input
+        accept='image/*'
+        type='file'
+        onChange={handleUploadImage}
+        ref={fileInput}
+        className='w-full aspect-[3/2] bg-white object-cover'
+      />
     </div>
   );
 };
