@@ -17,6 +17,7 @@ const Optionbar: React.FC<{
   onResetStyle: () => void;
   onChangeText: (e: React.ChangeEvent<HTMLInputElement>) => void;
   textValue: string;
+  onSaveText: () => void;
 }> = (props) => {
   const [detailOptionbar, setDetailOptionbar] = useState(false);
   const [textBar, setTextBar] = useState(false);
@@ -41,6 +42,11 @@ const Optionbar: React.FC<{
   const onClose = () => {
     props.onResetStyle();
     handleCloseBar();
+  };
+
+  const onSaveText = () => {
+    props.onSaveText();
+    setTextBar(false);
   };
 
   return (
@@ -112,7 +118,11 @@ const Optionbar: React.FC<{
         </DetailOptionbar>
       )}
       {textBar && (
-        <DetailOptionbar title='글자 편집' onSave={onSave} onClose={onClose}>
+        <DetailOptionbar
+          title='글자 편집'
+          onSaveText={onSaveText}
+          onClose={onClose}
+        >
           <li className='w-full'>
             <input
               type='text'

@@ -7,9 +7,10 @@ import * as htmlToImage from 'html-to-image';
 const MakingPage = () => {
   const [defaultStyle, setDefaultStyle] = useState({
     frame: 'salmon',
+    text: '네컷사진',
   });
   const [frameColor, setFrameColor] = useState(defaultStyle.frame);
-  const [text, setText] = useState('네컷사진');
+  const [text, setText] = useState(defaultStyle.text);
   const ref = useRef<any>();
 
   const handleSaveImage = async () => {
@@ -28,6 +29,7 @@ const MakingPage = () => {
   const handleSaveStyle = () => {
     setDefaultStyle({
       frame: frameColor,
+      text: defaultStyle.text,
     });
   };
 
@@ -39,12 +41,19 @@ const MakingPage = () => {
     setText(e.target.value);
   };
 
+  const handleSaveText = () => {
+    setDefaultStyle({
+      frame: defaultStyle.frame,
+      text: text,
+    });
+  };
+
   return (
     <>
       <Layout title='네컷사진 만들기' onSaveImage={handleSaveImage}>
         <div className='my-[64px]'>
           <div ref={ref}>
-            <Form frameColor={frameColor} />
+            <Form frameColor={frameColor} text={text} />
           </div>
         </div>
       </Layout>
@@ -54,6 +63,7 @@ const MakingPage = () => {
         onResetStyle={handleResetStyle}
         textValue={text}
         onChangeText={(e) => handleChangeText(e)}
+        onSaveText={handleSaveText}
       />
     </>
   );
