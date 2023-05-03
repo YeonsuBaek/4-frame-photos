@@ -29,18 +29,14 @@ const Optionbar: React.FC<{
     setTextBar(true);
   };
 
-  const handleCloseBar = () => {
-    setDetailOptionbar(false);
-  };
-
   const onSaveFrame = () => {
     props.onSaveFrame();
-    handleCloseBar();
+    setDetailOptionbar(false);
   };
 
   const onCloseFrame = () => {
     props.onResetFrame();
-    handleCloseBar();
+    setDetailOptionbar(false);
   };
 
   const onSaveText = () => {
