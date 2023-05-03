@@ -9,13 +9,24 @@ import { RxFontStyle } from 'react-icons/rx';
 import { TiWeatherPartlySunny } from 'react-icons/ti';
 import DetailOptionbar from '../UI/DetailOptionbar';
 
-const Optionbar: React.FC<{ onChangeFrame: (color: string) => void }> = (
-  props
-) => {
+const Optionbar: React.FC<{
+  onChangeFrame: (color: string) => void;
+  onSave: () => void;
+  onSaveStyle: () => void;
+}> = (props) => {
   const [detailOptionbar, setDetailOptionbar] = useState(false);
 
   const handleOpenDetailOptionbar = () => {
     setDetailOptionbar(true);
+  };
+
+  const handleCloseBar = () => {
+    setDetailOptionbar(false);
+  };
+
+  const onSave = () => {
+    props.onSaveStyle();
+    handleCloseBar();
   };
 
   return (
@@ -68,7 +79,7 @@ const Optionbar: React.FC<{ onChangeFrame: (color: string) => void }> = (
         </li>
       </ul>
       {detailOptionbar && (
-        <DetailOptionbar title='프레임 색상'>
+        <DetailOptionbar title='프레임 색상' onSave={onSave}>
           <li>
             <button
               onClick={() => props.onChangeFrame('white')}

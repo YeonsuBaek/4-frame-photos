@@ -5,7 +5,10 @@ import Optionbar from '../../components/layouts/Optionbar';
 import * as htmlToImage from 'html-to-image';
 
 const MakingPage = () => {
-  const [frameColor, setFrameColor] = useState('black');
+  const [defaultStyle, setDefaultStyle] = useState({
+    frame: 'salmon',
+  });
+  const [frameColor, setFrameColor] = useState(defaultStyle.frame);
   const ref = useRef<any>();
 
   const handleSaveImage = async () => {
@@ -21,6 +24,12 @@ const MakingPage = () => {
     setFrameColor(color);
   };
 
+  const handleSaveStyle = () => {
+    setDefaultStyle({
+      frame: frameColor,
+    });
+  };
+
   return (
     <>
       <Layout title='네컷사진 만들기' onSaveImage={handleSaveImage}>
@@ -28,7 +37,10 @@ const MakingPage = () => {
           <Form frameColor={frameColor} />
         </div>
       </Layout>
-      <Optionbar onChangeFrame={(color) => handleChangeFrame(color)} />
+      <Optionbar
+        onChangeFrame={(color) => handleChangeFrame(color)}
+        onSaveStyle={handleSaveStyle}
+      />
     </>
   );
 };
