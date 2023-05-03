@@ -1,7 +1,7 @@
 import React from 'react';
 import Navigation from './Navigation';
 
-type Children = React.ReactChild[] | React.ReactChild[];
+type Children = React.ReactChild[] | React.ReactChild;
 
 const Layout: React.FC<{
   title: string;

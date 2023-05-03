@@ -12,7 +12,6 @@ import DetailOptionbar from '../UI/DetailOptionbar';
 const Optionbar: React.FC<{
   onChangeFrame: (color: string) => void;
   onSaveFrame: () => void;
-  onCloseFrame: () => void;
   onResetFrame: () => void;
   onChangeText: (e: React.ChangeEvent<HTMLInputElement>) => void;
   textValue: string;

@@ -4,7 +4,7 @@ import { TfiClose, TfiCheck } from 'react-icons/tfi';
 
 const DetailOptionbar: React.FC<{
   title: string;
-  children: React.ReactChild[] | React.ReactChild[];
+  children: React.ReactChild[] | React.ReactChild;
   onClose: () => void;
   onSave: () => void;
 }> = (props) => {
