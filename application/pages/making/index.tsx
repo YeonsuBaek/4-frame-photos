@@ -37,8 +37,10 @@ const MakingPage = () => {
   return (
     <>
       <Layout title='네컷사진 만들기' onSaveImage={handleSaveImage}>
-        <div ref={ref}>
-          <Form frameColor={frameColor} />
+        <div className='my-[64px]'>
+          <div ref={ref}>
+            <Form frameColor={frameColor} />
+          </div>
         </div>
       </Layout>
       <Optionbar
