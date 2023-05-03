@@ -26,14 +26,14 @@ const MakingPage = () => {
     setFrameColor(color);
   };
 
-  const handleSaveStyle = () => {
+  const handleSaveFrame = () => {
     setDefaultStyle({
       frame: frameColor,
       text: defaultStyle.text,
     });
   };
 
-  const handleResetStyle = () => {
+  const handleResetFrame = () => {
     setFrameColor(defaultStyle.frame);
   };
 
@@ -63,8 +63,8 @@ const MakingPage = () => {
       </Layout>
       <Optionbar
         onChangeFrame={(color) => handleChangeFrame(color)}
-        onSaveStyle={handleSaveStyle}
-        onResetStyle={handleResetStyle}
+        onSaveFrame={handleSaveFrame}
+        onResetFrame={handleResetFrame}
         textValue={text}
         onChangeText={(e) => handleChangeText(e)}
         onSaveText={handleSaveText}

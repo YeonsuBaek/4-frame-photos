@@ -11,10 +11,9 @@ import DetailOptionbar from '../UI/DetailOptionbar';
 
 const Optionbar: React.FC<{
   onChangeFrame: (color: string) => void;
-  onSave: () => void;
-  onSaveStyle: () => void;
-  onClose: () => void;
-  onResetStyle: () => void;
+  onSaveFrame: () => void;
+  onCloseFrame: () => void;
+  onResetFrame: () => void;
   onChangeText: (e: React.ChangeEvent<HTMLInputElement>) => void;
   textValue: string;
   onSaveText: () => void;
@@ -35,13 +34,13 @@ const Optionbar: React.FC<{
     setDetailOptionbar(false);
   };
 
-  const onSave = () => {
-    props.onSaveStyle();
+  const onSaveFrame = () => {
+    props.onSaveFrame();
     handleCloseBar();
   };
 
-  const onClose = () => {
-    props.onResetStyle();
+  const onCloseFrame = () => {
+    props.onResetFrame();
     handleCloseBar();
   };
 
@@ -108,7 +107,11 @@ const Optionbar: React.FC<{
         </li>
       </ul>
       {detailOptionbar && (
-        <DetailOptionbar title='프레임 색상' onSave={onSave} onClose={onClose}>
+        <DetailOptionbar
+          title='프레임 색상'
+          onSave={onSaveFrame}
+          onClose={onCloseFrame}
+        >
           <li>
             <button
               onClick={() => props.onChangeFrame('white')}

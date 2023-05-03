@@ -5,10 +5,8 @@ import { TfiClose, TfiCheck } from 'react-icons/tfi';
 const DetailOptionbar: React.FC<{
   title: string;
   children: React.ReactChild[] | React.ReactChild[];
-  onSave: () => void;
   onClose: () => void;
-  onSaveText: () => void;
-  onCloseText: () => void;
+  onSave: () => void;
 }> = (props) => {
   return (
     <div className='fixed bottom-0 left-0 z-50 flex flex-col items-center justify-start w-screen h-[72px] overflow-scroll text-white bg-black'>
