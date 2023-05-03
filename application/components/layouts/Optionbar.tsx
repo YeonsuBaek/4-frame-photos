@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { TbFrame, TbPencilMinus } from 'react-icons/tb';
 import {
   AiOutlineFontSize,
@@ -12,11 +12,20 @@ import DetailOptionbar from '../UI/DetailOptionbar';
 const Optionbar: React.FC<{ onChangeFrame: (color: string) => void }> = (
   props
 ) => {
+  const [detailOptionbar, setDetailOptionbar] = useState(false);
+
+  const handleOpenDetailOptionbar = () => {
+    setDetailOptionbar(true);
+  };
+
   return (
     <>
       <ul className='fixed bottom-0 left-0 z-30 flex items-center justify-start w-screen overflow-scroll text-white bg-black'>
         <li className='min-w-[80px] flex items-center justify-center'>
-          <button className='flex flex-col items-center justify-center'>
+          <button
+            className='flex flex-col items-center justify-center'
+            onClick={handleOpenDetailOptionbar}
+          >
             <TbFrame size={32} color='#fff' />
             <span>프레임</span>
           </button>
@@ -58,21 +67,22 @@ const Optionbar: React.FC<{ onChangeFrame: (color: string) => void }> = (
           </button>
         </li>
       </ul>
-
-      <DetailOptionbar title='프레임 색상'>
-        <li>
-          <button
-            onClick={() => props.onChangeFrame('white')}
-            className='bg-white border border-gray-500 rounded-[100px] w-[32px] h-[32px]'
-          ></button>
-        </li>
-        <li>
-          <button
-            onClick={() => props.onChangeFrame('black')}
-            className='bg-black border border-gray-500 rounded-[100px] w-[32px] h-[32px]'
-          ></button>
-        </li>
-      </DetailOptionbar>
+      {detailOptionbar && (
+        <DetailOptionbar title='프레임 색상'>
+          <li>
+            <button
+              onClick={() => props.onChangeFrame('white')}
+              className='bg-white border border-gray-500 rounded-[100px] w-[32px] h-[32px]'
+            ></button>
+          </li>
+          <li>
+            <button
+              onClick={() => props.onChangeFrame('black')}
+              className='bg-black border border-gray-500 rounded-[100px] w-[32px] h-[32px]'
+            ></button>
+          </li>
+        </DetailOptionbar>
+      )}
     </>
   );
 };
