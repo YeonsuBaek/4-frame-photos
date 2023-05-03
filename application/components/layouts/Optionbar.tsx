@@ -7,7 +7,7 @@ import {
 } from 'react-icons/ai';
 import { RxFontStyle } from 'react-icons/rx';
 import { TiWeatherPartlySunny } from 'react-icons/ti';
-import DetailOptionbar from './DetailOptionbar';
+import DetailOptionbar from '../UI/DetailOptionbar';
 
 const Optionbar: React.FC<{ onChangeFrame: (color: string) => void }> = (
   props
@@ -58,7 +58,21 @@ const Optionbar: React.FC<{ onChangeFrame: (color: string) => void }> = (
           </button>
         </li>
       </ul>
-      <DetailOptionbar onChangeFrame={(color) => props.onChangeFrame(color)} />
+
+      <DetailOptionbar title='프레임 색상'>
+        <li>
+          <button
+            onClick={() => props.onChangeFrame('white')}
+            className='bg-white border border-gray-500 rounded-[100px] w-[32px] h-[32px]'
+          ></button>
+        </li>
+        <li>
+          <button
+            onClick={() => props.onChangeFrame('black')}
+            className='bg-black border border-gray-500 rounded-[100px] w-[32px] h-[32px]'
+          ></button>
+        </li>
+      </DetailOptionbar>
     </>
   );
 };
