@@ -13,6 +13,8 @@ const Optionbar: React.FC<{
   onChangeFrame: (color: string) => void;
   onSave: () => void;
   onSaveStyle: () => void;
+  onClose: () => void;
+  onResetStyle: () => void;
 }> = (props) => {
   const [detailOptionbar, setDetailOptionbar] = useState(false);
 
@@ -26,6 +28,11 @@ const Optionbar: React.FC<{
 
   const onSave = () => {
     props.onSaveStyle();
+    handleCloseBar();
+  };
+
+  const onClose = () => {
+    props.onResetStyle();
     handleCloseBar();
   };
 
@@ -79,7 +86,7 @@ const Optionbar: React.FC<{
         </li>
       </ul>
       {detailOptionbar && (
-        <DetailOptionbar title='프레임 색상' onSave={onSave}>
+        <DetailOptionbar title='프레임 색상' onSave={onSave} onClose={onClose}>
           <li>
             <button
               onClick={() => props.onChangeFrame('white')}

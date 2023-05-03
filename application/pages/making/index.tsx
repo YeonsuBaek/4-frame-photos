@@ -1,5 +1,5 @@
 import Form from '@/components/Form/Form';
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import Layout from '../../components/layouts/Layout';
 import Optionbar from '../../components/layouts/Optionbar';
 import * as htmlToImage from 'html-to-image';
@@ -30,6 +30,10 @@ const MakingPage = () => {
     });
   };
 
+  const handleResetStyle = () => {
+    setFrameColor(defaultStyle.frame);
+  };
+
   return (
     <>
       <Layout title='네컷사진 만들기' onSaveImage={handleSaveImage}>
@@ -40,6 +44,7 @@ const MakingPage = () => {
       <Optionbar
         onChangeFrame={(color) => handleChangeFrame(color)}
         onSaveStyle={handleSaveStyle}
+        onResetStyle={handleResetStyle}
       />
     </>
   );
