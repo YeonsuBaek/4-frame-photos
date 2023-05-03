@@ -9,7 +9,9 @@ import { RxFontStyle } from 'react-icons/rx';
 import { TiWeatherPartlySunny } from 'react-icons/ti';
 import DetailOptionbar from './DetailOptionbar';
 
-const Optionbar = () => {
+const Optionbar: React.FC<{ onChangeFrame: (color: string) => void }> = (
+  props
+) => {
   return (
     <>
       <ul className='fixed bottom-0 left-0 z-30 flex items-center justify-start w-screen overflow-scroll text-white bg-black'>
@@ -56,7 +58,7 @@ const Optionbar = () => {
           </button>
         </li>
       </ul>
-      <DetailOptionbar />
+      <DetailOptionbar onChangeFrame={(color) => props.onChangeFrame(color)} />
     </>
   );
 };

@@ -16,6 +16,10 @@ const MakingPage = () => {
     link.click();
   };
 
+  const handleChangeFrame = (color: string) => {
+    console.log(color);
+  };
+
   return (
     <>
       <Layout title='네컷사진 만들기' onSaveImage={handleSaveImage}>
@@ -23,7 +27,7 @@ const MakingPage = () => {
           <Form />
         </div>
       </Layout>
-      <Optionbar />
+      <Optionbar onChangeFrame={(color) => handleChangeFrame(color)} />
     </>
   );
 };

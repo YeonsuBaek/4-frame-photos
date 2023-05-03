@@ -1,15 +1,23 @@
 import React from 'react';
 import { TfiClose, TfiCheck } from 'react-icons/tfi';
 
-const DetailOptionbar = () => {
+const DetailOptionbar: React.FC<{ onChangeFrame: (color: string) => void }> = (
+  props
+) => {
   return (
     <div className='fixed bottom-0 left-0 z-50 flex flex-col items-center justify-start w-screen h-[72px] overflow-scroll text-white bg-black'>
       <ul className='flex justify-start gap-[16px]'>
         <li>
-          <button className='bg-white border border-gray-500 rounded-[100px] w-[32px] h-[32px]'></button>
+          <button
+            onClick={() => props.onChangeFrame('white')}
+            className='bg-white border border-gray-500 rounded-[100px] w-[32px] h-[32px]'
+          ></button>
         </li>
         <li>
-          <button className='bg-black border border-gray-500 rounded-[100px] w-[32px] h-[32px]'></button>
+          <button
+            onClick={() => props.onChangeFrame('black')}
+            className='bg-black border border-gray-500 rounded-[100px] w-[32px] h-[32px]'
+          ></button>
         </li>
       </ul>
 
