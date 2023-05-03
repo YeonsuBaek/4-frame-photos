@@ -8,6 +8,7 @@ const DetailOptionbar: React.FC<{
   onSave: () => void;
   onClose: () => void;
   onSaveText: () => void;
+  onCloseText: () => void;
 }> = (props) => {
   return (
     <div className='fixed bottom-0 left-0 z-50 flex flex-col items-center justify-start w-screen h-[72px] overflow-scroll text-white bg-black'>
@@ -18,7 +19,7 @@ const DetailOptionbar: React.FC<{
           <TfiClose />
         </button>
         <h3>{props.title}</h3>
-        <button onClick={props.onSaveText}>
+        <button onClick={props.onSave}>
           <TfiCheck />
         </button>
       </div>

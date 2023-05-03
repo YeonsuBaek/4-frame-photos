@@ -48,6 +48,10 @@ const MakingPage = () => {
     });
   };
 
+  const handleResetText = () => {
+    setText(defaultStyle.text);
+  };
+
   return (
     <>
       <Layout title='네컷사진 만들기' onSaveImage={handleSaveImage}>
@@ -64,6 +68,7 @@ const MakingPage = () => {
         textValue={text}
         onChangeText={(e) => handleChangeText(e)}
         onSaveText={handleSaveText}
+        onResetText={handleResetText}
       />
     </>
   );
