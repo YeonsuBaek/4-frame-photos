@@ -15,6 +15,8 @@ const Optionbar: React.FC<{
   onSaveStyle: () => void;
   onClose: () => void;
   onResetStyle: () => void;
+  onChangeText: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  textValue: string;
 }> = (props) => {
   const [detailOptionbar, setDetailOptionbar] = useState(false);
   const [textBar, setTextBar] = useState(false);
@@ -114,6 +116,8 @@ const Optionbar: React.FC<{
           <li className='w-full'>
             <input
               type='text'
+              onChange={(e) => props.onChangeText(e)}
+              value={props.textValue}
               className='mx-auto my-0 text-black w-[75%] block rounded-[4px] p-[4px] outline-none'
             />
           </li>

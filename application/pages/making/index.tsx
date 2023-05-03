@@ -9,6 +9,7 @@ const MakingPage = () => {
     frame: 'salmon',
   });
   const [frameColor, setFrameColor] = useState(defaultStyle.frame);
+  const [text, setText] = useState('네컷사진');
   const ref = useRef<any>();
 
   const handleSaveImage = async () => {
@@ -34,6 +35,10 @@ const MakingPage = () => {
     setFrameColor(defaultStyle.frame);
   };
 
+  const handleChangeText = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setText(e.target.value);
+  };
+
   return (
     <>
       <Layout title='네컷사진 만들기' onSaveImage={handleSaveImage}>
@@ -47,6 +52,8 @@ const MakingPage = () => {
         onChangeFrame={(color) => handleChangeFrame(color)}
         onSaveStyle={handleSaveStyle}
         onResetStyle={handleResetStyle}
+        textValue={text}
+        onChangeText={(e) => handleChangeText(e)}
       />
     </>
   );
