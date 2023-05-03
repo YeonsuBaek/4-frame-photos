@@ -3,14 +3,20 @@ import React, { useRef, useState, useEffect } from 'react';
 import Layout from '../../components/layouts/Layout';
 import Optionbar from '../../components/layouts/Optionbar';
 import * as htmlToImage from 'html-to-image';
+import useStore from '../../components/stores/create';
 
 const MakingPage = () => {
-  const [defaultStyle, setDefaultStyle] = useState({
-    frame: 'salmon',
-    text: '네컷사진',
-  });
-  const [frameColor, setFrameColor] = useState(defaultStyle.frame);
-  const [text, setText] = useState(defaultStyle.text);
+  const {
+    frame,
+    text,
+    setFrame,
+    setText,
+    defFrame,
+    defText,
+    setDefFrame,
+    setDefText,
+  } = useStore((state) => state);
+
   const ref = useRef<any>();
 
   const handleSaveImage = async () => {
@@ -23,18 +29,15 @@ const MakingPage = () => {
   };
 
   const handleChangeFrame = (color: string) => {
-    setFrameColor(color);
+    setFrame(color);
   };
 
   const handleSaveFrame = () => {
-    setDefaultStyle({
-      frame: frameColor,
-      text: defaultStyle.text,
-    });
+    setDefFrame(frame);
   };
 
   const handleResetFrame = () => {
-    setFrameColor(defaultStyle.frame);
+    setFrame(defFrame);
   };
 
   const handleChangeText = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -42,14 +45,11 @@ const MakingPage = () => {
   };
 
   const handleSaveText = () => {
-    setDefaultStyle({
-      frame: defaultStyle.frame,
-      text: text,
-    });
+    setDefText(text);
   };
 
   const handleResetText = () => {
-    setText(defaultStyle.text);
+    setText(defText);
   };
 
   return (
@@ -57,7 +57,7 @@ const MakingPage = () => {
       <Layout title='네컷사진 만들기' onSaveImage={handleSaveImage}>
         <div className='my-[64px]'>
           <div ref={ref}>
-            <Form frameColor={frameColor} text={text} />
+            <Form frameColor={frame} text={text} />
           </div>
         </div>
       </Layout>
