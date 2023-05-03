@@ -1,10 +1,11 @@
 import Form from '@/components/Form/Form';
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import Layout from '../../components/layouts/Layout';
 import Optionbar from '../../components/layouts/Optionbar';
 import * as htmlToImage from 'html-to-image';
 
 const MakingPage = () => {
+  const [frameColor, setFrameColor] = useState('black');
   const ref = useRef<any>();
 
   const handleSaveImage = async () => {
@@ -17,14 +18,14 @@ const MakingPage = () => {
   };
 
   const handleChangeFrame = (color: string) => {
-    console.log(color);
+    setFrameColor(color);
   };
 
   return (
     <>
       <Layout title='네컷사진 만들기' onSaveImage={handleSaveImage}>
         <div className='h-[1000px]' ref={ref}>
-          <Form />
+          <Form frameColor={frameColor} />
         </div>
       </Layout>
       <Optionbar onChangeFrame={(color) => handleChangeFrame(color)} />
