@@ -17,9 +17,14 @@ const Optionbar: React.FC<{
   onResetStyle: () => void;
 }> = (props) => {
   const [detailOptionbar, setDetailOptionbar] = useState(false);
+  const [textBar, setTextBar] = useState(false);
 
   const handleOpenDetailOptionbar = () => {
     setDetailOptionbar(true);
+  };
+
+  const handleOpenTextBar = () => {
+    setTextBar(true);
   };
 
   const handleCloseBar = () => {
@@ -49,7 +54,10 @@ const Optionbar: React.FC<{
           </button>
         </li>
         <li className='min-w-[80px] flex items-center justify-center'>
-          <button className='flex flex-col items-center justify-center'>
+          <button
+            className='flex flex-col items-center justify-center'
+            onClick={handleOpenTextBar}
+          >
             <TbPencilMinus size={32} color='#fff' />
             <span>글자 편집</span>
           </button>
@@ -98,6 +106,16 @@ const Optionbar: React.FC<{
               onClick={() => props.onChangeFrame('black')}
               className='bg-black border border-gray-500 rounded-[100px] w-[32px] h-[32px]'
             ></button>
+          </li>
+        </DetailOptionbar>
+      )}
+      {textBar && (
+        <DetailOptionbar title='글자 편집' onSave={onSave} onClose={onClose}>
+          <li className='w-full'>
+            <input
+              type='text'
+              className='mx-auto my-0 text-black w-[75%] block rounded-[4px] p-[4px] outline-none'
+            />
           </li>
         </DetailOptionbar>
       )}

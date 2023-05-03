@@ -11,12 +11,15 @@ const Form: React.FC<{ frameColor: string }> = (props) => {
   return (
     <div
       style={styles.frame}
-      className='mx-auto my-0 px-[12px] pb-[96px] w-[300px] h-[900px] gap-[12px] flex items-start justify-center flex-col'
+      className='mx-auto my-0 px-[12px] w-[300px] h-[900px] gap-[12px] flex items-start justify-center flex-col'
     >
       <ImageForm />
       <ImageForm />
       <ImageForm />
       <ImageForm />
+      <div className='w-full h-[96px] flex items-center justify-center text-white text-[36px]'>
+        <span>네컷사진</span>
+      </div>
     </div>
   );
 };
