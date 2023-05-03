@@ -24,7 +24,7 @@ const MakingPage = () => {
   return (
     <>
       <Layout title='네컷사진 만들기' onSaveImage={handleSaveImage}>
-        <div className='h-[1000px]' ref={ref}>
+        <div ref={ref}>
           <Form frameColor={frameColor} />
         </div>
       </Layout>
