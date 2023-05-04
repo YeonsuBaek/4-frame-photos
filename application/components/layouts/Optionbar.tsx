@@ -1,12 +1,4 @@
 import React, { useState } from 'react';
-import { TbFrame, TbPencilMinus } from 'react-icons/tb';
-import {
-  AiOutlineFontSize,
-  AiOutlineFontColors,
-  AiOutlineCalendar,
-} from 'react-icons/ai';
-import { RxFontStyle } from 'react-icons/rx';
-import { TiWeatherPartlySunny } from 'react-icons/ti';
 import DetailOptionbar from '../UI/DetailOptionbar';
 import useOptionbarStore from '../stores/optionbar';
 import OptionButton from '../UI/OptionButton';
