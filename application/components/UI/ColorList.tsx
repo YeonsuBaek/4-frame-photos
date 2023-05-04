@@ -1,10 +1,7 @@
+import COLOR_LIST from '@/models/colorlist';
 import React from 'react';
 
-const ColorList: React.FC<{
-  colors: string[];
-  onChangeFrame: (color: string) => void | null;
-  onChangeTextColor: (color: string) => void | null;
-}> = (props) => {
+const ColorList: React.FC<COLOR_LIST> = (props) => {
   return (
     <ul className='flex justify-start w-screen overflow-scroll px-[8px] scrollbar-hide'>
       {props.colors.map((color) => {

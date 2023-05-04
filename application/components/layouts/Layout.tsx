@@ -1,13 +1,8 @@
+import LAYOUT from '@/models/layout';
 import React from 'react';
 import Navigation from './Navigation';
 
-type Children = React.ReactChild[] | React.ReactChild;
-
-const Layout: React.FC<{
-  title: string;
-  onSaveImage: () => void;
-  children: Children;
-}> = (props) => {
+const Layout: React.FC<LAYOUT> = (props) => {
   return (
     <>
       <Navigation title={props.title} onSaveImage={props.onSaveImage} />

@@ -1,16 +1,12 @@
+import BUTTON from '@/models/button';
 import Link from 'next/link';
 import React from 'react';
 
-const Button: React.FC<{
-  text: string;
-  color: string;
-  bg: string;
-  link: string;
-}> = (props) => {
+const Button: React.FC<BUTTON> = (props) => {
   return (
     <Link
       style={{ color: props.color, backgroundColor: props.bg }}
-      className='flex items-center justify-center mb-3 w-full h-16 rounded-2xl text-2xl'
+      className='flex items-center justify-center w-full h-16 mb-3 text-2xl rounded-2xl'
       href={props.link}
     >
       {props.text}

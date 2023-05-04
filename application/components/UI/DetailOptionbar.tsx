@@ -1,13 +1,9 @@
+import DETAIL_OPTIONBAR from '@/models/detailoptionbar';
 import { on } from 'events';
 import React from 'react';
 import { TfiClose, TfiCheck } from 'react-icons/tfi';
 
-const DetailOptionbar: React.FC<{
-  title: string;
-  children: React.ReactChild[] | React.ReactChild;
-  onClose: () => void;
-  onSave: () => void;
-}> = (props) => {
+const DetailOptionbar: React.FC<DETAIL_OPTIONBAR> = (props) => {
   return (
     <div className='fixed bottom-0 left-0 z-50 flex flex-col items-center justify-start w-screen overflow-scroll text-white bg-black'>
       <div className='h-[48px] flex items-center w-full'>{props.children}</div>

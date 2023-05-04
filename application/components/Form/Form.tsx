@@ -1,13 +1,8 @@
+import FORM from '@/models/form';
 import React from 'react';
 import ImageForm from './ImageForm';
 
-const Form: React.FC<{
-  frameColor: string;
-  text: string;
-  textSize: string;
-  textColor: string;
-  textStyle: string;
-}> = (props) => {
+const Form: React.FC<FORM> = (props) => {
   const styles = {
     frame: {
       backgroundColor: props.frameColor,
