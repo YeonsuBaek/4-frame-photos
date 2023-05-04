@@ -25,6 +25,7 @@ const Optionbar: React.FC<{
   const [detailOptionbar, setDetailOptionbar] = useState(false);
   const [textBar, setTextBar] = useState(false);
   const [textSizeBar, setTextSizeBar] = useState(false);
+  const [textColorBar, setTextColorBar] = useState(false);
 
   const handleOpenDetailOptionbar = () => {
     setDetailOptionbar(true);
@@ -68,6 +69,10 @@ const Optionbar: React.FC<{
     setTextSizeBar(false);
   };
 
+  const handleOpenTextColorBar = () => {
+    setTextColorBar(true);
+  };
+
   return (
     <>
       <ul className='fixed bottom-0 left-0 z-30 flex items-center justify-start w-screen overflow-scroll text-white bg-black'>
@@ -99,7 +104,10 @@ const Optionbar: React.FC<{
           </button>
         </li>
         <li className='min-w-[80px] flex items-center justify-center'>
-          <button className='flex flex-col items-center justify-center'>
+          <button
+            className='flex flex-col items-center justify-center'
+            onClick={handleOpenTextColorBar}
+          >
             <AiOutlineFontColors size={32} color='#fff' />
             <span>글자 색상</span>
           </button>
@@ -175,6 +183,16 @@ const Optionbar: React.FC<{
               value={props.textSizeValue}
               className='w-[75%] mx-auto my-0 block h-[36px]'
             />
+          </li>
+        </DetailOptionbar>
+      )}
+      {textColorBar && (
+        <DetailOptionbar title='글자 색상'>
+          <li>
+            <button className='bg-white border border-gray-500 rounded-[100px] w-[32px] h-[32px]'></button>
+          </li>
+          <li>
+            <button className='bg-black border border-gray-500 rounded-[100px] w-[32px] h-[32px]'></button>
           </li>
         </DetailOptionbar>
       )}
