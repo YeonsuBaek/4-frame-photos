@@ -85,7 +85,13 @@ const Optionbar: React.FC<{
             className='flex flex-col items-center justify-center'
             onClick={() => setFrame(true)}
           >
-            <TbFrame size={32} color='#fff' />
+            <div className='w-[28px] h-[28px] overflow-hidden'>
+              <img
+                src='/assets/frame.png'
+                alt='프레임'
+                className='object-cover w-full h-full'
+              />
+            </div>
             <span>프레임</span>
           </button>
         </li>
@@ -94,7 +100,13 @@ const Optionbar: React.FC<{
             className='flex flex-col items-center justify-center'
             onClick={() => setText(true)}
           >
-            <TbPencilMinus size={32} color='#fff' />
+            <div className='w-[28px] h-[28px] overflow-hidden'>
+              <img
+                src='/assets/text.png'
+                alt='글자 편집'
+                className='object-cover w-full h-full'
+              />
+            </div>
             <span>글자 편집</span>
           </button>
         </li>
@@ -103,7 +115,13 @@ const Optionbar: React.FC<{
             className='flex flex-col items-center justify-center'
             onClick={() => setTextSize(true)}
           >
-            <AiOutlineFontSize size={32} color='#fff' />
+            <div className='w-[28px] h-[28px] overflow-hidden'>
+              <img
+                src='/assets/text-size.png'
+                alt='글자 크기'
+                className='object-cover w-full h-full'
+              />
+            </div>
             <span>글자 크기</span>
           </button>
         </li>
@@ -112,25 +130,49 @@ const Optionbar: React.FC<{
             className='flex flex-col items-center justify-center'
             onClick={() => setTextColor(true)}
           >
-            <AiOutlineFontColors size={32} color='#fff' />
+            <div className='w-[28px] h-[28px] overflow-hidden'>
+              <img
+                src='/assets/text-color.png'
+                alt='글자 색상'
+                className='object-cover w-full h-full'
+              />
+            </div>
             <span>글자 색상</span>
           </button>
         </li>
         <li className='min-w-[80px] flex items-center justify-center'>
           <button className='flex flex-col items-center justify-center'>
-            <RxFontStyle size={32} color='#fff' />
-            <span>글씨체</span>
+            <div className='w-[28px] h-[28px] overflow-hidden'>
+              <img
+                src='/assets/text-style.png'
+                alt='글자체'
+                className='object-cover w-full h-full'
+              />
+            </div>
+            <span>글자체</span>
           </button>
         </li>
         <li className='min-w-[80px] flex items-center justify-center'>
           <button className='flex flex-col items-center justify-center'>
-            <AiOutlineCalendar size={32} color='fff' />
+            <div className='w-[28px] h-[28px] overflow-hidden'>
+              <img
+                src='/assets/date.png'
+                alt='날짜'
+                className='object-cover w-full h-full'
+              />
+            </div>
             <span>날짜</span>
           </button>
         </li>
         <li className='min-w-[80px] flex items-center justify-center'>
           <button className='flex flex-col items-center justify-center'>
-            <TiWeatherPartlySunny size={32} color='#fff' />
+            <div className='w-[28px] h-[28px] overflow-hidden'>
+              <img
+                src='/assets/weather.png'
+                alt='날씨'
+                className='object-cover w-full h-full'
+              />
+            </div>
             <span>날씨</span>
           </button>
         </li>
@@ -144,13 +186,13 @@ const Optionbar: React.FC<{
           <li>
             <button
               onClick={() => props.onChangeFrame('white')}
-              className='bg-white border border-gray-500 rounded-[100px] w-[32px] h-[32px]'
+              className='bg-white border border-gray-500 rounded-[100px] w-[28px] h-[28px]'
             ></button>
           </li>
           <li>
             <button
               onClick={() => props.onChangeFrame('black')}
-              className='bg-black border border-gray-500 rounded-[100px] w-[32px] h-[32px]'
+              className='bg-black border border-gray-500 rounded-[100px] w-[28px] h-[28px]'
             ></button>
           </li>
         </DetailOptionbar>
@@ -199,13 +241,13 @@ const Optionbar: React.FC<{
           <li>
             <button
               onClick={() => props.onChangeTextColor('white')}
-              className='bg-white border border-gray-500 rounded-[100px] w-[32px] h-[32px]'
+              className='bg-white border border-gray-500 rounded-[100px] w-[28px] h-[28px]'
             ></button>
           </li>
           <li>
             <button
               onClick={() => props.onChangeTextColor('black')}
-              className='bg-black border border-gray-500 rounded-[100px] w-[32px] h-[32px]'
+              className='bg-black border border-gray-500 rounded-[100px] w-[28px] h-[28px]'
             ></button>
           </li>
         </DetailOptionbar>
