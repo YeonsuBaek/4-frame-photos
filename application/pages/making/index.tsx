@@ -31,7 +31,7 @@ const MakingPage = () => {
   return (
     <>
       <Layout title='네컷사진 만들기' onSaveImage={handleSaveImage}>
-        <div className='my-[64px]'>
+        <div className='my-[64px] flex items-center justify-center'>
           <div ref={ref}>
             <Form frameColor={frame} text={text} />
           </div>

@@ -11,7 +11,7 @@ const Form: React.FC<{ frameColor: string; text: string }> = (props) => {
   return (
     <div
       style={styles.frame}
-      className='mx-auto my-0 px-[12px] w-[300px] h-[900px] gap-[12px] flex items-start justify-center flex-col'
+      className='px-[12px] w-[300px] h-[900px] gap-[12px] flex items-start justify-center flex-col'
     >
       <ImageForm />
       <ImageForm />
