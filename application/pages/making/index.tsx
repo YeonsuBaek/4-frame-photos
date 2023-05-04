@@ -28,30 +28,6 @@ const MakingPage = () => {
     link.click();
   };
 
-  const handleChangeFrame = (color: string) => {
-    setFrame(color);
-  };
-
-  const handleSaveFrame = () => {
-    setDefFrame(frame);
-  };
-
-  const handleResetFrame = () => {
-    setFrame(defFrame);
-  };
-
-  const handleChangeText = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setText(e.target.value);
-  };
-
-  const handleSaveText = () => {
-    setDefText(text);
-  };
-
-  const handleResetText = () => {
-    setText(defText);
-  };
-
   return (
     <>
       <Layout title='네컷사진 만들기' onSaveImage={handleSaveImage}>
@@ -62,13 +38,13 @@ const MakingPage = () => {
         </div>
       </Layout>
       <Optionbar
-        onChangeFrame={(color) => handleChangeFrame(color)}
-        onSaveFrame={handleSaveFrame}
-        onResetFrame={handleResetFrame}
+        onChangeFrame={(color) => setFrame(color)}
+        onSaveFrame={() => setDefFrame(frame)}
+        onResetFrame={() => setFrame(defFrame)}
         textValue={text}
-        onChangeText={(e) => handleChangeText(e)}
-        onSaveText={handleSaveText}
-        onResetText={handleResetText}
+        onChangeText={(e) => setText(e.target.value)}
+        onSaveText={() => setDefText(text)}
+        onResetText={() => setText(defText)}
       />
     </>
   );
