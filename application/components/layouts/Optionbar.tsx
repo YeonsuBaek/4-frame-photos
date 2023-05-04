@@ -8,6 +8,7 @@ import {
 import { RxFontStyle } from 'react-icons/rx';
 import { TiWeatherPartlySunny } from 'react-icons/ti';
 import DetailOptionbar from '../UI/DetailOptionbar';
+import useOptionbarStore from '../stores/optionbar';
 
 const Optionbar: React.FC<{
   onChangeFrame: (color: string) => void;
@@ -25,65 +26,55 @@ const Optionbar: React.FC<{
   onSaveTextColor: () => void;
   onResetTextColor: () => void;
 }> = (props) => {
-  const [detailOptionbar, setDetailOptionbar] = useState(false);
-  const [textBar, setTextBar] = useState(false);
-  const [textSizeBar, setTextSizeBar] = useState(false);
-  const [textColorBar, setTextColorBar] = useState(false);
-
-  const handleOpenDetailOptionbar = () => {
-    setDetailOptionbar(true);
-  };
-
-  const handleOpenTextBar = () => {
-    setTextBar(true);
-  };
+  const {
+    frame,
+    text,
+    textSize,
+    textColor,
+    setFrame,
+    setText,
+    setTextSize,
+    setTextColor,
+  } = useOptionbarStore((state) => state);
 
   const onSaveFrame = () => {
     props.onSaveFrame();
-    setDetailOptionbar(false);
+    setFrame(false);
   };
 
   const onCloseFrame = () => {
     props.onResetFrame();
-    setDetailOptionbar(false);
+    setFrame(false);
   };
 
   const onSaveText = () => {
     props.onSaveText();
-    setTextBar(false);
+    setText(false);
   };
 
   const onCloseText = () => {
     props.onResetText();
-    setTextBar(false);
-  };
-
-  const handleOpenTextSizeBar = () => {
-    setTextSizeBar(true);
+    setText(false);
   };
 
   const onSaveTextSize = () => {
     props.onSaveTextSize();
-    setTextSizeBar(false);
+    setTextSize(false);
   };
 
   const onCloseTextSize = () => {
     props.onResetTextSize();
-    setTextSizeBar(false);
-  };
-
-  const handleOpenTextColorBar = () => {
-    setTextColorBar(true);
+    setTextSize(false);
   };
 
   const onSaveTextColor = () => {
     props.onSaveTextColor();
-    setTextColorBar(false);
+    setTextColor(false);
   };
 
   const onCloseTextColor = () => {
     props.onResetTextColor();
-    setTextColorBar(false);
+    setTextColor(false);
   };
 
   return (
@@ -92,7 +83,7 @@ const Optionbar: React.FC<{
         <li className='min-w-[80px] flex items-center justify-center'>
           <button
             className='flex flex-col items-center justify-center'
-            onClick={handleOpenDetailOptionbar}
+            onClick={() => setFrame(true)}
           >
             <TbFrame size={32} color='#fff' />
             <span>프레임</span>
@@ -101,7 +92,7 @@ const Optionbar: React.FC<{
         <li className='min-w-[80px] flex items-center justify-center'>
           <button
             className='flex flex-col items-center justify-center'
-            onClick={handleOpenTextBar}
+            onClick={() => setText(true)}
           >
             <TbPencilMinus size={32} color='#fff' />
             <span>글자 편집</span>
@@ -110,7 +101,7 @@ const Optionbar: React.FC<{
         <li className='min-w-[80px] flex items-center justify-center'>
           <button
             className='flex flex-col items-center justify-center'
-            onClick={handleOpenTextSizeBar}
+            onClick={() => setTextSize(true)}
           >
             <AiOutlineFontSize size={32} color='#fff' />
             <span>글자 크기</span>
@@ -119,7 +110,7 @@ const Optionbar: React.FC<{
         <li className='min-w-[80px] flex items-center justify-center'>
           <button
             className='flex flex-col items-center justify-center'
-            onClick={handleOpenTextColorBar}
+            onClick={() => setTextColor(true)}
           >
             <AiOutlineFontColors size={32} color='#fff' />
             <span>글자 색상</span>
@@ -144,7 +135,7 @@ const Optionbar: React.FC<{
           </button>
         </li>
       </ul>
-      {detailOptionbar && (
+      {frame && (
         <DetailOptionbar
           title='프레임 색상'
           onSave={onSaveFrame}
@@ -164,7 +155,7 @@ const Optionbar: React.FC<{
           </li>
         </DetailOptionbar>
       )}
-      {textBar && (
+      {text && (
         <DetailOptionbar
           title='글자 편집'
           onSave={onSaveText}
@@ -180,7 +171,7 @@ const Optionbar: React.FC<{
           </li>
         </DetailOptionbar>
       )}
-      {textSizeBar && (
+      {textSize && (
         <DetailOptionbar
           title='글자 크기'
           onSave={onSaveTextSize}
@@ -199,7 +190,7 @@ const Optionbar: React.FC<{
           </li>
         </DetailOptionbar>
       )}
-      {textColorBar && (
+      {textColor && (
         <DetailOptionbar
           title='글자 색상'
           onSave={onSaveTextColor}
