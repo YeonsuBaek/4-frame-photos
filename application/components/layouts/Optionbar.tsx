@@ -123,10 +123,13 @@ const Optionbar: React.FC<OPTIONBAR> = (props) => {
           onSave={onSaveFrame}
           onClose={onCloseFrame}
         >
-          <ul className='flex justify-start w-screen overflow-scroll px-[8px]'>
+          <ul className='flex justify-start w-screen overflow-scroll px-[8px] scrollbar-hide'>
             {colors.map((color) => {
               return (
-                <li key={color} className='mx-[8px]'>
+                <li
+                  key={color}
+                  className='mx-[8px] flex items-center justify-center'
+                >
                   <button
                     onClick={() => props.onChangeFrame(color)}
                     className='border border-gray-500 rounded-[100px] w-[32px] h-[32px]'
