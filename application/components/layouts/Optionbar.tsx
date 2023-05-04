@@ -10,10 +10,12 @@ const Optionbar: React.FC<OPTIONBAR> = (props) => {
     text,
     textSize,
     textColor,
+    textStyle,
     setFrame,
     setText,
     setTextSize,
     setTextColor,
+    setTextStyle,
   } = useOptionbarStore((state) => state);
 
   const onSaveFrame = () => {
@@ -56,6 +58,16 @@ const Optionbar: React.FC<OPTIONBAR> = (props) => {
     setTextColor(false);
   };
 
+  const onSaveTextStyle = () => {
+    props.onSaveTextStyle();
+    setTextStyle(false);
+  };
+
+  const onCloseTextStyle = () => {
+    props.onResetTextStyle();
+    setTextStyle(false);
+  };
+
   const options = [
     {
       name: '프레임',
@@ -79,7 +91,7 @@ const Optionbar: React.FC<OPTIONBAR> = (props) => {
     },
     {
       name: '글씨체',
-      event: () => setText(true),
+      event: () => setTextStyle(true),
       icon: '/assets/text-style.png',
     },
     {
@@ -109,6 +121,8 @@ const Optionbar: React.FC<OPTIONBAR> = (props) => {
     '#71c7e2',
     '#23afd6',
   ];
+
+  const fonts = ['playfair', 'blackhansans', 'eastseadokdo', 'gugi', 'dohyeon'];
 
   return (
     <>
@@ -190,6 +204,31 @@ const Optionbar: React.FC<OPTIONBAR> = (props) => {
                     className='border border-gray-500 rounded-[100px] w-[32px] h-[32px]'
                     style={{ backgroundColor: color }}
                   ></button>
+                </li>
+              );
+            })}
+          </ul>
+        </DetailOptionbar>
+      )}
+      {textStyle && (
+        <DetailOptionbar
+          title='글씨체'
+          onSave={onSaveTextStyle}
+          onClose={onCloseTextStyle}
+        >
+          <ul className='flex justify-start w-screen overflow-scroll px-[8px] scrollbar-hide'>
+            {fonts.map((font) => {
+              return (
+                <li
+                  key={font}
+                  className='mx-[8px] flex items-center justify-center'
+                >
+                  <button
+                    onClick={() => props.onChangeTextStyle(font)}
+                    style={{ fontFamily: `var(--${font})` }}
+                  >
+                    폰트 Font
+                  </button>
                 </li>
               );
             })}

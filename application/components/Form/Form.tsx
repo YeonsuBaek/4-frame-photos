@@ -6,6 +6,7 @@ const Form: React.FC<{
   text: string;
   textSize: string;
   textColor: string;
+  textStyle: string;
 }> = (props) => {
   const styles = {
     frame: {
@@ -14,6 +15,7 @@ const Form: React.FC<{
     text: {
       fontSize: props.textSize + 'px',
       color: props.textColor,
+      fontFamily: `var(--${props.textStyle})`,
     },
   };
 

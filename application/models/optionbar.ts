@@ -13,6 +13,9 @@ type OPTIONBAR = {
   onChangeTextColor: (color: string) => void;
   onSaveTextColor: () => void;
   onResetTextColor: () => void;
+  onChangeTextStyle: (font: string) => void;
+  onSaveTextStyle: () => void;
+  onResetTextStyle: () => void;
 };
 
 export default OPTIONBAR;

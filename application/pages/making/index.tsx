@@ -11,18 +11,22 @@ const MakingPage = () => {
     text,
     textSize,
     textColor,
+    textStyle,
     setFrame,
     setText,
     setTextSize,
     setTextColor,
+    setTextStyle,
     defFrame,
     defText,
     defTextSize,
     defTextColor,
+    defTextStyle,
     setDefFrame,
     setDefText,
     setDefTextSize,
     setDefTextColor,
+    setDefTextStyle,
   } = useStore((state) => state);
 
   const ref = useRef<any>();
@@ -46,6 +50,7 @@ const MakingPage = () => {
               text={text}
               textSize={textSize}
               textColor={textColor}
+              textStyle={textStyle}
             />
           </div>
         </div>
@@ -65,6 +70,9 @@ const MakingPage = () => {
         onChangeTextColor={(color) => setTextColor(color)}
         onSaveTextColor={() => setDefTextColor(textColor)}
         onResetTextColor={() => setTextColor(defTextColor)}
+        onChangeTextStyle={(font) => setTextStyle(font)}
+        onSaveTextStyle={() => setDefTextStyle(textStyle)}
+        onResetTextStyle={() => setTextStyle(defTextStyle)}
       />
     </>
   );
