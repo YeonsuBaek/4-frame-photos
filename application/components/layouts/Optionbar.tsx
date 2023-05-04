@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import DetailOptionbar from '../UI/DetailOptionbar';
 import useOptionbarStore from '../stores/optionbar';
 import OptionButton from '../UI/OptionButton';
