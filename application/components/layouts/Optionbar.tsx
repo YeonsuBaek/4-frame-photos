@@ -20,6 +20,7 @@ const Optionbar: React.FC<{
 }> = (props) => {
   const [detailOptionbar, setDetailOptionbar] = useState(false);
   const [textBar, setTextBar] = useState(false);
+  const [textSizeBar, setTextSizeBar] = useState(false);
 
   const handleOpenDetailOptionbar = () => {
     setDetailOptionbar(true);
@@ -49,6 +50,10 @@ const Optionbar: React.FC<{
     setTextBar(false);
   };
 
+  const handleOpenTextSizeBar = () => {
+    setTextSizeBar(true);
+  };
+
   return (
     <>
       <ul className='fixed bottom-0 left-0 z-30 flex items-center justify-start w-screen overflow-scroll text-white bg-black'>
@@ -71,7 +76,10 @@ const Optionbar: React.FC<{
           </button>
         </li>
         <li className='min-w-[80px] flex items-center justify-center'>
-          <button className='flex flex-col items-center justify-center'>
+          <button
+            className='flex flex-col items-center justify-center'
+            onClick={handleOpenTextSizeBar}
+          >
             <AiOutlineFontSize size={32} color='#fff' />
             <span>글자 크기</span>
           </button>
@@ -133,6 +141,19 @@ const Optionbar: React.FC<{
               onChange={(e) => props.onChangeText(e)}
               value={props.textValue}
               className='mx-auto my-0 text-black w-[75%] block rounded-[4px] p-[4px] outline-none'
+            />
+          </li>
+        </DetailOptionbar>
+      )}
+      {textSizeBar && (
+        <DetailOptionbar title='글자 크기'>
+          <li className='w-full'>
+            <input
+              type='range'
+              min='16'
+              max='56'
+              step='4'
+              className='w-[75%] mx-auto my-0 block h-[36px]'
             />
           </li>
         </DetailOptionbar>
