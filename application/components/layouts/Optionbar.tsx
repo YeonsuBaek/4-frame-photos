@@ -3,6 +3,8 @@ import DetailOptionbar from '../UI/DetailOptionbar';
 import useOptionbarStore from '../../stores/optionbar';
 import OptionButton from '../UI/OptionButton';
 import OPTIONBAR from '@/models/optionbar';
+import colors from '../../assets/colors';
+import fonts from '../../assets/fonts';
 
 const Optionbar: React.FC<OPTIONBAR> = (props) => {
   const {
@@ -105,24 +107,6 @@ const Optionbar: React.FC<OPTIONBAR> = (props) => {
       icon: '/assets/weather.png',
     },
   ];
-
-  const colors = [
-    '#000000',
-    '#ffffff',
-    '#d4dfe3',
-    '#999fc1',
-    '#cfa0be',
-    '#f9a2bf',
-    '#df5970',
-    '#f16a40',
-    '#eec151',
-    '#b8de94',
-    '#b4dce1',
-    '#71c7e2',
-    '#23afd6',
-  ];
-
-  const fonts = ['playfair', 'blackhansans', 'eastseadokdo', 'gugi', 'dohyeon'];
 
   return (
     <>
