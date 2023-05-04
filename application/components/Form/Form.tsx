@@ -1,9 +1,11 @@
 import FORM from '@/models/form';
 import useOptionbarStore from '@/stores/optionbar';
 import React from 'react';
+import useStore from '@/stores/create';
 import ImageForm from './ImageForm';
 
 const Form: React.FC<FORM> = (props) => {
+  const { defDate } = useStore((state) => state);
   const { dateBar } = useOptionbarStore((state) => state);
 
   const styles = {
@@ -31,7 +33,7 @@ const Form: React.FC<FORM> = (props) => {
         style={styles.text}
       >
         <span>{props.text}</span>
-        {dateBar && <span>{props.date}</span>}
+        {(dateBar || defDate) && <span>{props.date}</span>}
       </div>
     </div>
   );

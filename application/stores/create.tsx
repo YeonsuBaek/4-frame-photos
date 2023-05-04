@@ -18,11 +18,13 @@ interface STYLES {
   defTextSize: string;
   defTextColor: string;
   defTextStyle: string;
+  defDate: string;
   setDefFrame: (color: string) => void;
   setDefText: (text: string) => void;
   setDefTextSize: (size: string) => void;
   setDefTextColor: (color: string) => void;
   setDefTextStyle: (font: string) => void;
+  setDefDate: (date: string) => void;
 }
 
 const useStore = create<STYLES>((set) => ({
@@ -43,11 +45,13 @@ const useStore = create<STYLES>((set) => ({
   defTextSize: '36',
   defTextColor: 'gray',
   defTextStyle: 'playfair',
+  defDate: '',
   setDefFrame: (color) => set({ defFrame: color }),
   setDefText: (text) => set({ defText: text }),
   setDefTextSize: (size) => set({ defTextSize: size }),
   setDefTextColor: (color) => set({ defTextColor: color }),
   setDefTextStyle: (font) => set({ defTextStyle: font }),
+  setDefDate: (date) => set({ defDate: date }),
 }));
 
 export default useStore;

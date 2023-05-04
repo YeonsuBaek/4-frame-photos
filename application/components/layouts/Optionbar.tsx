@@ -26,11 +26,13 @@ const Optionbar: React.FC = () => {
     defTextSize,
     defTextColor,
     defTextStyle,
+    defDate,
     setDefFrame,
     setDefText,
     setDefTextSize,
     setDefTextColor,
     setDefTextStyle,
+    setDefDate,
   } = useStore((state) => state);
 
   const {
@@ -102,6 +104,20 @@ const Optionbar: React.FC = () => {
     const date = e.target.value;
     const formattedDate = date.replaceAll('-', '.');
     setDate(formattedDate);
+  };
+
+  const onSaveDate = () => {
+    setDefDate(date);
+    setDateBar(false);
+  };
+
+  const onCloseDate = () => {
+    setDate(defDate);
+    setDateBar(false);
+  };
+
+  const onRemoveDate = () => {
+    setDate('');
   };
 
   const options = [
@@ -232,16 +248,13 @@ const Optionbar: React.FC = () => {
         </DetailOptionbar>
       )}
       {dateBar && (
-        <DetailOptionbar
-          title='날짜'
-          onSave={onSaveTextStyle}
-          onClose={onCloseTextStyle}
-        >
+        <DetailOptionbar title='날짜' onSave={onSaveDate} onClose={onCloseDate}>
           <input
             type='date'
             onChange={handleChangeDate}
             className='mx-[40px] text-black w-full block rounded-[4px] p-[4px] outline-none'
           />
+          <button onClick={onRemoveDate}>삭제</button>
         </DetailOptionbar>
       )}
     </>
