@@ -51,7 +51,8 @@ const MakingPage = () => {
         onResetText={() => setText(defText)}
         textSizeValue={textSize}
         onChangeTextSize={(e) => setTextSize(e.target.value)}
-        onSaveTextSize={() => setDefText(text)}
+        onSaveTextSize={() => setDefTextSize(textSize)}
+        onResetTextSize={() => setTextSize(defTextSize)}
       />
     </>
   );
