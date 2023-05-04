@@ -112,7 +112,7 @@ const Optionbar: React.FC<OPTIONBAR> = (props) => {
 
   return (
     <>
-      <ul className='fixed bottom-0 left-0 z-30 flex items-center justify-start w-screen overflow-scroll text-white bg-black'>
+      <ul className='fixed bottom-0 left-0 z-30 flex items-center justify-start w-screen h-[64px] px-[8px] overflow-scroll text-white bg-black'>
         {options.map((option) => {
           return <OptionButton key={option.name} option={option} />;
         })}
@@ -151,7 +151,7 @@ const Optionbar: React.FC<OPTIONBAR> = (props) => {
             type='text'
             onChange={(e) => props.onChangeText(e)}
             value={props.textValue}
-            className='mx-auto my-0 text-black w-[75%] block rounded-[4px] p-[4px] outline-none'
+            className='mx-[40px] text-black w-full block rounded-[4px] p-[4px] outline-none'
           />
         </DetailOptionbar>
       )}
@@ -168,7 +168,7 @@ const Optionbar: React.FC<OPTIONBAR> = (props) => {
             step='4'
             onChange={props.onChangeTextSize}
             value={props.textSizeValue}
-            className='w-[75%] mx-auto my-0 block h-[36px]'
+            className='w-[75%] h-[4px] mx-auto my-0 accent-white rounded-lg cursor-pointer'
           />
         </DetailOptionbar>
       )}
@@ -178,19 +178,21 @@ const Optionbar: React.FC<OPTIONBAR> = (props) => {
           onSave={onSaveTextColor}
           onClose={onCloseTextColor}
         >
-          <ul className='flex justify-start gap-[16px]'>
-            <li>
-              <button
-                onClick={() => props.onChangeTextColor('white')}
-                className='bg-white border border-gray-500 rounded-[100px] w-[28px] h-[28px]'
-              ></button>
-            </li>
-            <li>
-              <button
-                onClick={() => props.onChangeTextColor('black')}
-                className='bg-black border border-gray-500 rounded-[100px] w-[28px] h-[28px]'
-              ></button>
-            </li>
+          <ul className='flex justify-start w-screen overflow-scroll px-[8px] scrollbar-hide'>
+            {colors.map((color) => {
+              return (
+                <li
+                  key={color}
+                  className='mx-[8px] flex items-center justify-center'
+                >
+                  <button
+                    onClick={() => props.onChangeTextColor(color)}
+                    className='border border-gray-500 rounded-[100px] w-[32px] h-[32px]'
+                    style={{ backgroundColor: color }}
+                  ></button>
+                </li>
+              );
+            })}
           </ul>
         </DetailOptionbar>
       )}
