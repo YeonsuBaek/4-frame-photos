@@ -1,10 +1,15 @@
 import React from 'react';
 import ImageForm from './ImageForm';
 
-const Form: React.FC<{ frameColor: string; text: string }> = (props) => {
+const Form: React.FC<{ frameColor: string; text: string; textSize: string }> = (
+  props
+) => {
   const styles = {
     frame: {
       backgroundColor: props.frameColor,
+    },
+    text: {
+      fontSize: props.textSize + 'px',
     },
   };
 
@@ -17,7 +22,10 @@ const Form: React.FC<{ frameColor: string; text: string }> = (props) => {
       <ImageForm />
       <ImageForm />
       <ImageForm />
-      <div className='w-full h-[96px] flex items-center justify-center text-white text-[36px]'>
+      <div
+        className='w-full h-[96px] flex items-center justify-center text-white'
+        style={styles.text}
+      >
         <span>{props.text}</span>
       </div>
     </div>

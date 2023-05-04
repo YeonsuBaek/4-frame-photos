@@ -17,6 +17,8 @@ const Optionbar: React.FC<{
   textValue: string;
   onSaveText: () => void;
   onResetText: () => void;
+  textSizeValue: string;
+  onChangeTextSize: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }> = (props) => {
   const [detailOptionbar, setDetailOptionbar] = useState(false);
   const [textBar, setTextBar] = useState(false);
@@ -153,6 +155,8 @@ const Optionbar: React.FC<{
               min='16'
               max='56'
               step='4'
+              onChange={props.onChangeTextSize}
+              value={props.textSizeValue}
               className='w-[75%] mx-auto my-0 block h-[36px]'
             />
           </li>
