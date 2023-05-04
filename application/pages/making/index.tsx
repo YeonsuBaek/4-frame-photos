@@ -63,6 +63,8 @@ const MakingPage = () => {
         onSaveTextSize={() => setDefTextSize(textSize)}
         onResetTextSize={() => setTextSize(defTextSize)}
         onChangeTextColor={(color) => setTextColor(color)}
+        onSaveTextColor={() => setDefTextColor(textColor)}
+        onResetTextColor={() => setTextColor(defTextColor)}
       />
     </>
   );

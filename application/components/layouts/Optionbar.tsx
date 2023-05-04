@@ -22,6 +22,8 @@ const Optionbar: React.FC<{
   onSaveTextSize: () => void;
   onResetTextSize: () => void;
   onChangeTextColor: (color: string) => void;
+  onSaveTextColor: () => void;
+  onResetTextColor: () => void;
 }> = (props) => {
   const [detailOptionbar, setDetailOptionbar] = useState(false);
   const [textBar, setTextBar] = useState(false);
@@ -72,6 +74,16 @@ const Optionbar: React.FC<{
 
   const handleOpenTextColorBar = () => {
     setTextColorBar(true);
+  };
+
+  const onSaveTextColor = () => {
+    props.onSaveTextColor();
+    setTextColorBar(false);
+  };
+
+  const onCloseTextColor = () => {
+    props.onResetTextColor();
+    setTextColorBar(false);
   };
 
   return (
@@ -188,7 +200,11 @@ const Optionbar: React.FC<{
         </DetailOptionbar>
       )}
       {textColorBar && (
-        <DetailOptionbar title='글자 색상'>
+        <DetailOptionbar
+          title='글자 색상'
+          onSave={onSaveTextColor}
+          onClose={onCloseTextColor}
+        >
           <li>
             <button
               onClick={() => props.onChangeTextColor('white')}
