@@ -94,6 +94,22 @@ const Optionbar: React.FC<OPTIONBAR> = (props) => {
     },
   ];
 
+  const colors = [
+    '#000000',
+    '#ffffff',
+    '#d4dfe3',
+    '#999fc1',
+    '#cfa0be',
+    '#f9a2bf',
+    '#df5970',
+    '#f16a40',
+    '#eec151',
+    '#b8de94',
+    '#b4dce1',
+    '#71c7e2',
+    '#23afd6',
+  ];
+
   return (
     <>
       <ul className='fixed bottom-0 left-0 z-30 flex items-center justify-start w-screen overflow-scroll text-white bg-black'>
@@ -108,18 +124,17 @@ const Optionbar: React.FC<OPTIONBAR> = (props) => {
           onClose={onCloseFrame}
         >
           <ul className='flex justify-start gap-[16px]'>
-            <li>
-              <button
-                onClick={() => props.onChangeFrame('white')}
-                className='bg-white border border-gray-500 rounded-[100px] w-[28px] h-[28px]'
-              ></button>
-            </li>
-            <li>
-              <button
-                onClick={() => props.onChangeFrame('black')}
-                className='bg-black border border-gray-500 rounded-[100px] w-[28px] h-[28px]'
-              ></button>
-            </li>
+            {colors.map((color) => {
+              return (
+                <li key={color}>
+                  <button
+                    onClick={() => props.onChangeFrame(color)}
+                    className='border border-gray-500 rounded-[100px] w-[28px] h-[28px]'
+                    style={{ backgroundColor: color }}
+                  ></button>
+                </li>
+              );
+            })}
           </ul>
         </DetailOptionbar>
       )}
