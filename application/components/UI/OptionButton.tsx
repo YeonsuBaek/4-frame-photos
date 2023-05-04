@@ -1,10 +1,5 @@
+import OPTION from '@/models/option';
 import React from 'react';
-
-type OPTION = {
-  name: string;
-  event: () => void;
-  icon: string;
-};
 
 const OptionButton: React.FC<{
   option: OPTION;
