@@ -5,6 +5,7 @@ import OptionButton from '../UI/OptionButton';
 import OPTIONBAR from '@/models/optionbar';
 import colors from '../../assets/colors';
 import fonts from '../../assets/fonts';
+import ColorList from '../UI/ColorList';
 
 const Optionbar: React.FC<OPTIONBAR> = (props) => {
   const {
@@ -121,22 +122,11 @@ const Optionbar: React.FC<OPTIONBAR> = (props) => {
           onSave={onSaveFrame}
           onClose={onCloseFrame}
         >
-          <ul className='flex justify-start w-screen overflow-scroll px-[8px] scrollbar-hide'>
-            {colors.map((color) => {
-              return (
-                <li
-                  key={color}
-                  className='mx-[8px] flex items-center justify-center'
-                >
-                  <button
-                    onClick={() => props.onChangeFrame(color)}
-                    className='border border-gray-500 rounded-[100px] w-[32px] h-[32px]'
-                    style={{ backgroundColor: color }}
-                  ></button>
-                </li>
-              );
-            })}
-          </ul>
+          <ColorList
+            colors={colors}
+            onChangeFrame={(color) => props.onChangeFrame(color)}
+            onChangeTextColor={() => null}
+          />
         </DetailOptionbar>
       )}
       {text && (
@@ -176,22 +166,11 @@ const Optionbar: React.FC<OPTIONBAR> = (props) => {
           onSave={onSaveTextColor}
           onClose={onCloseTextColor}
         >
-          <ul className='flex justify-start w-screen overflow-scroll px-[8px] scrollbar-hide'>
-            {colors.map((color) => {
-              return (
-                <li
-                  key={color}
-                  className='mx-[8px] flex items-center justify-center'
-                >
-                  <button
-                    onClick={() => props.onChangeTextColor(color)}
-                    className='border border-gray-500 rounded-[100px] w-[32px] h-[32px]'
-                    style={{ backgroundColor: color }}
-                  ></button>
-                </li>
-              );
-            })}
-          </ul>
+          <ColorList
+            colors={colors}
+            onChangeTextColor={(color) => props.onChangeTextColor(color)}
+            onChangeFrame={() => null}
+          />
         </DetailOptionbar>
       )}
       {textStyle && (
