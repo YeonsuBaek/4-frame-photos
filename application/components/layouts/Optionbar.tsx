@@ -1,6 +1,6 @@
 import React from 'react';
 import DetailOptionbar from '../UI/DetailOptionbar';
-import useOptionbarStore from '../stores/optionbar';
+import useOptionbarStore from '../../stores/optionbar';
 import OptionButton from '../UI/OptionButton';
 import OPTIONBAR from '@/models/optionbar';
 

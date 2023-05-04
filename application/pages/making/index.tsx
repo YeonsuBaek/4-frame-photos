@@ -3,7 +3,7 @@ import React, { useRef } from 'react';
 import Layout from '../../components/layouts/Layout';
 import Optionbar from '../../components/layouts/Optionbar';
 import * as htmlToImage from 'html-to-image';
-import useStore from '../../components/stores/create';
+import useStore from '../../stores/create';
 
 const MakingPage = () => {
   const {
