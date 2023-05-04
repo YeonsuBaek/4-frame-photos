@@ -107,18 +107,20 @@ const Optionbar: React.FC<OPTIONBAR> = (props) => {
           onSave={onSaveFrame}
           onClose={onCloseFrame}
         >
-          <li>
-            <button
-              onClick={() => props.onChangeFrame('white')}
-              className='bg-white border border-gray-500 rounded-[100px] w-[28px] h-[28px]'
-            ></button>
-          </li>
-          <li>
-            <button
-              onClick={() => props.onChangeFrame('black')}
-              className='bg-black border border-gray-500 rounded-[100px] w-[28px] h-[28px]'
-            ></button>
-          </li>
+          <ul className='flex justify-start gap-[16px]'>
+            <li>
+              <button
+                onClick={() => props.onChangeFrame('white')}
+                className='bg-white border border-gray-500 rounded-[100px] w-[28px] h-[28px]'
+              ></button>
+            </li>
+            <li>
+              <button
+                onClick={() => props.onChangeFrame('black')}
+                className='bg-black border border-gray-500 rounded-[100px] w-[28px] h-[28px]'
+              ></button>
+            </li>
+          </ul>
         </DetailOptionbar>
       )}
       {text && (
@@ -127,14 +129,12 @@ const Optionbar: React.FC<OPTIONBAR> = (props) => {
           onSave={onSaveText}
           onClose={onCloseText}
         >
-          <li className='w-full'>
-            <input
-              type='text'
-              onChange={(e) => props.onChangeText(e)}
-              value={props.textValue}
-              className='mx-auto my-0 text-black w-[75%] block rounded-[4px] p-[4px] outline-none'
-            />
-          </li>
+          <input
+            type='text'
+            onChange={(e) => props.onChangeText(e)}
+            value={props.textValue}
+            className='mx-auto my-0 text-black w-[75%] block rounded-[4px] p-[4px] outline-none'
+          />
         </DetailOptionbar>
       )}
       {textSize && (
@@ -143,17 +143,15 @@ const Optionbar: React.FC<OPTIONBAR> = (props) => {
           onSave={onSaveTextSize}
           onClose={onCloseTextSize}
         >
-          <li className='w-full'>
-            <input
-              type='range'
-              min='16'
-              max='56'
-              step='4'
-              onChange={props.onChangeTextSize}
-              value={props.textSizeValue}
-              className='w-[75%] mx-auto my-0 block h-[36px]'
-            />
-          </li>
+          <input
+            type='range'
+            min='16'
+            max='56'
+            step='4'
+            onChange={props.onChangeTextSize}
+            value={props.textSizeValue}
+            className='w-[75%] mx-auto my-0 block h-[36px]'
+          />
         </DetailOptionbar>
       )}
       {textColor && (
@@ -162,18 +160,20 @@ const Optionbar: React.FC<OPTIONBAR> = (props) => {
           onSave={onSaveTextColor}
           onClose={onCloseTextColor}
         >
-          <li>
-            <button
-              onClick={() => props.onChangeTextColor('white')}
-              className='bg-white border border-gray-500 rounded-[100px] w-[28px] h-[28px]'
-            ></button>
-          </li>
-          <li>
-            <button
-              onClick={() => props.onChangeTextColor('black')}
-              className='bg-black border border-gray-500 rounded-[100px] w-[28px] h-[28px]'
-            ></button>
-          </li>
+          <ul className='flex justify-start gap-[16px]'>
+            <li>
+              <button
+                onClick={() => props.onChangeTextColor('white')}
+                className='bg-white border border-gray-500 rounded-[100px] w-[28px] h-[28px]'
+              ></button>
+            </li>
+            <li>
+              <button
+                onClick={() => props.onChangeTextColor('black')}
+                className='bg-black border border-gray-500 rounded-[100px] w-[28px] h-[28px]'
+              ></button>
+            </li>
+          </ul>
         </DetailOptionbar>
       )}
     </>
