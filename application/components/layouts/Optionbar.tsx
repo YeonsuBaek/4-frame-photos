@@ -2,12 +2,12 @@ import React from 'react';
 import DetailOptionbar from '../UI/DetailOptionbar';
 import useOptionbarStore from '../../stores/optionbar';
 import OptionButton from '../UI/OptionButton';
-import OPTIONBAR from '@/models/optionbar';
 import colors from '../../assets/colors';
 import fonts from '../../assets/fonts';
 import ColorList from '../UI/ColorList';
+import useStore from '../../stores/create';
 
-const Optionbar: React.FC<OPTIONBAR> = (props) => {
+const Optionbar: React.FC = () => {
   const {
     frame,
     text,
@@ -19,92 +19,115 @@ const Optionbar: React.FC<OPTIONBAR> = (props) => {
     setTextSize,
     setTextColor,
     setTextStyle,
+    defFrame,
+    defText,
+    defTextSize,
+    defTextColor,
+    defTextStyle,
+    setDefFrame,
+    setDefText,
+    setDefTextSize,
+    setDefTextColor,
+    setDefTextStyle,
+  } = useStore((state) => state);
+
+  const {
+    frameBar,
+    textBar,
+    textSizeBar,
+    textColorBar,
+    textStyleBar,
+    setFrameBar,
+    setTextBar,
+    setTextSizeBar,
+    setTextColorBar,
+    setTextStyleBar,
   } = useOptionbarStore((state) => state);
 
   const onSaveFrame = () => {
-    props.onSaveFrame();
-    setFrame(false);
+    setDefFrame(frame);
+    setFrameBar(false);
   };
 
   const onCloseFrame = () => {
-    props.onResetFrame();
-    setFrame(false);
+    setFrame(defFrame);
+    setFrameBar(false);
   };
 
   const onSaveText = () => {
-    props.onSaveText();
-    setText(false);
+    setDefText(text);
+    setTextBar(false);
   };
 
   const onCloseText = () => {
-    props.onResetText();
-    setText(false);
+    setText(defText);
+    setTextBar(false);
   };
 
   const onSaveTextSize = () => {
-    props.onSaveTextSize();
-    setTextSize(false);
+    setDefTextSize(textSize);
+    setTextSizeBar(false);
   };
 
   const onCloseTextSize = () => {
-    props.onResetTextSize();
-    setTextSize(false);
+    setTextSize(defTextSize);
+    setTextSizeBar(false);
   };
 
   const onSaveTextColor = () => {
-    props.onSaveTextColor();
-    setTextColor(false);
+    setDefTextColor(textColor);
+    setTextColorBar(false);
   };
 
   const onCloseTextColor = () => {
-    props.onResetTextColor();
-    setTextColor(false);
+    setTextColor(defTextColor);
+    setTextColorBar(false);
   };
 
   const onSaveTextStyle = () => {
-    props.onSaveTextStyle();
-    setTextStyle(false);
+    setDefTextStyle(textStyle);
+    setTextStyleBar(false);
   };
 
   const onCloseTextStyle = () => {
-    props.onResetTextStyle();
-    setTextStyle(false);
+    setTextStyle(defTextStyle);
+    setTextStyleBar(false);
   };
 
   const options = [
     {
       name: '프레임',
-      event: () => setFrame(true),
+      event: () => setFrameBar(true),
       icon: '/assets/frame.png',
     },
     {
       name: '글자 편집',
-      event: () => setText(true),
+      event: () => setTextBar(true),
       icon: '/assets/text.png',
     },
     {
       name: '글자 크기',
-      event: () => setTextSize(true),
+      event: () => setTextSizeBar(true),
       icon: '/assets/text-size.png',
     },
     {
       name: '글자 색상',
-      event: () => setTextColor(true),
+      event: () => setTextColorBar(true),
       icon: '/assets/text-color.png',
     },
     {
       name: '글씨체',
-      event: () => setTextStyle(true),
+      event: () => setTextStyleBar(true),
       icon: '/assets/text-style.png',
     },
     {
       name: '날짜',
-      event: () => setText(true),
+      event: () => setTextBar(true),
       icon: '/assets/date.png',
     },
     {
       name: '날씨',
-      event: () => setText(true),
+      event: () => setTextBar(true),
       icon: '/assets/weather.png',
     },
   ];
@@ -116,7 +139,7 @@ const Optionbar: React.FC<OPTIONBAR> = (props) => {
           return <OptionButton key={option.name} option={option} />;
         })}
       </ul>
-      {frame && (
+      {frameBar && (
         <DetailOptionbar
           title='프레임 색상'
           onSave={onSaveFrame}
@@ -124,12 +147,12 @@ const Optionbar: React.FC<OPTIONBAR> = (props) => {
         >
           <ColorList
             colors={colors}
-            onChangeFrame={(color) => props.onChangeFrame(color)}
+            onChangeFrame={(color) => setFrame(color)}
             onChangeTextColor={() => null}
           />
         </DetailOptionbar>
       )}
-      {text && (
+      {textBar && (
         <DetailOptionbar
           title='글자 편집'
           onSave={onSaveText}
@@ -137,13 +160,13 @@ const Optionbar: React.FC<OPTIONBAR> = (props) => {
         >
           <input
             type='text'
-            onChange={(e) => props.onChangeText(e)}
-            value={props.textValue}
+            onChange={(e) => setText(e.target.value)}
+            value={text}
             className='mx-[40px] text-black w-full block rounded-[4px] p-[4px] outline-none'
           />
         </DetailOptionbar>
       )}
-      {textSize && (
+      {textSizeBar && (
         <DetailOptionbar
           title='글자 크기'
           onSave={onSaveTextSize}
@@ -154,13 +177,13 @@ const Optionbar: React.FC<OPTIONBAR> = (props) => {
             min='16'
             max='56'
             step='4'
-            onChange={props.onChangeTextSize}
-            value={props.textSizeValue}
+            onChange={(e) => setTextSize(e.target.value)}
+            value={textSize}
             className='w-[75%] h-[4px] mx-auto my-0 accent-white rounded-lg cursor-pointer'
           />
         </DetailOptionbar>
       )}
-      {textColor && (
+      {textColorBar && (
         <DetailOptionbar
           title='글자 색상'
           onSave={onSaveTextColor}
@@ -168,12 +191,12 @@ const Optionbar: React.FC<OPTIONBAR> = (props) => {
         >
           <ColorList
             colors={colors}
-            onChangeTextColor={(color) => props.onChangeTextColor(color)}
+            onChangeTextColor={(color) => setTextColor(color)}
             onChangeFrame={() => null}
           />
         </DetailOptionbar>
       )}
-      {textStyle && (
+      {textStyleBar && (
         <DetailOptionbar
           title='글씨체'
           onSave={onSaveTextStyle}
@@ -187,7 +210,7 @@ const Optionbar: React.FC<OPTIONBAR> = (props) => {
                   className='mx-[8px] flex items-center justify-center'
                 >
                   <button
-                    onClick={() => props.onChangeTextStyle(font)}
+                    onClick={() => setTextStyle(font)}
                     style={{ fontFamily: `var(--${font})` }}
                   >
                     폰트 Font

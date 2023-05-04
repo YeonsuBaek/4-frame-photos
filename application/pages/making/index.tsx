@@ -6,28 +6,9 @@ import * as htmlToImage from 'html-to-image';
 import useStore from '../../stores/create';
 
 const MakingPage = () => {
-  const {
-    frame,
-    text,
-    textSize,
-    textColor,
-    textStyle,
-    setFrame,
-    setText,
-    setTextSize,
-    setTextColor,
-    setTextStyle,
-    defFrame,
-    defText,
-    defTextSize,
-    defTextColor,
-    defTextStyle,
-    setDefFrame,
-    setDefText,
-    setDefTextSize,
-    setDefTextColor,
-    setDefTextStyle,
-  } = useStore((state) => state);
+  const { frame, text, textSize, textColor, textStyle } = useStore(
+    (state) => state
+  );
 
   const ref = useRef<any>();
 
@@ -55,25 +36,7 @@ const MakingPage = () => {
           </div>
         </div>
       </Layout>
-      <Optionbar
-        onChangeFrame={(color) => setFrame(color)}
-        onSaveFrame={() => setDefFrame(frame)}
-        onResetFrame={() => setFrame(defFrame)}
-        textValue={text}
-        onChangeText={(e) => setText(e.target.value)}
-        onSaveText={() => setDefText(text)}
-        onResetText={() => setText(defText)}
-        textSizeValue={textSize}
-        onChangeTextSize={(e) => setTextSize(e.target.value)}
-        onSaveTextSize={() => setDefTextSize(textSize)}
-        onResetTextSize={() => setTextSize(defTextSize)}
-        onChangeTextColor={(color) => setTextColor(color)}
-        onSaveTextColor={() => setDefTextColor(textColor)}
-        onResetTextColor={() => setTextColor(defTextColor)}
-        onChangeTextStyle={(font) => setTextStyle(font)}
-        onSaveTextStyle={() => setDefTextStyle(textStyle)}
-        onResetTextStyle={() => setTextStyle(defTextStyle)}
-      />
+      <Optionbar />
     </>
   );
 };
