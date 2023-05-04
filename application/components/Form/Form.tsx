@@ -1,8 +1,11 @@
 import FORM from '@/models/form';
+import useOptionbarStore from '@/stores/optionbar';
 import React from 'react';
 import ImageForm from './ImageForm';
 
 const Form: React.FC<FORM> = (props) => {
+  const { dateBar } = useOptionbarStore((state) => state);
+
   const styles = {
     frame: {
       backgroundColor: props.frameColor,
@@ -28,6 +31,7 @@ const Form: React.FC<FORM> = (props) => {
         style={styles.text}
       >
         <span>{props.text}</span>
+        {dateBar && <span>{props.date}</span>}
       </div>
     </div>
   );

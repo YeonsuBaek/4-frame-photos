@@ -14,11 +14,13 @@ const Optionbar: React.FC = () => {
     textSize,
     textColor,
     textStyle,
+    date,
     setFrame,
     setText,
     setTextSize,
     setTextColor,
     setTextStyle,
+    setDate,
     defFrame,
     defText,
     defTextSize,
@@ -37,11 +39,13 @@ const Optionbar: React.FC = () => {
     textSizeBar,
     textColorBar,
     textStyleBar,
+    dateBar,
     setFrameBar,
     setTextBar,
     setTextSizeBar,
     setTextColorBar,
     setTextStyleBar,
+    setDateBar,
   } = useOptionbarStore((state) => state);
 
   const onSaveFrame = () => {
@@ -94,6 +98,12 @@ const Optionbar: React.FC = () => {
     setTextStyleBar(false);
   };
 
+  const handleChangeDate = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const date = e.target.value;
+    const formattedDate = date.replaceAll('-', '.');
+    setDate(formattedDate);
+  };
+
   const options = [
     {
       name: '프레임',
@@ -122,7 +132,7 @@ const Optionbar: React.FC = () => {
     },
     {
       name: '날짜',
-      event: () => setTextBar(true),
+      event: () => setDateBar(true),
       icon: '/assets/date.png',
     },
     {
@@ -219,6 +229,19 @@ const Optionbar: React.FC = () => {
               );
             })}
           </ul>
+        </DetailOptionbar>
+      )}
+      {dateBar && (
+        <DetailOptionbar
+          title='날짜'
+          onSave={onSaveTextStyle}
+          onClose={onCloseTextStyle}
+        >
+          <input
+            type='date'
+            onChange={handleChangeDate}
+            className='mx-[40px] text-black w-full block rounded-[4px] p-[4px] outline-none'
+          />
         </DetailOptionbar>
       )}
     </>
