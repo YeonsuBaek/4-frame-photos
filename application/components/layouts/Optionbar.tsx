@@ -19,6 +19,7 @@ const Optionbar: React.FC<{
   onResetText: () => void;
   textSizeValue: string;
   onChangeTextSize: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onSaveTextSize: () => void;
 }> = (props) => {
   const [detailOptionbar, setDetailOptionbar] = useState(false);
   const [textBar, setTextBar] = useState(false);
@@ -54,6 +55,11 @@ const Optionbar: React.FC<{
 
   const handleOpenTextSizeBar = () => {
     setTextSizeBar(true);
+  };
+
+  const onSaveTextSize = () => {
+    props.onSaveTextSize;
+    setTextSizeBar(false);
   };
 
   return (
@@ -148,7 +154,7 @@ const Optionbar: React.FC<{
         </DetailOptionbar>
       )}
       {textSizeBar && (
-        <DetailOptionbar title='글자 크기'>
+        <DetailOptionbar title='글자 크기' onSave={onSaveTextSize}>
           <li className='w-full'>
             <input
               type='range'
