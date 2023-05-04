@@ -10,15 +10,19 @@ const MakingPage = () => {
     frame,
     text,
     textSize,
+    textColor,
     setFrame,
     setText,
     setTextSize,
+    setTextColor,
     defFrame,
     defText,
     defTextSize,
+    defTextColor,
     setDefFrame,
     setDefText,
     setDefTextSize,
+    setDefTextColor,
   } = useStore((state) => state);
 
   const ref = useRef<any>();
@@ -37,7 +41,12 @@ const MakingPage = () => {
       <Layout title='네컷사진 만들기' onSaveImage={handleSaveImage}>
         <div className='my-[64px] flex items-center justify-center'>
           <div ref={ref}>
-            <Form frameColor={frame} text={text} textSize={textSize} />
+            <Form
+              frameColor={frame}
+              text={text}
+              textSize={textSize}
+              textColor={textColor}
+            />
           </div>
         </div>
       </Layout>
@@ -53,6 +62,7 @@ const MakingPage = () => {
         onChangeTextSize={(e) => setTextSize(e.target.value)}
         onSaveTextSize={() => setDefTextSize(textSize)}
         onResetTextSize={() => setTextSize(defTextSize)}
+        onChangeTextColor={(color) => setTextColor(color)}
       />
     </>
   );

@@ -21,6 +21,7 @@ const Optionbar: React.FC<{
   onChangeTextSize: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onSaveTextSize: () => void;
   onResetTextSize: () => void;
+  onChangeTextColor: (color: string) => void;
 }> = (props) => {
   const [detailOptionbar, setDetailOptionbar] = useState(false);
   const [textBar, setTextBar] = useState(false);
@@ -189,10 +190,16 @@ const Optionbar: React.FC<{
       {textColorBar && (
         <DetailOptionbar title='글자 색상'>
           <li>
-            <button className='bg-white border border-gray-500 rounded-[100px] w-[32px] h-[32px]'></button>
+            <button
+              onClick={() => props.onChangeTextColor('white')}
+              className='bg-white border border-gray-500 rounded-[100px] w-[32px] h-[32px]'
+            ></button>
           </li>
           <li>
-            <button className='bg-black border border-gray-500 rounded-[100px] w-[32px] h-[32px]'></button>
+            <button
+              onClick={() => props.onChangeTextColor('black')}
+              className='bg-black border border-gray-500 rounded-[100px] w-[32px] h-[32px]'
+            ></button>
           </li>
         </DetailOptionbar>
       )}
