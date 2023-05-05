@@ -4,40 +4,29 @@ import useStore from '@/stores/create';
 import ImageForm from './ImageForm';
 
 const Form = () => {
-  const {
-    frame,
-    text,
-    textSize,
-    textColor,
-    textStyle,
-    date,
-    datePos,
-    defDate,
-    weather,
-    defWeather,
-  } = useStore((state) => state);
+  const { current, def } = useStore((state) => state);
   const { optionbar } = useOptionbarStore((state) => state);
 
   const weatherIcon = () => {
-    if (weather.includes('비')) return 'rain';
-    if (weather.includes('약간')) return 'little-cloudy';
-    if (weather.includes('흐림')) return 'cloudy';
-    if (weather.includes('비')) return 'rain';
-    if (weather.includes('눈')) return 'snow';
+    if (current.weather.includes('비')) return 'rain';
+    if (current.weather.includes('약간')) return 'little-cloudy';
+    if (current.weather.includes('흐림')) return 'cloudy';
+    if (current.weather.includes('비')) return 'rain';
+    if (current.weather.includes('눈')) return 'snow';
     return 'clear';
   };
 
   const styles = {
     frame: {
-      backgroundColor: frame,
+      backgroundColor: current.frame,
     },
     text: {
-      fontSize: textSize + 'px',
-      color: textColor,
-      fontFamily: `var(--${textStyle})`,
+      fontSize: current.textSize + 'px',
+      color: current.textColor,
+      fontFamily: `var(--${current.textStyle})`,
     },
     date: {
-      [datePos]: 0,
+      [current.datePos]: 0,
     },
     weather: {
       img: `/assets/${weatherIcon()}.png`,
@@ -58,14 +47,14 @@ const Form = () => {
         style={styles.text}
       >
         <span className='absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-full text-center whitespace-nowrap'>
-          {text}
+          {current.text}
         </span>
-        {(optionbar == 'date' || defDate) && (
+        {(optionbar == 'date' || def.date) && (
           <span className='absolute text-[14px]' style={styles.date}>
-            {date.replaceAll('-', '.')}
+            {current.date.replaceAll('-', '.')}
           </span>
         )}
-        {(optionbar == 'weather' || defWeather) && (
+        {(optionbar == 'weather' || def.weather) && (
           <img
             src={styles.weather.img}
             alt='날씨'
