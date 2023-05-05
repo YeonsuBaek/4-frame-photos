@@ -1,7 +1,6 @@
 type OPTION = {
   name: string;
-  event: () => void;
-  icon: string;
+  type: string;
 };
 
 export default OPTION;

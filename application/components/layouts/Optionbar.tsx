@@ -7,10 +7,11 @@ import fonts from '../../assets/fonts';
 import ColorList from '../UI/ColorList';
 import useStore from '../../stores/create';
 import useColorlistStore from '../../stores/colorlist';
+import options from '../../assets/options';
 
 const Optionbar = () => {
   const { current, def, setCurrent, setDef } = useStore((state) => state);
-  const { optionbar, setOptionbar } = useOptionbarStore((state) => state);
+  const { optionbar } = useOptionbarStore((state) => state);
   const { setColorPicker } = useColorlistStore((state) => state);
 
   const handleGetWeather = () => {
@@ -45,44 +46,6 @@ const Optionbar = () => {
       console.error(error);
     }
   };
-
-  const options = [
-    {
-      name: '프레임',
-      event: () => setOptionbar('frame'),
-      icon: '/assets/frame.png',
-    },
-    {
-      name: '글자 편집',
-      event: () => setOptionbar('text'),
-      icon: '/assets/text.png',
-    },
-    {
-      name: '글자 크기',
-      event: () => setOptionbar('textSize'),
-      icon: '/assets/text-size.png',
-    },
-    {
-      name: '글자 색상',
-      event: () => setOptionbar('textColor'),
-      icon: '/assets/text-color.png',
-    },
-    {
-      name: '글씨체',
-      event: () => setOptionbar('textStyle'),
-      icon: '/assets/text-style.png',
-    },
-    {
-      name: '날짜',
-      event: () => setOptionbar('date'),
-      icon: '/assets/date.png',
-    },
-    {
-      name: '날씨',
-      event: () => setOptionbar('weather'),
-      icon: '/assets/weather.png',
-    },
-  ];
 
   return (
     <>
