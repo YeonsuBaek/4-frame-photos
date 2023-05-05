@@ -22,11 +22,11 @@ const ImageForm = () => {
   return (
     <div className='relative'>
       <img
-        src={uploadedImage ? uploadedImage : '/assets/default.png'}
+        src={uploadedImage == '' ? '/assets/default.png' : uploadedImage}
         onClick={() => {
           fileInput.current.click();
         }}
-        className='absolute top-0 left-0 object-cover w-full aspect-[3/2] bg-white'
+        className='absolute top-0 left-0 object-cover w-full aspect-[3/2]'
       />
       <input
         accept='image/*'
