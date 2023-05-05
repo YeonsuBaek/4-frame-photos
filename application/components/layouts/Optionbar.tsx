@@ -176,6 +176,7 @@ const Optionbar = () => {
             colors={colors}
             onChangeFrame={(color) => setFrame(color)}
             onChangeTextColor={() => null}
+            onChangeColor={(color) => setFrame(color)}
           />
         </DetailOptionbar>
       )}
@@ -220,6 +221,7 @@ const Optionbar = () => {
             colors={colors}
             onChangeTextColor={(color) => setTextColor(color)}
             onChangeFrame={() => null}
+            onChangeColor={(color) => setTextColor(color)}
           />
         </DetailOptionbar>
       )}
