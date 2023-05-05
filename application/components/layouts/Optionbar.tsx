@@ -237,6 +237,7 @@ const Optionbar: React.FC = () => {
                 >
                   <button
                     onClick={() => setTextStyle(font)}
+                    className='w-[84px]'
                     style={{ fontFamily: `var(--${font})` }}
                   >
                     폰트 Font
