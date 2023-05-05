@@ -201,7 +201,7 @@ const Optionbar: React.FC = () => {
           <input
             type='range'
             min='16'
-            max='56'
+            max='72'
             step='4'
             onChange={(e) => setTextSize(e.target.value)}
             value={textSize}
