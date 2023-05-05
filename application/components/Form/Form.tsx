@@ -13,8 +13,18 @@ const Form = () => {
     date,
     datePos,
     defDate,
+    weather,
   } = useStore((state) => state);
-  const { dateBar } = useOptionbarStore((state) => state);
+  const { dateBar, weatherBar } = useOptionbarStore((state) => state);
+
+  const weatherIcon = () => {
+    if (weather.includes('비')) return 'rain';
+    if (weather.includes('약간')) return 'little-cloudy';
+    if (weather.includes('흐림')) return 'cloudy';
+    if (weather.includes('비')) return 'rain';
+    if (weather.includes('눈')) return 'snow';
+    return 'clear';
+  };
 
   const styles = {
     frame: {
@@ -27,6 +37,9 @@ const Form = () => {
     },
     date: {
       [datePos]: 0,
+    },
+    weather: {
+      img: `/assets/${weatherIcon()}.png`,
     },
   };
 
@@ -50,6 +63,13 @@ const Form = () => {
           <span className='absolute text-[14px]' style={styles.date}>
             {date.replaceAll('-', '.')}
           </span>
+        )}
+        {weatherBar && (
+          <img
+            src={styles.weather.img}
+            alt='날씨'
+            className='absolute top-0 right-0 w-[24px] h-[24px]'
+          />
         )}
       </div>
     </div>
