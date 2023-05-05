@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 
-const ImageForm: React.FC = () => {
+const ImageForm = () => {
   const [uploadedImage, setUploadedImage] = useState('');
   const fileInput = useRef<any>(null);
 

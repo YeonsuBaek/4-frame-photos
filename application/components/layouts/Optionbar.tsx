@@ -7,7 +7,7 @@ import fonts from '../../assets/fonts';
 import ColorList from '../UI/ColorList';
 import useStore from '../../stores/create';
 
-const Optionbar: React.FC = () => {
+const Optionbar = () => {
   const {
     frame,
     text,

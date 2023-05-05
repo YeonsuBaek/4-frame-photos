@@ -3,12 +3,8 @@ import React, { useRef } from 'react';
 import Layout from '../../components/layouts/Layout';
 import Optionbar from '../../components/layouts/Optionbar';
 import * as htmlToImage from 'html-to-image';
-import useStore from '../../stores/create';
 
 const MakingPage = () => {
-  const { frame, text, textSize, textColor, textStyle, date, datePos } =
-    useStore((state) => state);
-
   const ref = useRef<any>();
 
   const handleSaveImage = async () => {
@@ -25,15 +21,7 @@ const MakingPage = () => {
       <Layout title='네컷사진 만들기' onSaveImage={handleSaveImage}>
         <div className='mt-[64px] mb-[96px] flex items-center justify-center'>
           <div ref={ref}>
-            <Form
-              frameColor={frame}
-              text={text}
-              textSize={textSize}
-              textColor={textColor}
-              textStyle={textStyle}
-              date={date}
-              datePos={datePos}
-            />
+            <Form />
           </div>
         </div>
       </Layout>

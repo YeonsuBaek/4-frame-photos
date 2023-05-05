@@ -1,24 +1,32 @@
-import FORM from '@/models/form';
 import useOptionbarStore from '@/stores/optionbar';
 import React from 'react';
 import useStore from '@/stores/create';
 import ImageForm from './ImageForm';
 
-const Form: React.FC<FORM> = (props) => {
-  const { defDate } = useStore((state) => state);
+const Form = () => {
+  const {
+    frame,
+    text,
+    textSize,
+    textColor,
+    textStyle,
+    date,
+    datePos,
+    defDate,
+  } = useStore((state) => state);
   const { dateBar } = useOptionbarStore((state) => state);
 
   const styles = {
     frame: {
-      backgroundColor: props.frameColor,
+      backgroundColor: frame,
     },
     text: {
-      fontSize: props.textSize + 'px',
-      color: props.textColor,
-      fontFamily: `var(--${props.textStyle})`,
+      fontSize: textSize + 'px',
+      color: textColor,
+      fontFamily: `var(--${textStyle})`,
     },
     date: {
-      [props.datePos]: 0,
+      [datePos]: 0,
     },
   };
 
@@ -36,11 +44,11 @@ const Form: React.FC<FORM> = (props) => {
         style={styles.text}
       >
         <span className='absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-full text-center whitespace-nowrap'>
-          {props.text}
+          {text}
         </span>
         {(dateBar || defDate) && (
           <span className='absolute text-[14px]' style={styles.date}>
-            {props.date.replaceAll('-', '.')}
+            {date.replaceAll('-', '.')}
           </span>
         )}
       </div>
