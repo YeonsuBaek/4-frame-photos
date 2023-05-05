@@ -5,8 +5,11 @@ import Optionbar from '../../components/layouts/Optionbar';
 import * as htmlToImage from 'html-to-image';
 import useStore from '../../stores/create';
 import styles from '../../assets/styles';
+import useColorlistStore from '../../stores/colorlist';
 
 const MakingPage = () => {
+  const { colorPicker } = useColorlistStore((state) => state);
+
   const {
     setFrame,
     setText,
@@ -51,6 +54,30 @@ const MakingPage = () => {
     setDate(styles.date);
     setDatePos(styles.datePos);
   };
+
+  function useBodyScrollLock() {
+    const lockScroll = React.useCallback(() => {
+      document.body.style.overflow = 'hidden';
+    }, []);
+
+    const openScroll = React.useCallback(() => {
+      document.body.style.removeProperty('overflow');
+    }, []);
+
+    return { lockScroll, openScroll };
+  }
+
+  const { lockScroll, openScroll } = useBodyScrollLock();
+
+  React.useEffect(() => {
+    if (colorPicker) {
+      console.log('open');
+      lockScroll();
+    } else {
+      console.log('close');
+      openScroll();
+    }
+  }, [colorPicker]);
 
   return (
     <>

@@ -6,6 +6,7 @@ import colors from '../../assets/colors';
 import fonts from '../../assets/fonts';
 import ColorList from '../UI/ColorList';
 import useStore from '../../stores/create';
+import useColorlistStore from '../../stores/colorlist';
 
 const Optionbar = () => {
   const {
@@ -54,14 +55,18 @@ const Optionbar = () => {
     setDateBar,
   } = useOptionbarStore((state) => state);
 
+  const { setColorPicker } = useColorlistStore((state) => state);
+
   const onSaveFrame = () => {
     setDefFrame(frame);
     setFrameBar(false);
+    setColorPicker(false);
   };
 
   const onCloseFrame = () => {
     setFrame(defFrame);
     setFrameBar(false);
+    setColorPicker(false);
   };
 
   const onSaveText = () => {
@@ -87,11 +92,13 @@ const Optionbar = () => {
   const onSaveTextColor = () => {
     setDefTextColor(textColor);
     setTextColorBar(false);
+    setColorPicker(false);
   };
 
   const onCloseTextColor = () => {
     setTextColor(defTextColor);
     setTextColorBar(false);
+    setColorPicker(false);
   };
 
   const onSaveTextStyle = () => {
