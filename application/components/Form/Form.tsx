@@ -14,6 +14,7 @@ const Form = () => {
     datePos,
     defDate,
     weather,
+    defWeather,
   } = useStore((state) => state);
   const { dateBar, weatherBar } = useOptionbarStore((state) => state);
 
@@ -64,7 +65,7 @@ const Form = () => {
             {date.replaceAll('-', '.')}
           </span>
         )}
-        {weatherBar && (
+        {(weatherBar || defWeather) && (
           <img
             src={styles.weather.img}
             alt='날씨'

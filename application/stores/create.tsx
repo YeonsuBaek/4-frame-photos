@@ -16,7 +16,7 @@ interface STYLES {
   setTextStyle: (font: string) => void;
   setDate: (date: string) => void;
   setDatePos: (move: string) => void;
-  setWeather: (weather: string) => void;
+  setWeather: (type: string) => void;
   defFrame: string;
   defText: string;
   defTextSize: string;
@@ -24,6 +24,7 @@ interface STYLES {
   defTextStyle: string;
   defDate: string;
   defDatePos: string;
+  defWeather: string;
   setDefFrame: (color: string) => void;
   setDefText: (text: string) => void;
   setDefTextSize: (size: string) => void;
@@ -31,6 +32,7 @@ interface STYLES {
   setDefTextStyle: (font: string) => void;
   setDefDate: (date: string) => void;
   setDefDatePos: (move: string) => void;
+  setDefWeather: (type: string) => void;
 }
 
 const useStore = create<STYLES>((set) => ({
@@ -41,7 +43,7 @@ const useStore = create<STYLES>((set) => ({
   textStyle: 'do-hyeon',
   date: '',
   datePos: 'bottom',
-  weather: '맑음',
+  weather: '',
   setFrame: (color) => set({ frame: color }),
   setText: (text) => set({ text: text }),
   setTextSize: (size) => set({ textSize: size }),
@@ -49,7 +51,7 @@ const useStore = create<STYLES>((set) => ({
   setTextStyle: (font) => set({ textStyle: font }),
   setDate: (date) => set({ date: date }),
   setDatePos: (move) => set({ datePos: move }),
-  setWeather: (weather) => set({ weather: weather }),
+  setWeather: (type) => set({ weather: type }),
   defFrame: 'black',
   defText: '네컷사진',
   defTextSize: '44',
@@ -57,6 +59,7 @@ const useStore = create<STYLES>((set) => ({
   defTextStyle: 'do-hyeon',
   defDate: '',
   defDatePos: 'bottom',
+  defWeather: '',
   setDefFrame: (color) => set({ defFrame: color }),
   setDefText: (text) => set({ defText: text }),
   setDefTextSize: (size) => set({ defTextSize: size }),
@@ -64,6 +67,7 @@ const useStore = create<STYLES>((set) => ({
   setDefTextStyle: (font) => set({ defTextStyle: font }),
   setDefDate: (date) => set({ defDate: date }),
   setDefDatePos: (move) => set({ defDatePos: move }),
+  setDefWeather: (type) => set({ defWeather: type }),
 }));
 
 export default useStore;

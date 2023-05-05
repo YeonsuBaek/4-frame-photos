@@ -33,6 +33,7 @@ const Optionbar = () => {
     defTextStyle,
     defDate,
     defDatePos,
+    defWeather,
     setDefFrame,
     setDefText,
     setDefTextSize,
@@ -40,6 +41,7 @@ const Optionbar = () => {
     setDefTextStyle,
     setDefDate,
     setDefDatePos,
+    setDefWeather,
   } = useStore((state) => state);
 
   const {
@@ -130,6 +132,17 @@ const Optionbar = () => {
   const onRemoveDate = () => {
     setDatePos('bottom');
     setDate('');
+  };
+
+  const onSaveWeather = () => {
+    setDefWeather(weather);
+    setWeatherBar(false);
+    console.log(weather);
+  };
+
+  const onCloseWeather = () => {
+    setWeather(defWeather);
+    setWeatherBar(false);
   };
 
   const handleGetWeather = () => {
@@ -326,7 +339,11 @@ const Optionbar = () => {
         </DetailOptionbar>
       )}
       {weatherBar && (
-        <DetailOptionbar title='날씨'>
+        <DetailOptionbar
+          title='날씨'
+          onSave={onSaveWeather}
+          onClose={onCloseWeather}
+        >
           <button onClick={handleGetWeather}>날씨 불러오기</button>
         </DetailOptionbar>
       )}
