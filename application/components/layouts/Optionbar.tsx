@@ -168,7 +168,7 @@ const Optionbar = () => {
 
   return (
     <>
-      <ul className='fixed bottom-0 left-0 z-30 flex items-center justify-start w-screen h-[64px] px-[8px] overflow-scroll text-white bg-black'>
+      <ul className='fixed bottom-0 left-0 z-30 flex items-center justify-start w-screen h-[64px] px-[8px] overflow-scroll text-white bg-black scrollbar-hide'>
         {options.map((option) => {
           return <OptionButton key={option.name} option={option} />;
         })}

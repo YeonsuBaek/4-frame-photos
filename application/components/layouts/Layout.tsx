@@ -10,7 +10,9 @@ const Layout: React.FC<LAYOUT> = (props) => {
         onBack={props.onBack}
         onSaveImage={props.onSaveImage}
       />
-      <main className='mt-[50px]'>{props.children}</main>
+      <main className='w-screen h-screen overflow-scroll scrollbar-hide'>
+        {props.children}
+      </main>
     </>
   );
 };
