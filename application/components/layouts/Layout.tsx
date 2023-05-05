@@ -5,7 +5,11 @@ import Navigation from './Navigation';
 const Layout: React.FC<LAYOUT> = (props) => {
   return (
     <>
-      <Navigation title={props.title} onSaveImage={props.onSaveImage} />
+      <Navigation
+        title={props.title}
+        onBack={props.onBack}
+        onSaveImage={props.onSaveImage}
+      />
       <main className='mt-[50px]'>{props.children}</main>
     </>
   );

@@ -8,6 +8,7 @@ const Navigation: React.FC<NAVIGATION> = (props) => {
       <Link
         href='/'
         className='w-[50px] h-[50px] flex items-center justify-center'
+        onClick={props.onBack}
       >
         <img
           src='/assets/chevron.png'
