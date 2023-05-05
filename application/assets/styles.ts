@@ -12,7 +12,7 @@ const styles: {
   text: '네컷사진',
   textSize: '44',
   textColor: 'white',
-  textStyle: 'do-hyeon',
+  textStyle: 'Black Han Sans',
   date: '',
   datePos: 'bottom',
   weather: '',

@@ -23,7 +23,7 @@ const Form = () => {
     text: {
       fontSize: current.textSize + 'px',
       color: current.textColor,
-      fontFamily: `var(--${current.textStyle})`,
+      fontFamily: current.textStyle,
     },
     date: {
       [current.datePos]: 0,

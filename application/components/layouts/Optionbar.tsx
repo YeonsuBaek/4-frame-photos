@@ -141,7 +141,7 @@ const Optionbar = () => {
                   <button
                     onClick={() => setCurrent('textStyle', font)}
                     className='w-[84px]'
-                    style={{ fontFamily: `var(--${font})` }}
+                    style={{ fontFamily: font }}
                   >
                     폰트 Font
                   </button>

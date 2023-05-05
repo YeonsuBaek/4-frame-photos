@@ -1,11 +1,11 @@
 const fonts: string[] = [
-  'nanum',
-  'do-hyeon',
-  'black-han-sans',
-  'jua',
-  'song-myung',
-  'play-fair',
-  'east-sea-dokdo',
+  'Black Han Sans',
+  'Do Hyeon',
+  'Jua',
+  'Song Myung',
+  'Sunflower',
+  'East Sea Dokdo',
+  'Gugi',
 ];
 
 export default fonts;
