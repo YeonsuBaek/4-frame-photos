@@ -29,11 +29,15 @@ const Form: React.FC<FORM> = (props) => {
       <ImageForm />
       <ImageForm />
       <div
-        className='w-full h-[96px] flex items-center justify-center'
+        className='relative w-full h-[96px] flex items-center justify-center'
         style={styles.text}
       >
-        <span>{props.text}</span>
-        {(dateBar || defDate) && <span>{props.date}</span>}
+        <span className='absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-full text-center'>
+          {props.text}
+        </span>
+        {(dateBar || defDate) && (
+          <span className='absolute bottom-0 text-[14px]'>{props.date}</span>
+        )}
       </div>
     </div>
   );

@@ -252,7 +252,7 @@ const Optionbar: React.FC = () => {
           <input
             type='date'
             onChange={handleChangeDate}
-            className='mx-[40px] text-black w-full block rounded-[4px] p-[4px] outline-none'
+            className='relative w-[64px] h-full block rounded-[4px] outline-none bg-transparent after:absolute after:top-[50%] after:left-[50%] after:content-["날짜"] after:translate-x-[-50%] after:translate-y-[-50%]'
           />
           <button onClick={onRemoveDate}>삭제</button>
         </DetailOptionbar>
