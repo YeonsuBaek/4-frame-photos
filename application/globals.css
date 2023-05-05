@@ -1,33 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/* 
-input[type='date']::-webkit-datetime-edit-text {
-  -webkit-appearance: none;
-  display: none;
-}
-input[type='date']::-webkit-datetime-edit-month-field {
-  -webkit-appearance: none;
-  display: none;
-}
-input[type='date']::-webkit-datetime-edit-day-field {
-  -webkit-appearance: none;
-  display: none;
-}
-input[type='date']::-webkit-datetime-edit-year-field {
-  -webkit-appearance: none;
-  display: none;
-}
-
-input[type='date'] {
-  position: relative;
-}
-
-input[type='date']::-webkit-clear-button,
-input[type='date']::-webkit-inner-spin-button {
-  display: none;
-}
-input[type='date']::-webkit-calendar-picker-indicator {
-  background: transparent;
-  z-index: 1;
-} */
