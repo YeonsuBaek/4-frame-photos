@@ -1,5 +1,4 @@
 import DETAIL_OPTIONBAR from '@/models/detailoptionbar';
-import { on } from 'events';
 import React from 'react';
 import { TfiClose, TfiCheck } from 'react-icons/tfi';
 

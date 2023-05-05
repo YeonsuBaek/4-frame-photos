@@ -1,7 +1,5 @@
 import Link from 'next/link';
 import React from 'react';
-import { TfiShare } from 'react-icons/tfi';
-import { BsChevronLeft } from 'react-icons/bs';
 import NAVIGATION from '@/models/navigation';
 
 const Navigation: React.FC<NAVIGATION> = (props) => {
