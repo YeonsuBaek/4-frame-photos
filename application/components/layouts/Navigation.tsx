@@ -11,14 +11,22 @@ const Navigation: React.FC<NAVIGATION> = (props) => {
         href='/'
         className='w-[50px] h-[50px] flex items-center justify-center'
       >
-        <BsChevronLeft size={24} color='#fff' />
+        <img
+          src='/assets/chevron.png'
+          alt='홈으로'
+          className='rotate-90 w-[24px] h-[24px]'
+        />
       </Link>
       <h2 className='text-[#fff] text-lg'>{props.title}</h2>
       <button
         className='w-[50px] h-[50px] flex items-center justify-center'
         onClick={props.onSaveImage}
       >
-        <TfiShare size={24} color='#fff' />
+        <img
+          src='/assets/download.png'
+          alt='저장하기'
+          className='w-[24px] h-[24px]'
+        />
       </button>
     </div>
   );
