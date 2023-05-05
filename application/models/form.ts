@@ -5,6 +5,7 @@ type FORM = {
   textColor: string;
   textStyle: string;
   date: string;
+  datePos: string;
 };
 
 export default FORM;

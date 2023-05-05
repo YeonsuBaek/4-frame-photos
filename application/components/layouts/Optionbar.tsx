@@ -15,24 +15,28 @@ const Optionbar: React.FC = () => {
     textColor,
     textStyle,
     date,
+    datePos,
     setFrame,
     setText,
     setTextSize,
     setTextColor,
     setTextStyle,
     setDate,
+    setDatePos,
     defFrame,
     defText,
     defTextSize,
     defTextColor,
     defTextStyle,
     defDate,
+    defDatePos,
     setDefFrame,
     setDefText,
     setDefTextSize,
     setDefTextColor,
     setDefTextStyle,
     setDefDate,
+    setDefDatePos,
   } = useStore((state) => state);
 
   const {
@@ -100,23 +104,20 @@ const Optionbar: React.FC = () => {
     setTextStyleBar(false);
   };
 
-  const handleChangeDate = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const date = e.target.value;
-    const formattedDate = date.replaceAll('-', '.');
-    setDate(formattedDate);
-  };
-
   const onSaveDate = () => {
     setDefDate(date);
+    setDefDatePos(datePos);
     setDateBar(false);
   };
 
   const onCloseDate = () => {
     setDate(defDate);
+    setDatePos(defDatePos);
     setDateBar(false);
   };
 
   const onRemoveDate = () => {
+    setDatePos('bottom');
     setDate('');
   };
 
@@ -250,12 +251,32 @@ const Optionbar: React.FC = () => {
       )}
       {dateBar && (
         <DetailOptionbar title='날짜' onSave={onSaveDate} onClose={onCloseDate}>
+          <button
+            className='flex items-center justify-center w-[48px] h-[48px]'
+            onClick={() => setDatePos(datePos == 'bottom' ? 'top' : 'bottom')}
+          >
+            <img
+              src='/assets/move.png'
+              alt='위치 상하로 옮기기'
+              className='w-[28px] h-[28px]'
+            />
+          </button>
           <input
             type='date'
-            onChange={handleChangeDate}
-            className='relative w-[64px] h-full block rounded-[4px] outline-none bg-transparent after:absolute after:top-[50%] after:left-[50%] after:content-["날짜"] after:translate-x-[-50%] after:translate-y-[-50%]'
+            onChange={(e) => setDate(e.target.value)}
+            value={date}
+            className='mx-[8px] w-[75%] block rounded-[4px] outline-none bg-white text-black'
           />
-          <button onClick={onRemoveDate}>삭제</button>
+          <button
+            onClick={onRemoveDate}
+            className='flex items-center justify-center w-[48px] h-[48px]'
+          >
+            <img
+              src='/assets/remove.png'
+              alt='날짜 삭제하기'
+              className='w-[28px] h-[28px]'
+            />
+          </button>
         </DetailOptionbar>
       )}
     </>

@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+/* 
 input[type='date']::-webkit-datetime-edit-text {
   -webkit-appearance: none;
   display: none;
@@ -30,4 +30,4 @@ input[type='date']::-webkit-inner-spin-button {
 input[type='date']::-webkit-calendar-picker-indicator {
   background: transparent;
   z-index: 1;
-}
+} */

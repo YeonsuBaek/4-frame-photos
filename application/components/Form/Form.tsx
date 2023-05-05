@@ -17,6 +17,9 @@ const Form: React.FC<FORM> = (props) => {
       color: props.textColor,
       fontFamily: `var(--${props.textStyle})`,
     },
+    date: {
+      [props.datePos]: 0,
+    },
   };
 
   return (
@@ -36,7 +39,9 @@ const Form: React.FC<FORM> = (props) => {
           {props.text}
         </span>
         {(dateBar || defDate) && (
-          <span className='absolute bottom-0 text-[14px]'>{props.date}</span>
+          <span className='absolute text-[14px]' style={styles.date}>
+            {props.date.replaceAll('-', '.')}
+          </span>
         )}
       </div>
     </div>

@@ -6,9 +6,8 @@ import * as htmlToImage from 'html-to-image';
 import useStore from '../../stores/create';
 
 const MakingPage = () => {
-  const { frame, text, textSize, textColor, textStyle, date } = useStore(
-    (state) => state
-  );
+  const { frame, text, textSize, textColor, textStyle, date, datePos } =
+    useStore((state) => state);
 
   const ref = useRef<any>();
 
@@ -33,6 +32,7 @@ const MakingPage = () => {
               textColor={textColor}
               textStyle={textStyle}
               date={date}
+              datePos={datePos}
             />
           </div>
         </div>
