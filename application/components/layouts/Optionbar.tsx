@@ -17,6 +17,7 @@ const Optionbar = () => {
     textStyle,
     date,
     datePos,
+    weather,
     setFrame,
     setText,
     setTextSize,
@@ -24,6 +25,7 @@ const Optionbar = () => {
     setTextStyle,
     setDate,
     setDatePos,
+    setWeather,
     defFrame,
     defText,
     defTextSize,
@@ -47,12 +49,14 @@ const Optionbar = () => {
     textColorBar,
     textStyleBar,
     dateBar,
+    weatherBar,
     setFrameBar,
     setTextBar,
     setTextSizeBar,
     setTextColorBar,
     setTextStyleBar,
     setDateBar,
+    setWeatherBar,
   } = useOptionbarStore((state) => state);
 
   const { setColorPicker } = useColorlistStore((state) => state);
@@ -128,6 +132,39 @@ const Optionbar = () => {
     setDate('');
   };
 
+  const handleGetWeather = () => {
+    navigator.geolocation.getCurrentPosition(handleSuccess, handleError);
+  };
+
+  const handleSuccess = (position: {
+    coords: { latitude: number; longitude: number };
+  }) => {
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+    getWeather(latitude, longitude); //얻은 좌표값을 바탕으로 날씨정보를 불러온다.
+  };
+
+  const handleError = () => {
+    alert("can't not access to location");
+  };
+
+  const getWeather = async (latitude: number, longitude: number) => {
+    try {
+      const response = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${process.env.NEXT_PUBLIC_WEATHER_API_KEY}&units=metric&lang=kr`
+      )
+        .then((response) => {
+          return response.json();
+        })
+        .then((json) => {
+          const weatherDescription = json.weather[0].description;
+          setWeather(weatherDescription);
+        });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const options = [
     {
       name: '프레임',
@@ -161,7 +198,7 @@ const Optionbar = () => {
     },
     {
       name: '날씨',
-      event: () => setTextBar(true),
+      event: () => setWeatherBar(true),
       icon: '/assets/weather.png',
     },
   ];
@@ -286,6 +323,11 @@ const Optionbar = () => {
               className='w-[28px] h-[28px]'
             />
           </button>
+        </DetailOptionbar>
+      )}
+      {weatherBar && (
+        <DetailOptionbar title='날씨'>
+          <button onClick={handleGetWeather}>날씨 불러오기</button>
         </DetailOptionbar>
       )}
     </>

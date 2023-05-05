@@ -8,6 +8,7 @@ interface STYLES {
   textStyle: string;
   date: string;
   datePos: string;
+  weather: string;
   setFrame: (color: string) => void;
   setText: (text: string) => void;
   setTextSize: (size: string) => void;
@@ -15,6 +16,7 @@ interface STYLES {
   setTextStyle: (font: string) => void;
   setDate: (date: string) => void;
   setDatePos: (move: string) => void;
+  setWeather: (weather: string) => void;
   defFrame: string;
   defText: string;
   defTextSize: string;
@@ -39,6 +41,7 @@ const useStore = create<STYLES>((set) => ({
   textStyle: 'do-hyeon',
   date: '',
   datePos: 'bottom',
+  weather: '맑음',
   setFrame: (color) => set({ frame: color }),
   setText: (text) => set({ text: text }),
   setTextSize: (size) => set({ textSize: size }),
@@ -46,6 +49,7 @@ const useStore = create<STYLES>((set) => ({
   setTextStyle: (font) => set({ textStyle: font }),
   setDate: (date) => set({ date: date }),
   setDatePos: (move) => set({ datePos: move }),
+  setWeather: (weather) => set({ weather: weather }),
   defFrame: 'black',
   defText: '네컷사진',
   defTextSize: '44',
