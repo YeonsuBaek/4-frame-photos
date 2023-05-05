@@ -44,89 +44,62 @@ const Optionbar = () => {
     setDefWeather,
   } = useStore((state) => state);
 
-  const {
-    frameBar,
-    textBar,
-    textSizeBar,
-    textColorBar,
-    textStyleBar,
-    dateBar,
-    weatherBar,
-    setFrameBar,
-    setTextBar,
-    setTextSizeBar,
-    setTextColorBar,
-    setTextStyleBar,
-    setDateBar,
-    setWeatherBar,
-  } = useOptionbarStore((state) => state);
+  const { optionbar, setOptionbar } = useOptionbarStore((state) => state);
 
   const { setColorPicker } = useColorlistStore((state) => state);
 
   const onSaveFrame = () => {
     setDefFrame(frame);
-    setFrameBar(false);
     setColorPicker(false);
   };
 
   const onCloseFrame = () => {
     setFrame(defFrame);
-    setFrameBar(false);
     setColorPicker(false);
   };
 
   const onSaveText = () => {
     setDefText(text);
-    setTextBar(false);
   };
 
   const onCloseText = () => {
     setText(defText);
-    setTextBar(false);
   };
 
   const onSaveTextSize = () => {
     setDefTextSize(textSize);
-    setTextSizeBar(false);
   };
 
   const onCloseTextSize = () => {
     setTextSize(defTextSize);
-    setTextSizeBar(false);
   };
 
   const onSaveTextColor = () => {
     setDefTextColor(textColor);
-    setTextColorBar(false);
     setColorPicker(false);
   };
 
   const onCloseTextColor = () => {
     setTextColor(defTextColor);
-    setTextColorBar(false);
     setColorPicker(false);
   };
 
   const onSaveTextStyle = () => {
     setDefTextStyle(textStyle);
-    setTextStyleBar(false);
   };
 
   const onCloseTextStyle = () => {
     setTextStyle(defTextStyle);
-    setTextStyleBar(false);
   };
 
   const onSaveDate = () => {
     setDefDate(date);
     setDefDatePos(datePos);
-    setDateBar(false);
   };
 
   const onCloseDate = () => {
     setDate(defDate);
     setDatePos(defDatePos);
-    setDateBar(false);
   };
 
   const onRemoveDate = () => {
@@ -136,13 +109,11 @@ const Optionbar = () => {
 
   const onSaveWeather = () => {
     setDefWeather(weather);
-    setWeatherBar(false);
     console.log(weather);
   };
 
   const onCloseWeather = () => {
     setWeather(defWeather);
-    setWeatherBar(false);
   };
 
   const handleGetWeather = () => {
@@ -181,37 +152,37 @@ const Optionbar = () => {
   const options = [
     {
       name: '프레임',
-      event: () => setFrameBar(true),
+      event: () => setOptionbar('frame'),
       icon: '/assets/frame.png',
     },
     {
       name: '글자 편집',
-      event: () => setTextBar(true),
+      event: () => setOptionbar('text'),
       icon: '/assets/text.png',
     },
     {
       name: '글자 크기',
-      event: () => setTextSizeBar(true),
+      event: () => setOptionbar('textSize'),
       icon: '/assets/text-size.png',
     },
     {
       name: '글자 색상',
-      event: () => setTextColorBar(true),
+      event: () => setOptionbar('textColor'),
       icon: '/assets/text-color.png',
     },
     {
       name: '글씨체',
-      event: () => setTextStyleBar(true),
+      event: () => setOptionbar('textStyle'),
       icon: '/assets/text-style.png',
     },
     {
       name: '날짜',
-      event: () => setDateBar(true),
+      event: () => setOptionbar('date'),
       icon: '/assets/date.png',
     },
     {
       name: '날씨',
-      event: () => setWeatherBar(true),
+      event: () => setOptionbar('weather'),
       icon: '/assets/weather.png',
     },
   ];
@@ -223,7 +194,7 @@ const Optionbar = () => {
           return <OptionButton key={option.name} option={option} />;
         })}
       </ul>
-      {frameBar && (
+      {optionbar == 'frame' && (
         <DetailOptionbar
           title='프레임 색상'
           onSave={onSaveFrame}
@@ -237,7 +208,7 @@ const Optionbar = () => {
           />
         </DetailOptionbar>
       )}
-      {textBar && (
+      {optionbar == 'text' && (
         <DetailOptionbar
           title='글자 편집'
           onSave={onSaveText}
@@ -251,7 +222,7 @@ const Optionbar = () => {
           />
         </DetailOptionbar>
       )}
-      {textSizeBar && (
+      {optionbar == 'textSize' && (
         <DetailOptionbar
           title='글자 크기'
           onSave={onSaveTextSize}
@@ -268,7 +239,7 @@ const Optionbar = () => {
           />
         </DetailOptionbar>
       )}
-      {textColorBar && (
+      {optionbar == 'textColor' && (
         <DetailOptionbar
           title='글자 색상'
           onSave={onSaveTextColor}
@@ -282,7 +253,7 @@ const Optionbar = () => {
           />
         </DetailOptionbar>
       )}
-      {textStyleBar && (
+      {optionbar == 'textStyle' && (
         <DetailOptionbar
           title='글씨체'
           onSave={onSaveTextStyle}
@@ -308,7 +279,7 @@ const Optionbar = () => {
           </ul>
         </DetailOptionbar>
       )}
-      {dateBar && (
+      {optionbar == 'date' && (
         <DetailOptionbar title='날짜' onSave={onSaveDate} onClose={onCloseDate}>
           <button
             className='flex items-center justify-center w-[48px] h-[48px]'
@@ -338,7 +309,7 @@ const Optionbar = () => {
           </button>
         </DetailOptionbar>
       )}
-      {weatherBar && (
+      {optionbar == 'weather' && (
         <DetailOptionbar
           title='날씨'
           onSave={onSaveWeather}

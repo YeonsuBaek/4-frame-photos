@@ -16,7 +16,7 @@ const Form = () => {
     weather,
     defWeather,
   } = useStore((state) => state);
-  const { dateBar, weatherBar } = useOptionbarStore((state) => state);
+  const { optionbar } = useOptionbarStore((state) => state);
 
   const weatherIcon = () => {
     if (weather.includes('비')) return 'rain';
@@ -60,12 +60,12 @@ const Form = () => {
         <span className='absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-full text-center whitespace-nowrap'>
           {text}
         </span>
-        {(dateBar || defDate) && (
+        {(optionbar == 'date' || defDate) && (
           <span className='absolute text-[14px]' style={styles.date}>
             {date.replaceAll('-', '.')}
           </span>
         )}
-        {(weatherBar || defWeather) && (
+        {(optionbar == 'weather' || defWeather) && (
           <img
             src={styles.weather.img}
             alt='날씨'
