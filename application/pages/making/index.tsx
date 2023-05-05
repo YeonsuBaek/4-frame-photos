@@ -10,22 +10,7 @@ import useColorlistStore from '../../stores/colorlist';
 const MakingPage = () => {
   const { colorPicker } = useColorlistStore((state) => state);
 
-  const {
-    setFrame,
-    setText,
-    setTextSize,
-    setTextColor,
-    setTextStyle,
-    setDate,
-    setDatePos,
-    setDefFrame,
-    setDefText,
-    setDefTextSize,
-    setDefTextColor,
-    setDefTextStyle,
-    setDefDate,
-    setDefDatePos,
-  } = useStore((state) => state);
+  const { setCurrent, setDef } = useStore((state) => state);
 
   const ref = useRef<any>();
 
@@ -39,20 +24,22 @@ const MakingPage = () => {
   };
 
   const handleResetStyle = () => {
-    setDefFrame(styles.frame);
-    setDefText(styles.text);
-    setDefTextSize(styles.textSize);
-    setDefTextColor(styles.textColor);
-    setDefTextStyle(styles.textStyle);
-    setDefDate(styles.date);
-    setDefDatePos(styles.datePos);
-    setFrame(styles.frame);
-    setText(styles.text);
-    setTextSize(styles.textSize);
-    setTextColor(styles.textColor);
-    setTextStyle(styles.textStyle);
-    setDate(styles.date);
-    setDatePos(styles.datePos);
+    setDef('frame', styles.frame);
+    setDef('text', styles.text);
+    setDef('textSize', styles.textSize);
+    setDef('textColor', styles.textColor);
+    setDef('textStyle', styles.textStyle);
+    setDef('date', styles.date);
+    setDef('weather', styles.weather);
+    setDef('datePos', styles.datePos);
+    setCurrent('frame', styles.frame);
+    setCurrent('text', styles.text);
+    setCurrent('textSize', styles.textSize);
+    setCurrent('textColor', styles.textColor);
+    setCurrent('textStyle', styles.textStyle);
+    setCurrent('date', styles.date);
+    setCurrent('datePos', styles.datePos);
+    setCurrent('weather', styles.weather);
   };
 
   function useBodyScrollLock() {
