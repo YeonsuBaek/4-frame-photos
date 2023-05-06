@@ -18,11 +18,15 @@ const MakingPage = () => {
 
   const handleSaveImage = async () => {
     await setScale('100%');
-    await html2canvas(ref.current).then((canvas) => {
+    await html2canvas(ref.current, {
+      logging: true,
+      allowTaint: true,
+      useCORS: true,
+    }).then((canvas) => {
       const link = document.createElement('a');
       link.download = 'image';
-      link.href = canvas.toDataURL();
       document.body.appendChild(link);
+      link.href = canvas.toDataURL('image/png');
       link.click();
     });
   };
