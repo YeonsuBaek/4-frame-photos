@@ -23,7 +23,6 @@ const MakingPage = () => {
       el.download = 'photo.jpg';
       el.click();
     });
-    div.style = { scale: '30%' };
   };
 
   const handleResetStyle = () => {
