@@ -14,9 +14,9 @@ const MakingPage = () => {
 
   const { setCurrent, setDef } = useStore((state) => state);
 
-  const handleSaveImage = async (): Promise<void> => {
+  const handleSaveImage = () => {
     const ref: any = document.getElementById('photo');
-    await setScale('100%');
+
     html2canvas(ref, {
       allowTaint: true,
       useCORS: true,
