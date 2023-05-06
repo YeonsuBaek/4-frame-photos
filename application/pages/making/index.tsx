@@ -18,6 +18,7 @@ const MakingPage = () => {
     const ref: any = document.getElementById('photo');
     div.style = { scale: '100%' };
     canvasDiv.appendChild(ref);
+    console.log(canvasDiv);
     html2canvas(canvasDiv, {
       allowTaint: true,
       useCORS: true,
