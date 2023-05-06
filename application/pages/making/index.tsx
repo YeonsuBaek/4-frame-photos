@@ -17,6 +17,7 @@ const MakingPage = () => {
     let canvasDiv: any = document.createElement('div');
     document.body.appendChild(canvasDiv);
     canvasDiv.appendChild(ref);
+    canvasDiv.style.width = '1200px';
 
     html2canvas(canvasDiv, {
       allowTaint: true,
