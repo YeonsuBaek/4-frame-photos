@@ -17,13 +17,14 @@ const MakingPage = () => {
   const handleSaveImage = async (): Promise<void> => {
     const ref: any = document.getElementById('photo');
     await setScale('100%');
-    html2canvas(ref).then((canvas: HTMLCanvasElement) => {
-      const link = document.createElement('a');
-      document.body.appendChild(link);
-      link.href = canvas.toDataURL('image/png');
-      link.download = 'photo.png';
-      link.click();
-      document.body.removeChild(link);
+    html2canvas(ref, {
+      allowTaint: true,
+      useCORS: true,
+    }).then((canvas: HTMLCanvasElement) => {
+      let el = document.createElement('a');
+      el.href = canvas.toDataURL('image/jpeg');
+      el.download = 'photo.jpg';
+      el.click();
     });
   };
 
