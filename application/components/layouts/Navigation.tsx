@@ -2,11 +2,14 @@ import Link from 'next/link';
 import React from 'react';
 import NAVIGATION from '@/models/navigation';
 import usePhotoStore from '@/stores/photos';
+import useModalStore from '@/stores/modal';
 
 const Navigation: React.FC<NAVIGATION> = (props) => {
   const { setScale } = usePhotoStore((state) => state);
+  const { setModal } = useModalStore((state) => state);
+
   return (
-    <div className='fixed top-0 left-0 w-full h-[50px] flex items-center justify-between bg-black z-50'>
+    <div className='fixed top-0 left-0 w-full h-[50px] flex items-center justify-between bg-black z-30'>
       <Link
         href='/'
         className='w-[50px] h-[50px] flex items-center justify-center'

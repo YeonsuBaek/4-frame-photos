@@ -6,17 +6,24 @@ import useStore from '../../stores/create';
 import styles from '../../assets/styles';
 import useColorlistStore from '../../stores/colorlist';
 import usePhotosStore from '../../stores/photos';
+import useModalStore from '../../stores/modal';
 import html2canvas from 'html2canvas';
+import Modal from '@/components/layouts/Modal';
 
 const MakingPage = () => {
   const { scale, setScale } = usePhotosStore((state) => state);
   const { colorPicker } = useColorlistStore((state) => state);
+  const { modal, setModal } = useModalStore((state) => state);
 
   const { setCurrent, setDef } = useStore((state) => state);
 
   const handleSaveImage = () => {
-    const ref: any = document.getElementById('photo');
+    setModal(true);
     setScale('100%');
+  };
+
+  const handleSaveImage2 = () => {
+    const ref: any = document.getElementById('photo');
     html2canvas(ref, {
       allowTaint: true,
       useCORS: true,
@@ -71,6 +78,7 @@ const MakingPage = () => {
 
   return (
     <>
+      {modal && <Modal onSaveImage2={handleSaveImage2} />}
       <Layout
         title='네컷사진 만들기'
         onBack={handleResetStyle}
