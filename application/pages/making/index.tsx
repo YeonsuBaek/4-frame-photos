@@ -14,10 +14,9 @@ const MakingPage = () => {
 
   const handleSaveImage = () => {
     const ref: any = document.getElementById('photo');
-    let canvasDiv: any = document.createElement('div');
+    let canvasDiv: any = document.createElement('span');
     document.body.appendChild(canvasDiv);
     canvasDiv.appendChild(ref);
-    canvasDiv.style.width = '1200px';
 
     html2canvas(canvasDiv, {
       allowTaint: true,

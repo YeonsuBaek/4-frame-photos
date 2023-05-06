@@ -2,3 +2,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body > span {
+  display: block;
+  width: 1200px;
+}
