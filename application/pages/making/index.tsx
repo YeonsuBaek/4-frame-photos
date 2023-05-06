@@ -15,8 +15,7 @@ const MakingPage = () => {
   const handleSaveImage = () => {
     const ref: any = document.getElementById('photo');
     let canvasDiv: any = document.createElement('div');
-    canvasDiv.style.width = '1200px';
-    document.body.appendChild(canvasDiv);
+
     canvasDiv.appendChild(ref);
 
     html2canvas(canvasDiv, {
@@ -27,6 +26,7 @@ const MakingPage = () => {
       el.href = canvas.toDataURL('image/jpeg');
       el.download = 'photo.jpg';
       el.click();
+      document.body.removeChild(canvasDiv);
     });
   };
 
@@ -78,16 +78,11 @@ const MakingPage = () => {
         onBack={handleResetStyle}
         onSaveImage={handleSaveImage}
       >
-        <div
-          id='photoWrapper'
-          className='mt-[-1200px]'
-          style={{ scale: '30%' }}
-        >
+        <div className='mt-[-1200px]' style={{ scale: '30%' }}>
           <div id='photo' className='w-[1200px]'>
             <Form />
           </div>
         </div>
-        <div id='canvas'></div>
       </Layout>
       <Optionbar />
     </>
