@@ -96,9 +96,9 @@ const Optionbar = () => {
         >
           <input
             type='range'
-            min='16'
-            max='72'
-            step='4'
+            min='64'
+            max='288'
+            step='16'
             onChange={(e) => setCurrent('textSize', e.target.value)}
             value={current.textSize}
             className='w-[75%] h-[4px] mx-auto my-0 accent-white rounded-lg cursor-pointer'

@@ -1,11 +1,22 @@
 import useOptionbarStore from '@/stores/optionbar';
 import React from 'react';
 import useStore from '@/stores/create';
+import usePhotoStrore from '@/stores/photos';
 import ImageForm from './ImageForm';
 
 const Form = () => {
   const { current, def } = useStore((state) => state);
   const { optionbar } = useOptionbarStore((state) => state);
+  const {
+    photo1,
+    photo2,
+    photo3,
+    photo4,
+    setPhoto1,
+    setPhoto2,
+    setPhoto3,
+    setPhoto4,
+  } = usePhotoStrore((state) => state);
 
   const weatherIcon = () => {
     if (current.weather.includes('비')) return 'rain';
@@ -36,21 +47,21 @@ const Form = () => {
   return (
     <div
       style={styles.frame}
-      className='px-[12px] w-[300px] h-[900px] gap-[12px] flex items-start justify-center flex-col'
+      className='px-[48px] py-[48px] w-[1200px] h-[3600px] gap-[48px] flex items-start justify-start flex-col'
     >
-      <ImageForm />
-      <ImageForm />
-      <ImageForm />
-      <ImageForm />
+      <ImageForm state={photo1} set={setPhoto1} />
+      <ImageForm state={photo2} set={setPhoto2} />
+      <ImageForm state={photo3} set={setPhoto3} />
+      <ImageForm state={photo4} set={setPhoto4} />
       <div
-        className='relative w-full h-[96px] flex items-center justify-center overflow-hidden'
+        className='relative flex items-center justify-center w-full h-full overflow-hidden'
         style={styles.text}
       >
-        <span className='absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-full text-center whitespace-nowrap'>
+        <span className='w-full h-full text-center whitespace-nowrap'>
           {current.text}
         </span>
         {(optionbar == 'date' || def.date) && (
-          <span className='absolute text-[14px]' style={styles.date}>
+          <span className='absolute text-[64px]' style={styles.date}>
             {current.date.replaceAll('-', '.')}
           </span>
         )}
@@ -58,7 +69,7 @@ const Form = () => {
           <img
             src={styles.weather.img}
             alt='날씨'
-            className='absolute top-0 right-0 w-[24px] h-[24px]'
+            className='absolute top-0 right-0 w-[96px] h-[96px]'
           />
         )}
       </div>

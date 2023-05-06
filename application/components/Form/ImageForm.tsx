@@ -1,7 +1,8 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 
-const ImageForm = () => {
-  const [uploadedImage, setUploadedImage] = useState('');
+const ImageForm: React.FC<{ state: string; set: (img: string) => void }> = (
+  props
+) => {
   const fileInput = useRef<any>(null);
 
   const handleUploadImage = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -13,27 +14,35 @@ const ImageForm = () => {
     return new Promise<void>((resolve) => {
       reader.onload = () => {
         const result = reader.result as string;
-        setUploadedImage(result);
+        props.set(result);
         resolve();
       };
     });
   };
 
+  const styles = {
+    backgroundImage: `url(${props.state})`,
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: '50% 50%',
+  };
+
   return (
-    <div className='relative'>
-      <img
-        src={uploadedImage == '' ? '/assets/default.png' : uploadedImage}
+    <div className='relative w-full'>
+      {/* <img
+        src={uploadedImage}
         onClick={() => {
           fileInput.current.click();
         }}
         className='absolute top-0 left-0 object-cover w-full aspect-[3/2]'
-      />
+      /> */}
       <input
         accept='image/*'
         type='file'
         onChange={handleUploadImage}
         ref={fileInput}
-        className='w-full aspect-[3/2] bg-white object-cover'
+        style={styles}
+        className='w-full aspect-[3/2] object-cover'
       />
     </div>
   );

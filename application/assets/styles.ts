@@ -10,7 +10,7 @@ const styles: {
 } = {
   frame: 'black',
   text: '네컷사진',
-  textSize: '44',
+  textSize: '176',
   textColor: 'white',
   textStyle: 'Black Han Sans',
   date: '',

@@ -29,7 +29,7 @@ const useStore = create<STYLES>((set) => ({
   current: {
     frame: 'black',
     text: '네컷사진',
-    textSize: '44',
+    textSize: '176',
     textColor: 'white',
     textStyle: 'do-hyeon',
     date: '',
@@ -41,7 +41,7 @@ const useStore = create<STYLES>((set) => ({
   def: {
     frame: 'black',
     text: '네컷사진',
-    textSize: '44',
+    textSize: '176',
     textColor: 'white',
     textStyle: 'do-hyeon',
     date: '',

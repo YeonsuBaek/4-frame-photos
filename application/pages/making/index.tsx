@@ -2,12 +2,14 @@ import Form from '@/components/Form/Form';
 import React, { useRef } from 'react';
 import Layout from '../../components/layouts/Layout';
 import Optionbar from '../../components/layouts/Optionbar';
-import * as htmlToImage from 'html-to-image';
 import useStore from '../../stores/create';
 import styles from '../../assets/styles';
 import useColorlistStore from '../../stores/colorlist';
+import usePhotosStore from '../../stores/photos';
+import html2canvas from 'html2canvas';
 
 const MakingPage = () => {
+  const { scale, setScale } = usePhotosStore((state) => state);
   const { colorPicker } = useColorlistStore((state) => state);
 
   const { setCurrent, setDef } = useStore((state) => state);
@@ -15,12 +17,14 @@ const MakingPage = () => {
   const ref = useRef<any>();
 
   const handleSaveImage = async () => {
-    const dataUrl = await htmlToImage.toPng(ref.current);
-
-    const link = document.createElement('a');
-    link.download = '네컷사진.png';
-    link.href = dataUrl;
-    link.click();
+    await setScale('100%');
+    await html2canvas(ref.current).then((canvas) => {
+      const link = document.createElement('a');
+      link.download = 'image';
+      link.href = canvas.toDataURL();
+      document.body.appendChild(link);
+      link.click();
+    });
   };
 
   const handleResetStyle = () => {
@@ -58,10 +62,8 @@ const MakingPage = () => {
 
   React.useEffect(() => {
     if (colorPicker) {
-      console.log('open');
       lockScroll();
     } else {
-      console.log('close');
       openScroll();
     }
   }, [colorPicker]);
@@ -73,7 +75,7 @@ const MakingPage = () => {
         onBack={handleResetStyle}
         onSaveImage={handleSaveImage}
       >
-        <div className='mt-[64px] mb-[96px] flex items-center justify-center'>
+        <div className='mt-[-1200px]' style={{ scale: scale }}>
           <div ref={ref}>
             <Form />
           </div>

@@ -10,7 +10,7 @@ const Layout: React.FC<LAYOUT> = (props) => {
         onBack={props.onBack}
         onSaveImage={props.onSaveImage}
       />
-      <main className='w-screen h-screen overflow-scroll scrollbar-hide'>
+      <main className='flex items-center justify-center w-full h-full overflow-scroll scrollbar-hide'>
         {props.children}
       </main>
     </>
