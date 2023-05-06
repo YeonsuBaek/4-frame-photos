@@ -13,10 +13,8 @@ const MakingPage = () => {
   const { setCurrent, setDef } = useStore((state) => state);
 
   const handleSaveImage = () => {
-    const div: any = document.getElementById('photoWrapper');
     const canvasDiv: any = document.getElementById('canvas');
     const ref: any = document.getElementById('photo');
-    div.style = { scale: '100%' };
     canvasDiv.appendChild(ref);
     console.log(canvasDiv);
     html2canvas(canvasDiv, {
