@@ -14,19 +14,19 @@ const MakingPage = () => {
 
   const handleSaveImage = () => {
     const div: any = document.getElementById('photoWrapper');
+    const canvasDiv: any = document.getElementById('canvas');
+    const ref: any = document.getElementById('photo');
     div.style = { scale: '100%' };
-    setTimeout(() => {
-      const ref: any = document.getElementById('photo');
-      html2canvas(ref, {
-        allowTaint: true,
-        useCORS: true,
-      }).then((canvas: HTMLCanvasElement) => {
-        let el = document.createElement('a');
-        el.href = canvas.toDataURL('image/jpeg');
-        el.download = 'photo.jpg';
-        el.click();
-      });
-    }, 1000);
+    canvasDiv.appendChild(ref);
+    html2canvas(canvasDiv, {
+      allowTaint: true,
+      useCORS: true,
+    }).then((canvas: HTMLCanvasElement) => {
+      let el = document.createElement('a');
+      el.href = canvas.toDataURL('image/jpeg');
+      el.download = 'photo.jpg';
+      el.click();
+    });
   };
 
   const handleResetStyle = () => {
@@ -86,6 +86,7 @@ const MakingPage = () => {
             <Form />
           </div>
         </div>
+        <div id='canvas'></div>
       </Layout>
       <Optionbar />
     </>
