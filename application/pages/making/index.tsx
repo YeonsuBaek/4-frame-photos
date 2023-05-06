@@ -14,11 +14,9 @@ const MakingPage = () => {
 
   const handleSaveImage = () => {
     const ref: any = document.getElementById('photo');
-    let canvasDiv: any = document.createElement('div');
-    document.body.appendChild(canvasDiv);
-    canvasDiv.appendChild(ref);
+    document.body.appendChild(ref);
 
-    html2canvas(canvasDiv, {
+    html2canvas(ref, {
       allowTaint: true,
       useCORS: true,
     }).then((canvas: HTMLCanvasElement) => {
@@ -26,8 +24,8 @@ const MakingPage = () => {
       el.href = canvas.toDataURL('image/jpeg');
       el.download = 'photo.jpg';
       el.click();
-      document.body.removeChild(canvasDiv);
     });
+    document.body.removeChild(ref);
   };
 
   const handleResetStyle = () => {
@@ -83,7 +81,7 @@ const MakingPage = () => {
           className='mt-[-1200px]'
           style={{ scale: '30%' }}
         >
-          <div id='photo'>
+          <div id='photo' className='w-[1200px]'>
             <Form />
           </div>
         </div>
