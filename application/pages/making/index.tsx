@@ -24,9 +24,8 @@ const MakingPage = () => {
       useCORS: true,
     }).then((canvas) => {
       const link = document.createElement('a');
-      link.download = 'image';
-      document.body.appendChild(link);
-      link.href = canvas.toDataURL('image/png');
+      link.download = '네컷사진';
+      link.href = canvas.toDataURL('image/jpeg');
       link.click();
     });
   };
