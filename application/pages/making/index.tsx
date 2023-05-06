@@ -14,9 +14,12 @@ const MakingPage = () => {
 
   const handleSaveImage = () => {
     const ref: any = document.getElementById('photo');
-    document.body.appendChild(ref);
+    let canvasDiv: any = document.createElement('div');
+    document.body.appendChild(canvasDiv);
+    canvasDiv.style.width = '1200px';
+    canvasDiv.appendChild(ref);
 
-    html2canvas(ref, {
+    html2canvas(canvasDiv, {
       allowTaint: true,
       useCORS: true,
     }).then((canvas: HTMLCanvasElement) => {
@@ -25,7 +28,6 @@ const MakingPage = () => {
       el.download = 'photo.jpg';
       el.click();
     });
-    document.body.removeChild(ref);
   };
 
   const handleResetStyle = () => {
