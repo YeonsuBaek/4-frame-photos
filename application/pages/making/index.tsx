@@ -14,13 +14,14 @@ const MakingPage = () => {
 
   const { setCurrent, setDef } = useStore((state) => state);
 
-  const handleSaveImage = async () => {
+  const handleSaveImage = async (): Promise<void> => {
+    const ref: any = document.getElementById('photo');
     await setScale('100%');
-    await html2canvas(document.getElementById('photo'), {
+    await html2canvas(ref, {
       logging: true,
       allowTaint: true,
       useCORS: true,
-    }).then((canvas) => {
+    }).then((canvas: HTMLCanvasElement) => {
       const link = document.createElement('a');
       link.href = canvas.toDataURL('image/jpeg');
       link.download = '네컷사진.jpg';
