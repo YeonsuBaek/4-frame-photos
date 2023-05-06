@@ -13,10 +13,11 @@ const MakingPage = () => {
   const { setCurrent, setDef } = useStore((state) => state);
 
   const handleSaveImage = () => {
-    const canvasDiv: any = document.getElementById('canvas');
     const ref: any = document.getElementById('photo');
+    let canvasDiv: any = document.createElement('div');
+    document.body.appendChild(canvasDiv);
     canvasDiv.appendChild(ref);
-    console.log(canvasDiv);
+
     html2canvas(canvasDiv, {
       allowTaint: true,
       useCORS: true,
@@ -25,6 +26,7 @@ const MakingPage = () => {
       el.href = canvas.toDataURL('image/jpeg');
       el.download = 'photo.jpg';
       el.click();
+      document.body.removeChild(canvasDiv);
     });
   };
 
