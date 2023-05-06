@@ -1,5 +1,5 @@
 import Form from '@/components/Form/Form';
-import React, { useRef } from 'react';
+import React from 'react';
 import Layout from '../../components/layouts/Layout';
 import Optionbar from '../../components/layouts/Optionbar';
 import useStore from '../../stores/create';
@@ -14,11 +14,9 @@ const MakingPage = () => {
 
   const { setCurrent, setDef } = useStore((state) => state);
 
-  const ref = useRef<any>();
-
   const handleSaveImage = async () => {
     await setScale('100%');
-    await html2canvas(ref.current, {
+    await html2canvas(document.getElementById('photo'), {
       logging: true,
       allowTaint: true,
       useCORS: true,
@@ -79,7 +77,7 @@ const MakingPage = () => {
         onSaveImage={handleSaveImage}
       >
         <div className='mt-[-1200px]' style={{ scale: scale }}>
-          <div ref={ref}>
+          <div id='photo'>
             <Form />
           </div>
         </div>
