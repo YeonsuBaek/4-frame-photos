@@ -15,18 +15,23 @@ const MakingPage = () => {
   const { setCurrent, setDef } = useStore((state) => state);
 
   const handleSaveImage = () => {
-    const ref: any = document.getElementById('photo');
-
-    html2canvas(ref, {
-      allowTaint: true,
-      useCORS: true,
-    }).then((canvas: HTMLCanvasElement) => {
-      let el = document.createElement('a');
-      el.href = canvas.toDataURL('image/jpeg');
-      el.download = 'photo.jpg';
-      el.click();
-    });
+    setScale('100%');
   };
+
+  React.useEffect(() => {
+    if (scale == '100%') {
+      const ref: any = document.getElementById('photo');
+      html2canvas(ref, {
+        allowTaint: true,
+        useCORS: true,
+      }).then((canvas: HTMLCanvasElement) => {
+        let el = document.createElement('a');
+        el.href = canvas.toDataURL('image/jpeg');
+        el.download = 'photo.jpg';
+        el.click();
+      });
+    }
+  }, [scale]);
 
   const handleResetStyle = () => {
     setDef('frame', styles.frame);
