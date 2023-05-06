@@ -13,16 +13,20 @@ const MakingPage = () => {
   const { setCurrent, setDef } = useStore((state) => state);
 
   const handleSaveImage = () => {
-    const ref: any = document.getElementById('photo');
-    html2canvas(ref, {
-      allowTaint: true,
-      useCORS: true,
-    }).then((canvas: HTMLCanvasElement) => {
-      let el = document.createElement('a');
-      el.href = canvas.toDataURL('image/jpeg');
-      el.download = 'photo.jpg';
-      el.click();
-    });
+    const div: any = document.getElementById('photoWrapper');
+    div.style = { scale: '100%' };
+    setTimeout(() => {
+      const ref: any = document.getElementById('photo');
+      html2canvas(ref, {
+        allowTaint: true,
+        useCORS: true,
+      }).then((canvas: HTMLCanvasElement) => {
+        let el = document.createElement('a');
+        el.href = canvas.toDataURL('image/jpeg');
+        el.download = 'photo.jpg';
+        el.click();
+      });
+    }, 1000);
   };
 
   const handleResetStyle = () => {
