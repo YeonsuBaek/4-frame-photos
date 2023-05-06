@@ -18,11 +18,8 @@ const MakingPage = () => {
   const { setCurrent, setDef } = useStore((state) => state);
 
   const handleSaveImage = () => {
-    setModal(true);
-    setScale('100%');
-  };
-
-  const handleSaveImage2 = () => {
+    const div: any = document.getElementById('photoWrapper');
+    div.style = { scale: '100%' };
     const ref: any = document.getElementById('photo');
     html2canvas(ref, {
       allowTaint: true,
@@ -34,6 +31,8 @@ const MakingPage = () => {
       el.click();
     });
   };
+
+  const handleSaveImage2 = () => {};
 
   const handleResetStyle = () => {
     setDef('frame', styles.frame);
@@ -84,7 +83,11 @@ const MakingPage = () => {
         onBack={handleResetStyle}
         onSaveImage={handleSaveImage}
       >
-        <div className='mt-[-1200px]' style={{ scale: scale }}>
+        <div
+          id='photoWrapper'
+          className='mt-[-1200px]'
+          style={{ scale: scale }}
+        >
           <div id='photo'>
             <Form />
           </div>
