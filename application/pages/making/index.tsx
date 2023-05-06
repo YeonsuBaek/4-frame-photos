@@ -17,11 +17,11 @@ const MakingPage = () => {
   const handleSaveImage = async (): Promise<void> => {
     const ref: any = document.getElementById('photo');
     await setScale('100%');
-    await html2canvas(ref).then((canvas: HTMLCanvasElement) => {
+    html2canvas(ref).then((canvas: HTMLCanvasElement) => {
       const link = document.createElement('a');
       document.body.appendChild(link);
       link.href = canvas.toDataURL('image/png');
-      link.download = '네컷사진.png';
+      link.download = 'photo.png';
       link.click();
       document.body.removeChild(link);
     });
