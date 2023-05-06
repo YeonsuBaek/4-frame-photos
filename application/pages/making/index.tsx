@@ -15,7 +15,7 @@ const MakingPage = () => {
   const handleSaveImage = () => {
     const ref: any = document.getElementById('photo');
     let canvasDiv: any = document.createElement('div');
-
+    document.body.appendChild(canvasDiv);
     canvasDiv.appendChild(ref);
 
     html2canvas(canvasDiv, {
