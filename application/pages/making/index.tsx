@@ -5,29 +5,25 @@ import Optionbar from '../../components/layouts/Optionbar';
 import useStore from '../../stores/create';
 import styles from '../../assets/styles';
 import useColorlistStore from '../../stores/colorlist';
+import usePhotoStore from '@/stores/photos';
 import html2canvas from 'html2canvas';
+import photos from '../../assets/photos';
+import * as htmlToImage from 'html-to-image';
 
 const MakingPage = () => {
   const { colorPicker } = useColorlistStore((state) => state);
-
   const { setCurrent, setDef } = useStore((state) => state);
+  const { setPhoto1, setPhoto2, setPhoto3, setPhoto4 } = usePhotoStore(
+    (state) => state
+  );
 
-  const handleSaveImage = () => {
+  const handleSaveImage = async () => {
     const ref: any = document.getElementById('photo');
-    let canvasDiv: any = document.createElement('div');
-    document.body.appendChild(canvasDiv);
-    canvasDiv.appendChild(ref);
-
-    html2canvas(canvasDiv, {
-      allowTaint: true,
-      useCORS: true,
-    }).then((canvas: HTMLCanvasElement) => {
-      let el = document.createElement('a');
-      el.href = canvas.toDataURL('image/jpeg');
-      el.download = 'photo.jpg';
-      el.click();
-      document.body.removeChild(canvasDiv);
-    });
+    console.log(ref);
+    const link = document.createElement('a');
+    link.download = '네컷사진.png';
+    link.href = await htmlToImage.toPng(ref);
+    link.click();
   };
 
   const handleResetStyle = () => {

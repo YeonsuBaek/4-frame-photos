@@ -37,7 +37,7 @@ const Form = () => {
       fontFamily: current.textStyle,
     },
     date: {
-      [current.datePos]: 0,
+      [current.datePos]: '0',
     },
     weather: {
       img: `/assets/${weatherIcon()}.png`,
@@ -47,21 +47,24 @@ const Form = () => {
   return (
     <div
       style={styles.frame}
-      className='px-[48px] py-[48px] w-[1200px] h-[3600px] gap-[48px] flex items-start justify-start flex-col'
+      className='relative px-[48px] pt-[48px] w-[1200px] h-[3600px] gap-[48px] flex justify-start flex-col'
     >
       <ImageForm state={photo1} set={setPhoto1} />
       <ImageForm state={photo2} set={setPhoto2} />
       <ImageForm state={photo3} set={setPhoto3} />
       <ImageForm state={photo4} set={setPhoto4} />
       <div
-        className='relative flex items-center justify-center w-full h-full overflow-hidden'
+        className='absolute bottom-[48px] left-0 w-[1200px] h-[368px] overflow-hidden '
         style={styles.text}
       >
-        <span className='w-full h-full text-center whitespace-nowrap'>
+        <span className='absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] whitespace-nowrap flex items-center justify-center'>
           {current.text}
         </span>
         {(optionbar == 'date' || def.date) && (
-          <span className='absolute text-[64px]' style={styles.date}>
+          <span
+            className='absolute text-[64px] left-[50%] translate-x-[-50%]'
+            style={styles.date}
+          >
             {current.date.replaceAll('-', '.')}
           </span>
         )}
