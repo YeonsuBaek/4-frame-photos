@@ -19,7 +19,11 @@ const MakingPage = () => {
 
   const handleSaveImage = async () => {
     const ref: any = document.getElementById('photo');
-    if (navigator.userAgent.match(/iPhone|iPad/i)) {
+    if (
+      navigator.userAgent.match(/iPhone|iPad/i) ||
+      navigator.maxTouchPoints == 5
+    ) {
+      console.log('맴매');
       const link = document.createElement('a');
       link.download = '네컷사진.png';
       link.href = await htmlToImage.toPng(ref);
