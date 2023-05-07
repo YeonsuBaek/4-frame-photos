@@ -19,7 +19,7 @@ const MakingPage = () => {
 
   const handleSaveImage = async () => {
     const ref: any = document.getElementById('photo');
-    ref.style.transform = 'scale(100%)';
+    ref.style.transform = 'scale(1)';
     const canvas: any = await html2canvas(ref);
     document.body.appendChild(canvas);
 
@@ -81,7 +81,7 @@ const MakingPage = () => {
         onSaveImage={handleSaveImage}
       >
         <div className='mt-[-1200px]'>
-          <div id='photo' style={{ transform: 'scale(100%)' }}>
+          <div id='photo' style={{ transform: 'scale(0.3)' }}>
             <Form />
           </div>
         </div>
