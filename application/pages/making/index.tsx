@@ -14,8 +14,7 @@ const MakingPage = () => {
 
   const handleSaveImage = () => {
     const ref: any = document.getElementById('photo');
-    let canvasDiv: any = document.createElement('span');
-    document.body.style.width = '1200px';
+    let canvasDiv: any = document.createElement('div');
     document.body.appendChild(canvasDiv);
     canvasDiv.appendChild(ref);
 
@@ -29,7 +28,6 @@ const MakingPage = () => {
       el.click();
       document.body.removeChild(canvasDiv);
     });
-    document.body.style.width = '1200px';
   };
 
   const handleResetStyle = () => {
