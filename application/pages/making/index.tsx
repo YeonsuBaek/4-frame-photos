@@ -19,10 +19,25 @@ const MakingPage = () => {
 
   const handleSaveImage = async () => {
     const ref: any = document.getElementById('photo');
-    const link = document.createElement('a');
-    link.download = '네컷사진.png';
-    link.href = await htmlToImage.toPng(ref);
-    link.click();
+    if (navigator.userAgent.match(/iPhone|iPad/i)) {
+      const link = document.createElement('a');
+      link.download = '네컷사진.png';
+      link.href = await htmlToImage.toPng(ref);
+      link.click();
+    } else {
+      document.body.appendChild(ref);
+
+      html2canvas(ref, {
+        allowTaint: true,
+        useCORS: true,
+      }).then((canvas: HTMLCanvasElement) => {
+        let el = document.createElement('a');
+        el.href = canvas.toDataURL('image/jpeg');
+        el.download = 'photo.jpg';
+        el.click();
+        document.body.removeChild(ref);
+      });
+    }
   };
 
   const handleResetStyle = () => {
