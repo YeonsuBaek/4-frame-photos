@@ -23,11 +23,7 @@ const MakingPage = () => {
       navigator.userAgent.match(/iPhone|iPad/i) ||
       navigator.maxTouchPoints == 5
     ) {
-      console.log('맴매');
-      const link = document.createElement('a');
-      link.download = '네컷사진.png';
-      link.href = await htmlToImage.toPng(ref);
-      link.click();
+      saveImage(ref);
     } else {
       document.body.appendChild(ref);
 
@@ -42,6 +38,13 @@ const MakingPage = () => {
         document.body.removeChild(ref);
       });
     }
+  };
+
+  const saveImage = async (ref: any) => {
+    const link = document.createElement('a');
+    link.download = '네컷사진.png';
+    link.href = await htmlToImage.toPng(ref);
+    link.click();
   };
 
   const handleResetStyle = () => {
