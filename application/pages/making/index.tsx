@@ -19,7 +19,6 @@ const MakingPage = () => {
 
   const handleSaveImage = async () => {
     const ref: any = document.getElementById('photo');
-    console.log(ref);
     const link = document.createElement('a');
     link.download = '네컷사진.png';
     link.href = await htmlToImage.toPng(ref);
