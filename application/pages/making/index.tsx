@@ -17,20 +17,19 @@ const MakingPage = () => {
     (state) => state
   );
 
-  const handleSaveImage = () => {
+  const handleSaveImage = async () => {
     const ref: any = document.getElementById('photo');
-    document.body.appendChild(ref);
+    ref.style.scale = '100%';
+    const canvas: any = await html2canvas(ref);
+    document.body.appendChild(canvas);
 
-    html2canvas(ref, {
-      allowTaint: true,
-      useCORS: true,
-    }).then((canvas: HTMLCanvasElement) => {
-      let el = document.createElement('a');
-      el.href = canvas.toDataURL('image/jpeg');
-      el.download = 'photo.jpg';
-      el.click();
-      document.body.removeChild(ref);
-    });
+    const image = canvas
+      .toDataURL('image/png')
+      .replace('image/png', 'image/octet-stream');
+    const a = document.createElement('a');
+    a.setAttribute('download', `info.png`);
+    a.setAttribute('href', image);
+    a.click();
   };
 
   const handleResetStyle = () => {
@@ -81,8 +80,8 @@ const MakingPage = () => {
         onBack={handleResetStyle}
         onSaveImage={handleSaveImage}
       >
-        <div className='mt-[-1200px]' style={{ scale: '30%' }}>
-          <div id='photo' className='w-[1200px]'>
+        <div className='mt-[-1200px]'>
+          <div id='photo' style={{ scale: '30%' }}>
             <Form />
           </div>
         </div>
