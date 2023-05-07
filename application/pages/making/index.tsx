@@ -20,16 +20,12 @@ const MakingPage = () => {
   const handleSaveImage = async () => {
     const ref: any = document.getElementById('photo');
     ref.style.transform = 'scale(1)';
-    const result: any = document.getElementById('result');
-    result.style.display = 'inline';
+    let canvasDiv: any = document.createElement('div');
 
     const canvas: any = await html2canvas(ref);
+    canvasDiv.appendChild(canvas);
 
-    const image = canvas
-      .toDataURL('image/png')
-      .replace('image/png', 'image/octet-stream');
-
-    result.src = image;
+    document.body.appendChild(canvasDiv);
   };
 
   const handleResetStyle = () => {
