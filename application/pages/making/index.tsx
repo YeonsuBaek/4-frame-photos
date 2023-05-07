@@ -19,21 +19,12 @@ const MakingPage = () => {
 
   const handleSaveImage = async () => {
     const ref: any = document.getElementById('photo');
-    ref.style.transform = 'none';
-    console.log('콘솔이 안찍히는 이유?');
-    const canvas: any = await html2canvas(ref);
-    document.body.appendChild(canvas);
+    let canvasDiv: any = document.createElement('div');
 
-    const image = canvas
-      .toDataURL('image/png')
-      .replace('image/png', 'image/octet-stream');
-    const a = document.createElement('a');
-    a.setAttribute('download', `info.png`);
-    a.setAttribute('href', image);
-    a.click();
-    console.log('canvas' + canvas);
-    console.log('ref' + ref);
-    console.log('image' + image);
+    const canvas: any = await html2canvas(ref);
+    canvasDiv.appendChild(canvas);
+
+    document.body.appendChild(canvasDiv);
   };
 
   const handleResetStyle = () => {
