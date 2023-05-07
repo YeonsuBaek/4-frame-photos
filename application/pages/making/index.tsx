@@ -20,6 +20,7 @@ const MakingPage = () => {
   const handleSaveImage = async () => {
     const ref: any = document.getElementById('photo');
     ref.style.transform = 'none';
+    console.log('콘솔이 안찍히는 이유?');
     const canvas: any = await html2canvas(ref);
     document.body.appendChild(canvas);
 
