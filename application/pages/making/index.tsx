@@ -17,9 +17,8 @@ const MakingPage = () => {
     (state) => state
   );
 
-  const handleSaveImage = async () => {
+  const handleSaveImage = () => {
     const ref: any = document.getElementById('photo');
-
     document.body.appendChild(ref);
 
     html2canvas(ref, {
@@ -32,13 +31,6 @@ const MakingPage = () => {
       el.click();
       document.body.removeChild(ref);
     });
-  };
-
-  const saveImage = async (ref: any) => {
-    const link = document.createElement('a');
-    link.download = '네컷사진.png';
-    link.href = await htmlToImage.toPng(ref);
-    link.click();
   };
 
   const handleResetStyle = () => {
