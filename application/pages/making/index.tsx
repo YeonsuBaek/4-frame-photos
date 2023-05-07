@@ -19,7 +19,7 @@ const MakingPage = () => {
 
   const handleSaveImage = async () => {
     const ref: any = document.getElementById('photo');
-    ref.style.transform = 'scale(1)';
+    ref.style.transform = 'none';
     const canvas: any = await html2canvas(ref);
     document.body.appendChild(canvas);
 
