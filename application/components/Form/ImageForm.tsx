@@ -36,13 +36,17 @@ const ImageForm: React.FC<{ state: string; set: (img: string) => void }> = (
         }}
         className='absolute top-0 left-0 object-cover w-full aspect-[3/2]'
       /> */}
+      <label
+        htmlFor='imageFile'
+        className='block w-full aspect-[3/2] object-cover bg-white cursor-pointer'
+        style={styles}
+      ></label>
       <input
+        id='imageFile'
         accept='image/*'
         type='file'
         onChange={handleUploadImage}
         ref={fileInput}
-        style={styles}
-        className='w-full aspect-[3/2] object-cover'
       />
     </div>
   );
