@@ -19,25 +19,19 @@ const MakingPage = () => {
 
   const handleSaveImage = async () => {
     const ref: any = document.getElementById('photo');
-    if (
-      navigator.userAgent.match(/iPhone|iPad/i) ||
-      navigator.maxTouchPoints == 5
-    ) {
-      saveImage(ref);
-    } else {
-      document.body.appendChild(ref);
 
-      html2canvas(ref, {
-        allowTaint: true,
-        useCORS: true,
-      }).then((canvas: HTMLCanvasElement) => {
-        let el = document.createElement('a');
-        el.href = canvas.toDataURL('image/jpeg');
-        el.download = 'photo.jpg';
-        el.click();
-        document.body.removeChild(ref);
-      });
-    }
+    document.body.appendChild(ref);
+
+    html2canvas(ref, {
+      allowTaint: true,
+      useCORS: true,
+    }).then((canvas: HTMLCanvasElement) => {
+      let el = document.createElement('a');
+      el.href = canvas.toDataURL('image/jpeg');
+      el.download = 'photo.jpg';
+      el.click();
+      document.body.removeChild(ref);
+    });
   };
 
   const saveImage = async (ref: any) => {
