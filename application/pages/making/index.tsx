@@ -30,6 +30,9 @@ const MakingPage = () => {
     a.setAttribute('download', `info.png`);
     a.setAttribute('href', image);
     a.click();
+    console.log('canvas' + canvas);
+    console.log('ref' + ref);
+    console.log('image' + image);
   };
 
   const handleResetStyle = () => {
