@@ -19,12 +19,17 @@ const MakingPage = () => {
 
   const handleSaveImage = async () => {
     const ref: any = document.getElementById('photo');
-    let canvasDiv: any = document.createElement('div');
+    ref.style.transform = 'scale(1)';
+    const result: any = document.getElementById('result');
+    result.style.display = 'inline';
 
     const canvas: any = await html2canvas(ref);
-    canvasDiv.appendChild(canvas);
 
-    document.body.appendChild(canvasDiv);
+    const image = canvas
+      .toDataURL('image/png')
+      .replace('image/png', 'image/octet-stream');
+
+    result.src = image;
   };
 
   const handleResetStyle = () => {
@@ -81,6 +86,12 @@ const MakingPage = () => {
           </div>
         </div>
       </Layout>
+      <img
+        src=''
+        alt='네컷사진 완성본'
+        id='result'
+        style={{ display: 'none' }}
+      />
       <Optionbar />
     </>
   );
