@@ -6,32 +6,12 @@ import useStore from '../../stores/create';
 import styles from '../../assets/styles';
 import useColorlistStore from '../../stores/colorlist';
 import usePhotoStore from '@/stores/photos';
-import html2canvas from 'html2canvas';
 import photos from '../../assets/photos';
-import * as htmlToImage from 'html-to-image';
 
 const MakingPage = () => {
   const { colorPicker } = useColorlistStore((state) => state);
   const { setCurrent, setDef } = useStore((state) => state);
   const { scale, setScale } = usePhotoStore((state) => state);
-  const [saveButton, setSaveButton] = React.useState(false);
-
-  const handleSaveImage = () => {
-    setSaveButton(true);
-  };
-
-  const saveImage = () => {
-    const ref: any = document.getElementById('photo');
-    html2canvas(ref, { allowTaint: true }).then((canvas) => {
-      let base64image = canvas
-        .toDataURL('image/png')
-        .replace('image/png', 'image/octet-stream');
-      const a = document.createElement('a');
-      a.setAttribute('download', `info.png`);
-      a.setAttribute('href', base64image);
-      a.click();
-    });
-  };
 
   const handleResetStyle = () => {
     setDef('frame', styles.frame);
@@ -80,23 +60,11 @@ const MakingPage = () => {
 
   return (
     <>
-      <Layout
-        title='네컷사진 만들기'
-        onBack={handleResetStyle}
-        onSaveImage={handleSaveImage}
-      >
+      <Layout title='네컷사진 만들기' onBack={handleResetStyle}>
         <div className='mt-[-1200px]' style={photo}>
           <div id='photo'>
             <Form />
           </div>
-          {saveButton && (
-            <button
-              className='absolute top-0 left-0 z-50 bg-white'
-              onClick={saveImage}
-            >
-              저장하기
-            </button>
-          )}
         </div>
       </Layout>
       <Optionbar />

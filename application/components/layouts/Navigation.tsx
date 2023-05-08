@@ -17,16 +17,16 @@ const Navigation: React.FC<NAVIGATION> = (props) => {
         />
       </Link>
       <h2 className='text-[#fff] text-lg'>{props.title}</h2>
-      <button
+      <Link
         className='w-[50px] h-[50px] flex items-center justify-center'
-        onClick={props.onSaveImage}
+        href='/result'
       >
         <img
           src='/assets/download.png'
           alt='저장하기'
           className='w-[24px] h-[24px]'
         />
-      </button>
+      </Link>
     </div>
   );
 };

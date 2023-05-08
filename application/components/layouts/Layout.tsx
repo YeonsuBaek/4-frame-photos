@@ -5,11 +5,7 @@ import Navigation from './Navigation';
 const Layout: React.FC<LAYOUT> = (props) => {
   return (
     <>
-      <Navigation
-        title={props.title}
-        onBack={props.onBack}
-        onSaveImage={props.onSaveImage}
-      />
+      <Navigation title={props.title} onBack={props.onBack} />
       <main className='flex items-center justify-center w-full h-full overflow-scroll scrollbar-hide'>
         {props.children}
       </main>
