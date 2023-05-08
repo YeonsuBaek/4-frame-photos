@@ -23,7 +23,7 @@ const MakingPage = () => {
     const canvas: any = await html2canvas(ref);
 
     const dataUrl = canvas.toDataURL('jpeg');
-    const win = window.open(dataUrl, '_blank');
+    const win = window.open('', '_blank');
     win?.document.write(`<img src=${dataUrl} alt='결과물' />`);
     ref.style.transform = 'scale(0.3)';
   };
