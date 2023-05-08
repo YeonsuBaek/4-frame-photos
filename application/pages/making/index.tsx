@@ -19,9 +19,6 @@ const MakingPage = () => {
 
   const handleSaveImage = () => {
     const ref: any = document.getElementById('photo');
-    const transform: any = ref.style.transform;
-    ref.style.setProperty('transform', 'none');
-
     html2canvas(ref).then((canvas) => {
       let base64image = canvas
         .toDataURL('image/png')
@@ -31,7 +28,6 @@ const MakingPage = () => {
       a.setAttribute('download', `info.png`);
       a.setAttribute('href', base64image);
       a.click();
-      ref.style.transform = transform;
     });
   };
 
