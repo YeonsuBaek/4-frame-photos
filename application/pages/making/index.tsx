@@ -20,12 +20,12 @@ const MakingPage = () => {
   const handleSaveImage = async () => {
     const ref: any = document.getElementById('photo');
     ref.style.transform = 'scale(1)';
-    let canvasDiv: any = document.createElement('div');
-
     const canvas: any = await html2canvas(ref);
-    canvasDiv.appendChild(canvas);
 
-    document.body.appendChild(canvasDiv);
+    const dataUrl = canvas.toDataURL('jpeg');
+    const win = window.open(dataUrl, '_blank');
+    win.document.write(`<img src=${dataUrl} alt='결과물' />`);
+    ref.style.transform = 'scale(0.3)';
   };
 
   const handleResetStyle = () => {
