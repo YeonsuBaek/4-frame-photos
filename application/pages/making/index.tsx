@@ -17,7 +17,6 @@ const MakingPage = () => {
   const [saveButton, setSaveButton] = React.useState(false);
 
   const handleSaveImage = () => {
-    setScale('');
     setSaveButton(true);
   };
 
