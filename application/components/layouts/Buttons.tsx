@@ -1,3 +1,4 @@
+import usePhotoStore from '@/stores/photos';
 import React from 'react';
 import Button from '../UI/Button';
 

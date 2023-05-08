@@ -13,16 +13,17 @@ import * as htmlToImage from 'html-to-image';
 const MakingPage = () => {
   const { colorPicker } = useColorlistStore((state) => state);
   const { setCurrent, setDef } = useStore((state) => state);
-  const { setPhoto1, setPhoto2, setPhoto3, setPhoto4 } = usePhotoStore(
-    (state) => state
-  );
+  const { scale, setScale } = usePhotoStore((state) => state);
+  const [saveButton, setSaveButton] = React.useState(false);
 
   const handleSaveImage = () => {
-    const ref: any = document.getElementById('photo');
-    const transform: any = ref.style.transform;
+    setScale('scale(1)');
+    setSaveButton(true);
+  };
 
-    html2canvas(ref).then((canvas) => {
-      ref.style.setProperty('transform', 'none');
+  const saveImage = () => {
+    const ref: any = document.getElementById('photo');
+    html2canvas(ref, { allowTaint: true }).then((canvas) => {
       let base64image = canvas
         .toDataURL('image/png')
         .replace('image/png', 'image/octet-stream');
@@ -31,7 +32,6 @@ const MakingPage = () => {
       a.setAttribute('download', `info.png`);
       a.setAttribute('href', base64image);
       a.click();
-      ref.style.transform = transform;
     });
   };
 
@@ -76,6 +76,10 @@ const MakingPage = () => {
     }
   }, [colorPicker]);
 
+  const photo = {
+    transform: scale,
+  };
+
   return (
     <>
       <Layout
@@ -84,17 +88,19 @@ const MakingPage = () => {
         onSaveImage={handleSaveImage}
       >
         <div className='mt-[-1200px]'>
-          <div id='photo' style={{ transform: 'scale(0.3)' }}>
+          <div id='photo' style={photo}>
             <Form />
           </div>
+          {saveButton && (
+            <button
+              className='absolute top-0 left-0 z-50 bg-white'
+              onClick={saveImage}
+            >
+              저장하기
+            </button>
+          )}
         </div>
       </Layout>
-      <img
-        src=''
-        alt='네컷사진 완성본'
-        id='result'
-        style={{ display: 'none' }}
-      />
       <Optionbar />
     </>
   );

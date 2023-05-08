@@ -37,14 +37,14 @@ const Form = () => {
   return (
     <div
       style={styles.frame}
-      className='relative px-[48px] pt-[48px] w-[1200px] h-[3600px] gap-[48px] flex justify-start flex-col'
+      className='relative px-[60px] pt-[60px] w-[1500px] h-[4500px] gap-[60px] flex justify-start flex-col'
     >
       <ImageForm id='photo1' />
       <ImageForm id='photo2' />
       <ImageForm id='photo3' />
       <ImageForm id='photo4' />
       <div
-        className='absolute bottom-[48px] left-0 w-[1200px] h-[368px] overflow-hidden '
+        className='absolute bottom-[60px] left-0 w-full h-[460px] overflow-hidden '
         style={styles.text}
       >
         <span className='absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] whitespace-nowrap flex items-center justify-center'>

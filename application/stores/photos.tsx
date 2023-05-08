@@ -18,7 +18,7 @@ const usePhotoStore = create<PHOTO>((set) => ({
   photo2: '/assets/default.png',
   photo3: '/assets/default.png',
   photo4: '/assets/default.png',
-  scale: '30%',
+  scale: 'scale(1)',
   setPhoto1: (img) => set({ photo1: img }),
   setPhoto2: (img) => set({ photo2: img }),
   setPhoto3: (img) => set({ photo3: img }),
