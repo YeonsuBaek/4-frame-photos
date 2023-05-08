@@ -6,12 +6,10 @@ import useStore from '../../stores/create';
 import styles from '../../assets/styles';
 import useColorlistStore from '../../stores/colorlist';
 import usePhotoStore from '@/stores/photos';
-import photos from '../../assets/photos';
 
 const MakingPage = () => {
   const { colorPicker } = useColorlistStore((state) => state);
   const { setCurrent, setDef } = useStore((state) => state);
-  const { scale, setScale } = usePhotoStore((state) => state);
 
   const handleResetStyle = () => {
     setDef('frame', styles.frame);
@@ -54,14 +52,10 @@ const MakingPage = () => {
     }
   }, [colorPicker]);
 
-  const photo = {
-    transform: scale,
-  };
-
   return (
     <>
       <Layout title='네컷사진 만들기' onBack={handleResetStyle}>
-        <div className='mt-[-1200px]' style={photo}>
+        <div className='mt-[-1200px]' style={{ transform: 'scale(0.2)' }}>
           <div>
             <Form />
           </div>
