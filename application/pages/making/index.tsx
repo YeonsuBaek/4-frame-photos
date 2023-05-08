@@ -24,7 +24,7 @@ const MakingPage = () => {
 
     const dataUrl = canvas.toDataURL('jpeg');
     const win = window.open(dataUrl, '_blank');
-    win.document.write(`<img src=${dataUrl} alt='결과물' />`);
+    win?.document.write(`<img src=${dataUrl} alt='결과물' />`);
     ref.style.transform = 'scale(0.3)';
   };
 
