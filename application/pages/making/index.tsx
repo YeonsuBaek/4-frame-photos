@@ -17,7 +17,7 @@ const MakingPage = () => {
   const [saveButton, setSaveButton] = React.useState(false);
 
   const handleSaveImage = () => {
-    setScale('scale(1)');
+    setScale('');
     setSaveButton(true);
   };
 
@@ -27,7 +27,6 @@ const MakingPage = () => {
       let base64image = canvas
         .toDataURL('image/png')
         .replace('image/png', 'image/octet-stream');
-      console.log(base64image);
       const a = document.createElement('a');
       a.setAttribute('download', `info.png`);
       a.setAttribute('href', base64image);
@@ -87,8 +86,8 @@ const MakingPage = () => {
         onBack={handleResetStyle}
         onSaveImage={handleSaveImage}
       >
-        <div className='mt-[-1200px]'>
-          <div id='photo' style={photo}>
+        <div className='mt-[-1200px]' style={photo}>
+          <div id='photo'>
             <Form />
           </div>
           {saveButton && (
