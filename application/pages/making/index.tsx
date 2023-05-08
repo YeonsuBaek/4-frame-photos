@@ -17,15 +17,22 @@ const MakingPage = () => {
     (state) => state
   );
 
-  const handleSaveImage = async () => {
+  const handleSaveImage = () => {
     const ref: any = document.getElementById('photo');
-    ref.style.transform = 'scale(1)';
-    const canvas: any = await html2canvas(ref);
+    const transform: any = ref.style.transform;
+    ref.style.setProperty('transform', 'none');
 
-    const dataUrl = canvas.toDataURL('jpeg');
-    const win = window.open('', '_blank');
-    win?.document.write(`<img src=${dataUrl} alt='결과물' />`);
-    ref.style.transform = 'scale(0.3)';
+    html2canvas(ref).then((canvas) => {
+      let base64image = canvas
+        .toDataURL('image/png')
+        .replace('image/png', 'image/octet-stream');
+      console.log(base64image);
+      const a = document.createElement('a');
+      a.setAttribute('download', `info.png`);
+      a.setAttribute('href', base64image);
+      a.click();
+      ref.style.transform = transform;
+    });
   };
 
   const handleResetStyle = () => {
