@@ -6,7 +6,7 @@ import html2canvas from 'html2canvas';
 const resultPage = () => {
   const saveImage = () => {
     const ref: any = document.getElementById('photo');
-    html2canvas(ref, { allowTaint: true }).then((canvas) => {
+    html2canvas(ref).then((canvas) => {
       let base64image = canvas
         .toDataURL('image/png')
         .replace('image/png', 'image/octet-stream');
@@ -22,13 +22,9 @@ const resultPage = () => {
       <div id='photo'>
         <Form />
       </div>
-      <Link
-        className='absolute top-0 left-0 bg-white'
-        onClick={saveImage}
-        href='/'
-      >
+      <button className='absolute top-0 left-0 bg-white' onClick={saveImage}>
         저장하기
-      </Link>
+      </button>
     </div>
   );
 };
