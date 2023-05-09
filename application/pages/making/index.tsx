@@ -5,11 +5,22 @@ import Optionbar from '../../components/layouts/Optionbar';
 import useStore from '../../stores/create';
 import styles from '../../assets/styles';
 import useColorlistStore from '../../stores/colorlist';
-import usePhotoStore from '@/stores/photos';
+import domtoimage from 'dom-to-image';
+import { saveAs } from 'file-saver';
 
 const MakingPage = () => {
   const { colorPicker } = useColorlistStore((state) => state);
   const { setCurrent, setDef } = useStore((state) => state);
+
+  const ref = React.createRef<any>();
+  const handleSaveImage = () => {
+    domtoimage.toBlob(ref.current).then((blob) => {
+      const saveConfirm = window.confirm('이미지를 저장하시겠습니까?');
+      if (saveConfirm === true) {
+        saveAs(blob, 'download.png');
+      }
+    });
+  };
 
   const handleResetStyle = () => {
     setDef('frame', styles.frame);
@@ -54,9 +65,13 @@ const MakingPage = () => {
 
   return (
     <>
-      <Layout title='네컷사진 만들기' onBack={handleResetStyle}>
+      <Layout
+        title='네컷사진 만들기'
+        onBack={handleResetStyle}
+        onSave={handleSaveImage}
+      >
         <div className='my-[-1700px] scale-[0.2]'>
-          <div>
+          <div ref={ref}>
             <Form />
           </div>
         </div>

@@ -28,13 +28,6 @@ const ImageForm: React.FC<{ id: string }> = (props) => {
 
   return (
     <div className='relative w-full'>
-      {/* <img
-        src={uploadedImage}
-        onClick={() => {
-          fileInput.current.click();
-        }}
-        className='absolute top-0 left-0 object-cover w-full aspect-[3/2]'
-      /> */}
       <label
         htmlFor={props.id}
         className='block w-full aspect-[3/2] object-cover bg-white cursor-pointer'

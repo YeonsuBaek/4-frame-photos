@@ -1,7 +1,6 @@
 import useOptionbarStore from '@/stores/optionbar';
 import React from 'react';
 import useStore from '@/stores/create';
-import usePhotoStrore from '@/stores/photos';
 import ImageForm from './ImageForm';
 
 const Form = () => {
