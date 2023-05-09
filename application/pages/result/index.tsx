@@ -16,7 +16,7 @@ const resultPage = () => {
 
   return (
     <div>
-      <div id='photo' ref={ref}>
+      <div id='photo'>
         <Form />
       </div>
       <button className='bg-white' onClick={saveImage}>
