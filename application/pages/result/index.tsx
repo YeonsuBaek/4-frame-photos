@@ -7,7 +7,6 @@ const resultPage = () => {
   const saveImage = () => {
     const ref: any = document.getElementById('photo');
     html2canvas(ref, {
-      allowTaint: true,
       useCORS: true,
       width: 1500,
       height: 4500,
@@ -23,7 +22,7 @@ const resultPage = () => {
   };
 
   return (
-    <div className='relative'>
+    <div>
       <div id='photo'>
         <Form />
       </div>
