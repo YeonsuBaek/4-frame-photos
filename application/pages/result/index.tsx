@@ -22,7 +22,7 @@ const resultPage = () => {
       <div id='photo'>
         <Form />
       </div>
-      <button className='absolute top-0 left-0 bg-white' onClick={saveImage}>
+      <button className='bg-white' onClick={saveImage}>
         저장하기
       </button>
     </div>

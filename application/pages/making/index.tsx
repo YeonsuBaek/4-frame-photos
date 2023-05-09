@@ -55,7 +55,7 @@ const MakingPage = () => {
   return (
     <>
       <Layout title='네컷사진 만들기' onBack={handleResetStyle}>
-        <div className='mt-[-1200px]'>
+        <div className='mt-[-1200px] scale-[0.2]'>
           <div>
             <Form />
           </div>
