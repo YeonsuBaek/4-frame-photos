@@ -4,9 +4,9 @@ import domtoimage from 'dom-to-image';
 import { saveAs } from 'file-saver';
 
 const resultPage = () => {
-  const ref: any = useRef<any>();
   const saveImage = () => {
-    domtoimage.toBlob(ref.current).then((blob) => {
+    const canvas: any = document.getElementById('photo');
+    domtoimage.toBlob(canvas).then((blob) => {
       const saveConfirm = window.confirm('이미지를 저장하시겠습니까?');
       if (saveConfirm === true) {
         saveAs(blob, 'download.png');
