@@ -4,9 +4,9 @@ import domtoimage from 'dom-to-image';
 import { saveAs } from 'file-saver';
 
 const resultPage = () => {
+  const ref = React.createRef<any>();
   const saveImage = () => {
-    const canvas: any = document.getElementById('photo');
-    domtoimage.toBlob(canvas).then((blob) => {
+    domtoimage.toBlob(ref.current).then((blob) => {
       const saveConfirm = window.confirm('이미지를 저장하시겠습니까?');
       if (saveConfirm === true) {
         saveAs(blob, 'download.png');
@@ -15,13 +15,15 @@ const resultPage = () => {
   };
 
   return (
-    <div>
-      <div id='photo'>
+    <div className='relative'>
+      <div className='absolute top-0 left-0 z-50 w-screen h-screen bg-white'>
+        <button className='bg-red-400' onClick={saveImage}>
+          저장하기
+        </button>
+      </div>
+      <div ref={ref}>
         <Form />
       </div>
-      <button className='bg-white' onClick={saveImage}>
-        저장하기
-      </button>
     </div>
   );
 };
