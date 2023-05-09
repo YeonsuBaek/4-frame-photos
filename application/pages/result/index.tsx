@@ -6,11 +6,7 @@ import html2canvas from 'html2canvas';
 const resultPage = () => {
   const saveImage = () => {
     const ref: any = document.getElementById('photo');
-    html2canvas(ref, {
-      useCORS: true,
-      width: 1500,
-      height: 4500,
-    }).then((canvas) => {
+    html2canvas(ref).then((canvas) => {
       let base64image = canvas
         .toDataURL('image/png')
         .replace('image/png', 'image/octet-stream');
