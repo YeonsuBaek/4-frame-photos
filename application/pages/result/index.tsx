@@ -7,6 +7,8 @@ const resultPage = () => {
   const saveImage = () => {
     const ref: any = document.getElementById('photo');
     html2canvas(ref, {
+      allowTaint: true,
+      useCORS: true,
       width: 1500,
       height: 4500,
     }).then((canvas) => {
@@ -21,8 +23,8 @@ const resultPage = () => {
   };
 
   return (
-    <div className='relative overflow-hidden'>
-      <div id='photo' className='overflow-x-auto overflow-y-auto w-[1500px]'>
+    <div className='relative'>
+      <div id='photo'>
         <Form />
       </div>
       <button className='bg-white' onClick={saveImage}>
