@@ -1,28 +1,22 @@
 import Form from '@/components/Form/Form';
-import Link from 'next/link';
-import React from 'react';
-import html2canvas from 'html2canvas';
+import React, { useRef } from 'react';
+import domtoimage from 'dom-to-image';
+import { saveAs } from 'file-saver';
 
 const resultPage = () => {
+  const ref: any = useRef<any>();
   const saveImage = () => {
-    const ref: any = document.getElementById('photo');
-    html2canvas(ref, {
-      width: 1500,
-      height: 4500,
-    }).then((canvas) => {
-      let base64image = canvas
-        .toDataURL('image/png')
-        .replace('image/png', 'image/octet-stream');
-      const a = document.createElement('a');
-      a.setAttribute('download', `info.png`);
-      a.setAttribute('href', base64image);
-      a.click();
+    domtoimage.toBlob(ref.current).then((blob) => {
+      const saveConfirm = window.confirm('이미지를 저장하시겠습니까?');
+      if (saveConfirm === true) {
+        saveAs(blob, 'download.png');
+      }
     });
   };
 
   return (
     <div>
-      <div id='photo'>
+      <div id='photo' ref={ref}>
         <Form />
       </div>
       <button className='bg-white' onClick={saveImage}>
