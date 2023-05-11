@@ -17,7 +17,9 @@ const MakingPage = () => {
     await domtoimage.toBlob(ref.current).then((blob) => {
       const saveConfirm = window.confirm('이미지를 저장하시겠습니까?');
       if (saveConfirm === true) {
-        saveAs(blob, 'download.png');
+        setTimeout(() => {
+          saveAs(blob, 'download.png');
+        }, 10000);
       }
     });
   };
