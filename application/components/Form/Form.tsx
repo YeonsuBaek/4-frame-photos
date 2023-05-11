@@ -38,10 +38,10 @@ const Form = () => {
       style={styles.frame}
       className='relative px-[60px] pt-[60px] w-[1500px] h-[4500px] gap-[60px] flex justify-start flex-col'
     >
-      <ImageForm id='photo1' />
-      <ImageForm id='photo2' />
-      <ImageForm id='photo3' />
-      <ImageForm id='photo4' />
+      <ImageForm />
+      <ImageForm />
+      <ImageForm />
+      <ImageForm />
       <div
         className='absolute bottom-[60px] left-0 w-full h-[460px] overflow-hidden '
         style={styles.text}
