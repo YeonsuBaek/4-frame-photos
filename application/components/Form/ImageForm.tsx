@@ -1,21 +1,53 @@
 import React, { useRef, useState } from 'react';
+import heic2any from 'heic2any';
 
-const ImageForm: React.FC<{ id: string }> = (props) => {
+const ImageForm = () => {
   const [image, setImage] = useState('/assets/default.png');
   const fileInput = useRef<any>(null);
 
-  const handleUploadImage = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const target = e.currentTarget;
-    const file = (target.files as FileList)[0];
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
+  const handleUploadImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
 
-    return new Promise<void>((resolve) => {
-      reader.onload = () => {
-        const result = reader.result as string;
-        setImage(result);
-        resolve();
+    if (file && file.type.startsWith('image/')) {
+      const blob = await readFileAsBlob(file);
+      const pngBlob = await convertBlobToPng(blob);
+      const convertedUrl = URL.createObjectURL(pngBlob);
+
+      setImage(convertedUrl);
+    }
+  };
+
+  const readFileAsBlob = (file: File): Promise<Blob> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+
+      reader.onload = (e: ProgressEvent<FileReader>) => {
+        const blob = new Blob([e.target?.result as ArrayBuffer], {
+          type: file.type,
+        });
+        resolve(blob);
       };
+
+      reader.onerror = () => {
+        reject(new Error('Failed to read the file.'));
+      };
+
+      reader.readAsArrayBuffer(file);
+    });
+  };
+
+  const convertBlobToPng = (blob: Blob): Promise<Blob> => {
+    return new Promise((resolve, reject) => {
+      heic2any({
+        blob: blob,
+        toType: 'image/png',
+      })
+        .then((convertedBlob: any) => {
+          resolve(convertedBlob);
+        })
+        .catch(() => {
+          reject(new Error('Failed to convert the image.'));
+        });
     });
   };
 
@@ -29,7 +61,6 @@ const ImageForm: React.FC<{ id: string }> = (props) => {
         className='absolute top-0 left-0 object-cover w-full aspect-[3/2]'
       />
       <input
-        accept='image/*'
         type='file'
         onChange={handleUploadImage}
         ref={fileInput}
