@@ -19,26 +19,21 @@ const ImageForm: React.FC<{ id: string }> = (props) => {
     });
   };
 
-  const styles = {
-    backgroundImage: `url(${image})`,
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: '50% 50%',
-  };
-
   return (
-    <div className='relative w-full'>
-      <label
-        htmlFor={props.id}
-        className='block w-full aspect-[3/2] object-cover bg-white cursor-pointer'
-        style={styles}
-      ></label>
+    <div className='relative w-full aspect-[3/2]'>
+      <img
+        src={image}
+        onClick={() => {
+          fileInput.current.click();
+        }}
+        className='absolute top-0 left-0 object-cover w-full aspect-[3/2]'
+      />
       <input
-        id={props.id}
         accept='image/*'
         type='file'
         onChange={handleUploadImage}
         ref={fileInput}
+        className='block w-full aspect-[3/2] object-cover bg-white cursor-pointer'
       />
     </div>
   );
