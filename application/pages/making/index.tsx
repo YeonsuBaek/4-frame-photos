@@ -13,8 +13,8 @@ const MakingPage = () => {
   const { setCurrent, setDef } = useStore((state) => state);
 
   const ref = React.createRef<any>();
-  const handleSaveImage = () => {
-    domtoimage.toBlob(ref.current).then((blob) => {
+  const handleSaveImage = async () => {
+    await domtoimage.toBlob(ref.current).then((blob) => {
       const saveConfirm = window.confirm('이미지를 저장하시겠습니까?');
       if (saveConfirm === true) {
         saveAs(blob, 'download.png');
