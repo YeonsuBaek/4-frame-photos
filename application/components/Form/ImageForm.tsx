@@ -9,30 +9,39 @@ const ImageForm = () => {
     const reader = new FileReader();
     let file = fileInput.current.files[0];
 
-    if (file.name.split('.')[1] === 'heic') {
-      let blob = fileInput.current.files[0];
-      heic2any({ blob: blob, toType: 'image/jpeg' })
-        .then((resultBlob: any) => {
-          file = new File([resultBlob], file.name.split('.')[0] + '.jpg', {
-            type: 'image/jpeg',
-            lastModified: new Date().getTime(),
+    if (file) {
+      if (file.name.split('.')[1] === 'heic') {
+        try {
+          const heic2any = await import('heic2any');
+          const blob = fileInput.current.files[0];
+          const resultBlob: any = await heic2any.default({
+            blob,
+            toType: 'image/jpeg',
           });
-          reader.readAsDataURL(file);
-        })
-        .catch((error) => {
+          const convertedFile = new File(
+            [resultBlob],
+            file.name.split('.')[0] + '.jpg',
+            {
+              type: 'image/jpeg',
+              lastModified: new Date().getTime(),
+            }
+          );
+          reader.readAsDataURL(convertedFile);
+        } catch (error) {
           console.error(error);
-        });
-    } else {
-      reader.readAsDataURL(file);
-    }
+        }
+      } else {
+        reader.readAsDataURL(file);
+      }
 
-    return new Promise<void>((resolve) => {
-      reader.onload = () => {
-        const result = reader.result as string;
-        setImage(result);
-        resolve();
-      };
-    });
+      return new Promise<void>((resolve) => {
+        reader.onload = () => {
+          const result = reader.result as string;
+          setImage(result);
+          resolve();
+        };
+      });
+    }
   };
 
   return (
