@@ -2,16 +2,12 @@ import LAYOUT from '@/models/layout';
 import React from 'react';
 import Navigation from './Navigation';
 
-const Layout: React.FC<LAYOUT> = (props) => {
+const Layout = ({ title, onBack, onSave, children }: LAYOUT) => {
   return (
     <>
-      <Navigation
-        title={props.title}
-        onBack={props.onBack}
-        onSave={props.onSave}
-      />
+      <Navigation title={title} onBack={onBack} onSave={onSave} />
       <main className='flex items-center justify-center w-screen h-full scrollbar-hide'>
-        {props.children}
+        {children}
       </main>
     </>
   );

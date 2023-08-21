@@ -3,13 +3,18 @@ import React from 'react';
 import { ChromePicker } from 'react-color';
 import useColorlistStore from '../../stores/colorlist';
 
-const ColorList: React.FC<COLOR_LIST> = (props) => {
+const ColorList = ({
+  colors,
+  onChangeColor,
+  onChangeFrame,
+  onChangeTextColor,
+}: COLOR_LIST) => {
   const { colorPicker, selectedColor, setColorPicker, setSelectedColor } =
     useColorlistStore((state) => state);
 
-  const onChangeColor = (color: { hex: string }) => {
+  const handleChangeColor = (color: { hex: string }) => {
     setSelectedColor(color.hex);
-    props.onChangeColor(color.hex);
+    onChangeColor(color.hex);
   };
 
   return (
@@ -27,14 +32,14 @@ const ColorList: React.FC<COLOR_LIST> = (props) => {
         </button>
         {colorPicker && (
           <div style={{ position: 'fixed', left: '20px', bottom: '100px' }}>
-            <ChromePicker color={selectedColor} onChange={onChangeColor} />
+            <ChromePicker color={selectedColor} onChange={handleChangeColor} />
           </div>
         )}
       </li>
-      {props.colors.map((color) => {
+      {colors.map((color) => {
         const handleClick = (color: string) => {
-          props.onChangeFrame(color);
-          props.onChangeTextColor(color);
+          onChangeFrame(color);
+          onChangeTextColor(color);
         };
 
         return (

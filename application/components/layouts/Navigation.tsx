@@ -2,13 +2,13 @@ import Link from 'next/link';
 import React from 'react';
 import NAVIGATION from '@/models/navigation';
 
-const Navigation: React.FC<NAVIGATION> = (props) => {
+const Navigation = ({ title, onSave, onBack }: NAVIGATION) => {
   return (
     <div className='fixed top-0 left-0 w-full h-[50px] flex items-center justify-between bg-black z-30'>
       <Link
         href='/'
         className='w-[50px] h-[50px] flex items-center justify-center'
-        onClick={() => props.onBack()}
+        onClick={() => onBack()}
       >
         <img
           src='/assets/chevron.png'
@@ -16,10 +16,10 @@ const Navigation: React.FC<NAVIGATION> = (props) => {
           className='rotate-90 w-[24px] h-[24px]'
         />
       </Link>
-      <h2 className='text-[#fff] text-lg'>{props.title}</h2>
+      <h2 className='text-[#fff] text-lg'>{title}</h2>
       <button
         className='w-[50px] h-[50px] flex items-center justify-center'
-        onClick={props.onSave}
+        onClick={onSave}
       >
         <img
           src='/assets/download.png'

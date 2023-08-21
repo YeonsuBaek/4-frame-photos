@@ -1,6 +1,8 @@
 type OPTION = {
-  name: string;
-  type: string;
+  option: {
+    name: string;
+    type: string;
+  };
 };
 
 export default OPTION;

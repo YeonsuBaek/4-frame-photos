@@ -2,28 +2,26 @@ import OPTION from '@/models/option';
 import React from 'react';
 import useOptionbarStore from '../../stores/optionbar';
 
-const OptionButton: React.FC<{
-  option: OPTION;
-}> = (props) => {
+const OptionButton = ({ option }: OPTION) => {
   const { setOptionbar } = useOptionbarStore((state) => state);
 
   return (
     <li
-      key={props.option.name}
+      key={option.name}
       className='min-w-[80px] flex items-center justify-center'
     >
       <button
         className='flex flex-col items-center justify-center'
-        onClick={() => setOptionbar(`${props.option.type}`)}
+        onClick={() => setOptionbar(`${option.type}`)}
       >
         <div className='w-[28px] h-[28px] overflow-hidden'>
           <img
-            src={`/assets/${props.option.type}.png`}
-            alt={props.option.name}
+            src={`/assets/${option.type}.png`}
+            alt={option.name}
             className='object-cover w-full h-full'
           />
         </div>
-        <span>{props.option.name}</span>
+        <span>{option.name}</span>
       </button>
     </li>
   );
