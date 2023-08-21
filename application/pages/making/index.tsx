@@ -31,7 +31,6 @@ const MakingPage = () => {
     setDef('textColor', styles.textColor);
     setDef('textStyle', styles.textStyle);
     setDef('date', styles.date);
-    setDef('weather', styles.weather);
     setDef('datePos', styles.datePos);
     setCurrent('frame', styles.frame);
     setCurrent('text', styles.text);
@@ -40,7 +39,6 @@ const MakingPage = () => {
     setCurrent('textStyle', styles.textStyle);
     setCurrent('date', styles.date);
     setCurrent('datePos', styles.datePos);
-    setCurrent('weather', styles.weather);
   };
 
   function useBodyScrollLock() {

@@ -9,7 +9,6 @@ interface STYLES {
     textStyle: string;
     date: string;
     datePos: string;
-    weather: string;
   };
   setCurrent: (type: string, selection: string) => void;
   def: {
@@ -20,7 +19,6 @@ interface STYLES {
     textStyle: string;
     date: string;
     datePos: string;
-    weather: string;
   };
   setDef: (type: string, selection: string) => void;
 }
@@ -34,7 +32,6 @@ const useStore = create<STYLES>((set) => ({
     textStyle: 'Do Hyeon',
     date: '',
     datePos: 'bottom',
-    weather: '',
   },
   setCurrent: (type, selection) =>
     set((state) => ({ current: { ...state.current, [type]: selection } })),
@@ -46,7 +43,6 @@ const useStore = create<STYLES>((set) => ({
     textStyle: 'Do Hyeon',
     date: '',
     datePos: 'bottom',
-    weather: '',
   },
   setDef: (type, selection) =>
     set((state) => ({ def: { ...state.def, [type]: selection } })),

@@ -23,9 +23,5 @@ const options: { name: string; type: string }[] = [
     name: '날짜',
     type: 'date',
   },
-  {
-    name: '날씨',
-    type: 'weather',
-  },
 ];
 export default options;

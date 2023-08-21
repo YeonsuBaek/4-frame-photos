@@ -7,15 +7,6 @@ const Form = () => {
   const { current, def } = useStore((state) => state);
   const { optionbar } = useOptionbarStore((state) => state);
 
-  const weatherIcon = () => {
-    if (current.weather.includes('비')) return 'rain';
-    if (current.weather.includes('약간')) return 'little-cloudy';
-    if (current.weather.includes('흐림')) return 'cloudy';
-    if (current.weather.includes('비')) return 'rain';
-    if (current.weather.includes('눈')) return 'snow';
-    return 'clear';
-  };
-
   const styles = {
     frame: {
       backgroundColor: current.frame,
@@ -27,9 +18,6 @@ const Form = () => {
     },
     date: {
       [current.datePos]: '0',
-    },
-    weather: {
-      img: `/assets/${weatherIcon()}.png`,
     },
   };
 
@@ -56,13 +44,6 @@ const Form = () => {
           >
             {current.date.replaceAll('-', '.')}
           </span>
-        )}
-        {(optionbar == 'weather' || def.weather) && (
-          <img
-            src={styles.weather.img}
-            alt='날씨'
-            className='absolute top-0 right-0 w-[96px] h-[96px]'
-          />
         )}
       </div>
     </div>

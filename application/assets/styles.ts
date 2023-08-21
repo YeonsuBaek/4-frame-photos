@@ -6,7 +6,6 @@ const styles: {
   textStyle: string;
   date: string;
   datePos: string;
-  weather: string;
 } = {
   frame: 'black',
   text: '네컷사진',
@@ -15,6 +14,5 @@ const styles: {
   textStyle: 'Black Han Sans',
   date: '',
   datePos: 'bottom',
-  weather: '',
 };
 export default styles;

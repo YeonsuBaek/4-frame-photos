@@ -14,39 +14,6 @@ const Optionbar = () => {
   const { optionbar } = useOptionbarStore((state) => state);
   const { setColorPicker } = useColorlistStore((state) => state);
 
-  const handleGetWeather = () => {
-    navigator.geolocation.getCurrentPosition(handleSuccess, handleError);
-  };
-
-  const handleSuccess = (position: {
-    coords: { latitude: number; longitude: number };
-  }) => {
-    const latitude = position.coords.latitude;
-    const longitude = position.coords.longitude;
-    getWeather(latitude, longitude); //얻은 좌표값을 바탕으로 날씨정보를 불러온다.
-  };
-
-  const handleError = () => {
-    alert("can't not access to location");
-  };
-
-  const getWeather = async (latitude: number, longitude: number) => {
-    try {
-      const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${process.env.NEXT_PUBLIC_WEATHER_API_KEY}&units=metric&lang=kr`
-      )
-        .then((response) => {
-          return response.json();
-        })
-        .then((json) => {
-          const weatherDescription = json.weather[0].description;
-          setCurrent('weather', weatherDescription);
-        });
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   return (
     <>
       <ul className='fixed bottom-0 left-0 z-30 flex items-center justify-start w-screen h-[64px] px-[8px] overflow-scroll text-white bg-black scrollbar-hide'>
@@ -197,15 +164,6 @@ const Optionbar = () => {
               className='w-[28px] h-[28px]'
             />
           </button>
-        </DetailOptionbar>
-      )}
-      {optionbar == 'weather' && (
-        <DetailOptionbar
-          title='날씨'
-          onSave={() => setDef('weather', current.weather)}
-          onClose={() => setCurrent('weather', def.weather)}
-        >
-          <button onClick={handleGetWeather}>날씨 불러오기</button>
         </DetailOptionbar>
       )}
     </>
