@@ -16,7 +16,7 @@ const Optionbar = () => {
 
   return (
     <>
-      <ul className='fixed bottom-0 left-0 z-30 flex items-center justify-start w-screen h-[64px] px-[8px] overflow-scroll text-white bg-black scrollbar-hide'>
+      <ul className='fixed bottom-0 left-0 z-30 flex items-center justify-start w-screen h-[64px] px-[8px] overflow-scroll text-white bg-black scrollbar-hide md:justify-center'>
         {options.map((option) => {
           return <OptionButton key={option.name} option={option} />;
         })}
@@ -98,7 +98,7 @@ const Optionbar = () => {
           onSave={() => setDef('textStyle', current.textStyle)}
           onClose={() => setCurrent('textStyle', def.textStyle)}
         >
-          <ul className='flex justify-start w-screen overflow-scroll px-[8px] scrollbar-hide'>
+          <ul className='flex justify-start w-screen overflow-scroll px-[8px] scrollbar-hide md:justify-center'>
             {fonts.map((font) => {
               return (
                 <li

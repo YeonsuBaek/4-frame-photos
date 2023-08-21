@@ -4,7 +4,7 @@ import NAVIGATION from '@/models/navigation';
 
 const Navigation = ({ title, onSave, onBack }: NAVIGATION) => {
   return (
-    <div className='fixed top-0 left-0 w-full h-[50px] flex items-center justify-between bg-black z-30'>
+    <div className='fixed top-0 left-0 w-full h-[50px] flex items-center justify-between bg-black z-30 md:px-[16px]'>
       <Link
         href='/'
         className='w-[50px] h-[50px] flex items-center justify-center'

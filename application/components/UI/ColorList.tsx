@@ -18,7 +18,7 @@ const ColorList = ({
   };
 
   return (
-    <ul className='flex justify-start w-screen overflow-scroll px-[8px] scrollbar-hide'>
+    <ul className='flex justify-start w-screen overflow-scroll px-[8px] scrollbar-hide md:justify-center'>
       <li className='mx-[8px] flex items-center justify-center'>
         <button
           className='rounded-[100px] w-[32px] h-[32px] flex items-center justify-center'

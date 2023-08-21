@@ -12,8 +12,10 @@ const DetailOptionbar = ({
 
   return (
     <div className='fixed bottom-0 left-0 z-50 flex flex-col items-center justify-start w-screen overflow-scroll text-white bg-black'>
-      <div className='h-[48px] flex items-center w-full'>{children}</div>
-      <div className='flex justify-between items-center w-full px-[8px] h-[40px]'>
+      <div className='h-[48px] flex items-center w-full md:justify-center'>
+        {children}
+      </div>
+      <div className='flex justify-between items-center w-full px-[8px] h-[40px] md:px-[16px]'>
         <button
           onClick={() => {
             onClose();
