@@ -5,6 +5,7 @@ import useColorlistStore from '../../stores/colorlist';
 
 const ColorList = ({
   colors,
+  currentColor = '#ffffff',
   onChangeColor,
   onChangeFrame,
   onChangeTextColor,
@@ -32,7 +33,7 @@ const ColorList = ({
         </button>
         {colorPicker && (
           <div style={{ position: 'fixed', left: '20px', bottom: '100px' }}>
-            <ChromePicker color={selectedColor} onChange={handleChangeColor} />
+            <ChromePicker color={currentColor} onChange={handleChangeColor} />
           </div>
         )}
       </li>
