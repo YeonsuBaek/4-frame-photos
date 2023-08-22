@@ -22,7 +22,7 @@ const ColorList = ({
       <li className='mx-[8px] flex items-center justify-center'>
         <button
           className='rounded-[100px] w-[32px] h-[32px] flex items-center justify-center'
-          onClick={() => setColorPicker(colorPicker ? false : true)}
+          onClick={() => setColorPicker(!colorPicker)}
         >
           <img
             src='/assets/colors.png'
@@ -38,8 +38,8 @@ const ColorList = ({
       </li>
       {colors.map((color) => {
         const handleClick = (color: string) => {
-          onChangeFrame(color);
-          onChangeTextColor(color);
+          onChangeFrame && onChangeFrame(color);
+          onChangeTextColor && onChangeTextColor(color);
         };
 
         return (

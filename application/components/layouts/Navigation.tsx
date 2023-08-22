@@ -8,7 +8,7 @@ const Navigation = ({ title, onSave, onBack }: NAVIGATION) => {
       <Link
         href='/'
         className='w-[50px] h-[50px] flex items-center justify-center'
-        onClick={() => onBack()}
+        onClick={onBack}
       >
         <img
           src='/assets/chevron.png'

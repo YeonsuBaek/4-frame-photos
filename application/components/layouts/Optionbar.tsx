@@ -36,7 +36,6 @@ const Optionbar = () => {
           <ColorList
             colors={colors}
             onChangeFrame={(color) => setCurrent('frame', color)}
-            onChangeTextColor={() => null}
             onChangeColor={(color) => setCurrent('frame', color)}
           />
         </DetailOptionbar>
@@ -87,7 +86,6 @@ const Optionbar = () => {
           <ColorList
             colors={colors}
             onChangeTextColor={(color) => setCurrent('textColor', color)}
-            onChangeFrame={() => null}
             onChangeColor={(color) => setCurrent('textColor', color)}
           />
         </DetailOptionbar>
