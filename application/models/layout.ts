@@ -1,8 +1,9 @@
+import { ReactElement } from 'react';
+
 type LAYOUT = {
-  title: string;
   onBack: () => void;
   onSave: () => void;
-  children: React.ReactChild | React.ReactChild[];
+  children: ReactElement | string;
 };
 
 export default LAYOUT;

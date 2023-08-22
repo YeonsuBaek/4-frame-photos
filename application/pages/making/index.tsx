@@ -63,11 +63,7 @@ const MakingPage = () => {
 
   return (
     <>
-      <Layout
-        title='네컷사진 만들기'
-        onBack={handleResetStyle}
-        onSave={handleSaveImage}
-      >
+      <Layout onBack={handleResetStyle} onSave={handleSaveImage}>
         <div className='my-[-1700px] scale-[0.2]'>
           <div ref={formRef}>
             <Form />

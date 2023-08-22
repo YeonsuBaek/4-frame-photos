@@ -1,7 +1,9 @@
+import { ReactElement } from 'react';
+
 type NAVIGATION = {
-  title: string;
   onBack: () => void;
   onSave: () => void;
+  children: ReactElement | string;
 };
 
 export default NAVIGATION;
