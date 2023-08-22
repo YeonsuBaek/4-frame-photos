@@ -1,5 +1,5 @@
 import Form from '@/components/Form/Form';
-import React from 'react';
+import React, { useRef, useCallback, useEffect } from 'react';
 import Layout from '../../components/layouts/Layout';
 import Optionbar from '../../components/layouts/Optionbar';
 import useStore from '../../stores/create';
@@ -12,9 +12,9 @@ const MakingPage = () => {
   const { colorPicker } = useColorlistStore((state) => state);
   const { setCurrent, setDef } = useStore((state) => state);
 
-  const ref = React.createRef<any>();
+  const formRef = useRef<any>();
   const handleSaveImage = async () => {
-    await domtoimage.toBlob(ref.current).then((blob) => {
+    await domtoimage.toBlob(formRef.current).then((blob) => {
       const saveConfirm = window.confirm('이미지를 저장하시겠습니까?');
       if (saveConfirm) {
         saveAs(blob, 'download.png');
@@ -40,11 +40,11 @@ const MakingPage = () => {
   };
 
   function useBodyScrollLock() {
-    const lockScroll = React.useCallback(() => {
+    const lockScroll = useCallback(() => {
       document.body.style.overflow = 'hidden';
     }, []);
 
-    const openScroll = React.useCallback(() => {
+    const openScroll = useCallback(() => {
       document.body.style.removeProperty('overflow');
     }, []);
 
@@ -53,13 +53,13 @@ const MakingPage = () => {
 
   const { lockScroll, openScroll } = useBodyScrollLock();
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (colorPicker) {
       lockScroll();
     } else {
       openScroll();
     }
-  }, [colorPicker]);
+  }, [colorPicker, lockScroll, openScroll]);
 
   return (
     <>
@@ -69,7 +69,7 @@ const MakingPage = () => {
         onSave={handleSaveImage}
       >
         <div className='my-[-1700px] scale-[0.2]'>
-          <div ref={ref}>
+          <div ref={formRef}>
             <Form />
           </div>
         </div>
