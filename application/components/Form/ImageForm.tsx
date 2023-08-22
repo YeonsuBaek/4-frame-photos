@@ -45,7 +45,7 @@ const ImageForm = () => {
   };
 
   return (
-    <div className='relative w-full aspect-[3/2]'>
+    <div className='relative w-full aspect-[3/2] cursor-pointer'>
       <img
         src={image}
         onClick={() => {

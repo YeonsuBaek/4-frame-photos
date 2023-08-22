@@ -34,7 +34,7 @@ const Form = () => {
         className='absolute bottom-[60px] left-0 w-full h-[460px] overflow-hidden '
         style={styles.text}
       >
-        <span className='absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] whitespace-nowrap flex items-center justify-center'>
+        <span className='absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] whitespace-nowrap flex items-center justify-center pointer-events-none'>
           {current.text}
         </span>
         {(optionbar == 'date' || def.date) && (

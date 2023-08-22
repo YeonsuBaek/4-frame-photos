@@ -16,7 +16,7 @@ const Navigation = ({ onSave, onBack, children }: NAVIGATION) => {
           className='rotate-90 w-[24px] h-[24px]'
         />
       </Link>
-      <h2 className='text-[#fff] text-lg'>{children}</h2>
+      <h2 className='text-[#fff] text-lg pointer-events-none'>{children}</h2>
       <button
         className='w-[50px] h-[50px] flex items-center justify-center'
         onClick={onSave}
