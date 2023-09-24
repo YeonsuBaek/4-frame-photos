@@ -8,6 +8,7 @@ import ColorList from '../UI/ColorList';
 import useStore from '../../stores/create';
 import useColorlistStore from '../../stores/colorlist';
 import options from '../../assets/options';
+import DateSelection from '../UI/DateSelection';
 
 const Optionbar = () => {
   const { current, def, setCurrent, setDef } = useStore((state) => state);
@@ -145,12 +146,13 @@ const Optionbar = () => {
               className='w-[28px] h-[28px]'
             />
           </button>
-          <input
+          {/* <input
             type='date'
             onChange={(e) => setCurrent('date', e.target.value)}
             value={current.date}
             className='mx-[8px] w-[75%] block rounded-[4px] outline-none bg-white text-black'
-          />
+          /> */}
+          <DateSelection />
           <button
             onClick={() => {
               setCurrent('date', 'bottom');
